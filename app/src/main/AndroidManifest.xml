@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.myapplication">
+
+        <uses-permission android:name="android.permission.INTERNET" />
+
+        <application
+            android:name=".Myapplication"
+            android:allowBackup="true"
+            android:icon="@drawable/iconhakadorikun"
+            android:label="@string/app_name"
+            android:roundIcon="@drawable/iconhakadorikun"
+            android:supportsRtl="true"
+            android:theme="@style/Theme.MyApplication">
+                <activity android:name=".page7_re"></activity>
+                <activity android:name=".page4_re" />
+                <activity android:name=".page11" />
+                <activity android:name=".page10" />
+                <activity android:name=".Page7_2" />
+                <activity android:name=".Page3_re" />
+                <activity android:name=".page5_re" />
+                <activity android:name=".page4" />
+                <activity android:name=".page3" />
+                <activity android:name=".page2"
+                    android:launchMode="singleTask"
+                    />
+                <activity android:name=".memotest" />
+                <activity android:name=".page6" />
+                <activity android:name=".page8" />
+                <activity android:name=".page5" />
+                <activity android:name=".home1" />
+                <activity android:name=".page9" />
+                <activity
+                    android:name=".home2"
+                    android:label="@string/app_name"
+                    android:launchMode="singleTask"
+                    android:theme="@style/Theme.MyApplication.NoActionBar">
+                        <intent-filter>
+                                <action android:name="android.intent.action.MAIN" />
+
+                                <category android:name="android.intent.category.LAUNCHER" />
+                        </intent-filter>
+                </activity>
+        </application>
+
+</manifest>

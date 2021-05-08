@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="_11_00_17_00">11:00~17:00</string>
+    <string name="a">第四回レポート</string>
+    <string name="b">[2020 秋セメスター] 心理学入門(101)</string>
+    <string name="c">受付終了日時：2020-11-30</string>
+    <string name="input_text_count"></string>
+    <string name="text_count_page9"></string>
+</resources>
