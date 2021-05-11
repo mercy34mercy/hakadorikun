@@ -47,7 +47,7 @@ class home2 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 //データの初期化に使う
-       // deleteRealm(this)
+        deleteRealm(this)
 
 
         val binding =

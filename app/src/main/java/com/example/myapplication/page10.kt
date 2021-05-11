@@ -63,6 +63,7 @@ class page10 : AppCompatActivity() {
 
         add_e_button.setOnClickListener {
             chenge_event(result_page10)
+
         }
 
         val spadapter = ArrayAdapter(applicationContext,android.R.layout.simple_spinner_item,spinnerItem)
@@ -70,7 +71,7 @@ class page10 : AppCompatActivity() {
         spadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.spinnerPage10.adapter = spadapter
 
-        spinner_page10.setSelection(icon_i)
+
 
         binding.spinnerPage10.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
@@ -86,21 +87,7 @@ class page10 : AppCompatActivity() {
 
         }
 
-        sthour_page10.maxValue = 23
-        sthour_page10.minValue = 0
-        sthour_page10.value = 0
 
-        stminute_page10.maxValue = 59
-        stminute_page10.minValue = 0
-        stminute_page10.value = 0
-
-        endhour_page10.maxValue = 23
-        endhour_page10.minValue = 0
-        endhour_page10.value = 0
-
-        endminte_page10.maxValue = 59
-        endminte_page10.minValue = 0
-        endminte_page10.value = 0
 
 
 
@@ -123,6 +110,9 @@ class page10 : AppCompatActivity() {
             endminute = newVal
         }
 
+        val m = result_page10[position]
+        m!!.start_hour
+
     }
 
 
@@ -139,6 +129,29 @@ class page10 : AppCompatActivity() {
         //抽出
         result_page10 = realm.where(EveDB::class.java).findAll().sort("uid")
         text_set(result_page10)
+        val l = result_page10[position]
+        color_s = l!!.color_S
+
+        spinner_page10.setSelection(l!!.iconInt)
+        set_spinner_value(l!!.start_hour,l!!.start_minute,l!!.end_hour,l!!.end_minute)
+    }
+
+    private fun set_spinner_value(a:Int,b:Int,c:Int,d:Int) {
+        sthour_page10.maxValue = 23
+        sthour_page10.minValue = 0
+        sthour_page10.value = a
+
+        stminute_page10.maxValue = 59
+        stminute_page10.minValue = 0
+        stminute_page10.value = b
+
+        endhour_page10.maxValue = 23
+        endhour_page10.minValue = 0
+        endhour_page10.value = c
+
+        endminte_page10.maxValue = 59
+        endminte_page10.minValue = 0
+        endminte_page10.value = d
     }
 
     fun text_set(realm_s:RealmResults<EveDB>){
@@ -163,7 +176,7 @@ class page10 : AppCompatActivity() {
         val color_2: Array<String> = arrayOf("green", "red", "yellow", "bulue", "skybulue")
         val color: Array<Int> = arrayOf(R.drawable.green_line, R.drawable.red_line, R.drawable.yellow_line, R.drawable.darkbulue_line, R.drawable.skybulue_line)
 
-        for (i in 0..5) {
+        for (i in 0..4) {
             if (color_s.equals(color_2[i])) {
                 resouse = color[i]
             }
@@ -182,6 +195,7 @@ class page10 : AppCompatActivity() {
         selectDB!!.url        = url_edit_page10.text.toString()
         selectDB!!.iconstyle  = resouse
         selectDB!!.iconInt    = icon_i
+        selectDB!!.color_S = color_s
         realm.commitTransaction()
 
         title_edit_page10.setText("")
@@ -190,8 +204,8 @@ class page10 : AppCompatActivity() {
         text_endday_page10.text   = ""
         memo_edit_page10.setText("")
         url_edit_page10.setText("")
-
         finish()
+
 
 
     }

@@ -18,6 +18,7 @@ open class EveDB:RealmObject() {
     var url:String = ""
     var iconstyle: Int = 0
     var iconInt:Int = 0
+    var color_S:String = ""
     var alltime:Int = 0
     var event_condition:Int = 0
 }

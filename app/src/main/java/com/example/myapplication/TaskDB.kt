@@ -16,6 +16,7 @@ open class TaskDB: RealmObject() {
     var task_year:Int = NULL
     var task_month:Int = NULL
     var task_day:Int = NULL
+    var task_number:Int = NULL
 
     var zikanwari_color_task:Int = 0
     var zikanwari_color_i_task:Int = 0

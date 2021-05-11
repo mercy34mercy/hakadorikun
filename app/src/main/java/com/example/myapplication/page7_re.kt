@@ -12,6 +12,7 @@ import io.realm.Realm
 import io.realm.RealmResults
 import kotlinx.android.synthetic.main.activity_page7_re.*
 import kotlin.math.min
+import com.example.myapplication.create_number as create_number1
 
 class page7_re : AppCompatActivity() {
     lateinit var realm_page7: Realm
@@ -169,6 +170,7 @@ class page7_re : AppCompatActivity() {
             taskDB.task_year = task_Year
             taskDB.task_month = task_Month
             taskDB.task_day = task_Day
+            taskDB.task_number = create_number1(task_Year,task_Month,task_Day,hour,minute)
 
             title_edit_page7.setText("")
             Kamoku_edit_button.text = ""
@@ -228,6 +230,7 @@ class page7_re : AppCompatActivity() {
         t!!.task_year = task_Year
         t!!.task_month = task_Month
         t!!.task_day = task_Day
+        t!!.task_number = com.example.myapplication.create_number(task_Year,task_Month,task_Day,hour,minute)
         realm_page7.commitTransaction()
         finish()
     }

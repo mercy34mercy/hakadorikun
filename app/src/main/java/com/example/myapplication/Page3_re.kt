@@ -38,13 +38,8 @@ class Page3_re : AppCompatActivity() {
         super.onResume()
         realm = Realm.getDefaultInstance()
         result = realm.where(TaskDB::class.java)
-            .sort("task_day").findAll()
+            .sort("task_number").findAll()
 
-
-//        result.sort("task_month")
-//        result.sort("task_day")
-//        result.sort("dead_hour")
-//        result.sort("dead_minute")
 
         task = Only_TaskAdapter(this,result)
         task_list.adapter = task

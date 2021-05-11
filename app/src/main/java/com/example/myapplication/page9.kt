@@ -192,6 +192,7 @@ class page9 : AppCompatActivity() {
         eventDB.url = url_edit_page9.text.toString()
         eventDB.iconstyle = resouse
         eventDB.iconInt = color_i
+        eventDB.color_S = color_s
         eventDB.event_condition = 0
 
         realm_p.commitTransaction() //終了処理
