@@ -22,6 +22,9 @@ class page7_re : AppCompatActivity() {
     var position:Int = 0
     var hour:Int = 0
     var minute:Int = 0
+    var task_Year:Int = 0
+    var task_Month:Int = 0
+    var task_Day:Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +36,9 @@ class page7_re : AppCompatActivity() {
         val dayOfmonth:String = intent.getStringExtra("Dayofmonth").toString()
         val month:String      = intent.getStringExtra("month").toString()
         val year:String       = intent.getStringExtra("year").toString()
+        task_Year = year.toInt()
+        task_Month = month.toInt()
+        task_Day = dayOfmonth.toInt()
 
         dead_day_page7.text = year+"/"+month+"/"+dayOfmonth
         name_button = intent.getStringExtra("name").toString()
@@ -160,6 +166,9 @@ class page7_re : AppCompatActivity() {
             taskDB.task_memo = memo_edit_page7.text.toString()
             taskDB.dead_hour = hour
             taskDB.dead_minute =  minute
+            taskDB.task_year = task_Year
+            taskDB.task_month = task_Month
+            taskDB.task_day = task_Day
 
             title_edit_page7.setText("")
             Kamoku_edit_button.text = ""
@@ -184,6 +193,9 @@ class page7_re : AppCompatActivity() {
             this,
             DatePickerDialog.OnDateSetListener() { view, year, month, dayOfMonth->
                 text_show.setText("${year}/${month + 1}/${dayOfMonth}")
+                task_Year = year
+                task_Month = month
+                task_Day = dayOfMonth
             },
             2021,
             4,
@@ -213,6 +225,9 @@ class page7_re : AppCompatActivity() {
         t!!.dead_hour    =  hour
         t!!.task_url   = url_edit_page7.text.toString()
         t!!.task_memo  = memo_edit_page7.text.toString()
+        t!!.task_year = task_Year
+        t!!.task_month = task_Month
+        t!!.task_day = task_Day
         realm_page7.commitTransaction()
         finish()
     }
