@@ -60,7 +60,7 @@ class page9 : AppCompatActivity() {
         ViewModelProvider.NewInstanceFactory().create(MyViewModel::class.java)
     }
 
-    val spinnerItem = arrayOf("red","green","bulue","white","yellow","skybulue")
+    val spinnerItem = arrayOf("red","green","bulue","yellow","skybulue")
 
     private val scope = CoroutineScope(Dispatchers.IO)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -186,10 +186,10 @@ class page9 : AppCompatActivity() {
         realm_p.beginTransaction()  //開始処理
         val eventDB = realm_p.createObject(EveDB::class.java)
 
-        val color_2: Array<String> = arrayOf("green", "red", "yellow", "bulue", "white", "skybulue")
-        val color: Array<Int> = arrayOf(R.drawable.green, R.drawable.red, R.drawable.yellow, R.drawable.bulue, R.drawable.white, R.drawable.skyblue)
+        val color_2: Array<String> = arrayOf("green", "red", "yellow", "bulue", "skybulue")
+        val color: Array<Int> = arrayOf(R.drawable.green_line, R.drawable.red_line, R.drawable.yellow_line, R.drawable.darkbulue_line, R.drawable.white, R.drawable.skybulue_line)
 
-        for (i in 0..5) {
+        for (i in 0..4) {
             if (color_s.equals(color_2[i])) {
                 resouse = color[i]
             }

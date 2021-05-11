@@ -27,7 +27,7 @@ class page10 : AppCompatActivity() {
     var position:Int = 0
     lateinit var name_s:String
     var icon_i:Int = 0
-    val spinnerItem = arrayOf("red","green","bulue","white","yellow","skybulue")
+    val spinnerItem = arrayOf("red","green","bulue","yellow","skybulue")
     var resouse:Int = 0
     var sthour:Int = 0
     var stminute:Int = 0
@@ -50,17 +50,14 @@ class page10 : AppCompatActivity() {
 
 
 
-        realm = Realm.getDefaultInstance()
 
-        //抽出
-        result_page10 = realm.where(EveDB::class.java).findAll().sort("uid")
 
 
         val position_S = intent.getIntExtra("position",0)
         position = position_S
         val name = intent.getStringExtra("name")
         name_s = name.toString()
-        text_set(result_page10)
+
 
 
 
@@ -135,6 +132,15 @@ class page10 : AppCompatActivity() {
         realm.close()
     }
 
+    override fun onResume() {
+        super.onResume()
+        realm = Realm.getDefaultInstance()
+
+        //抽出
+        result_page10 = realm.where(EveDB::class.java).findAll().sort("uid")
+        text_set(result_page10)
+    }
+
     fun text_set(realm_s:RealmResults<EveDB>){
 
         val r = realm_s[position]
@@ -154,8 +160,8 @@ class page10 : AppCompatActivity() {
 
         realm.beginTransaction()
 
-        val color_2: Array<String> = arrayOf("green", "red", "yellow", "bulue", "white", "skybulue")
-        val color: Array<Int> = arrayOf(R.drawable.green, R.drawable.red, R.drawable.yellow, R.drawable.bulue, R.drawable.white, R.drawable.skyblue)
+        val color_2: Array<String> = arrayOf("green", "red", "yellow", "bulue", "skybulue")
+        val color: Array<Int> = arrayOf(R.drawable.green_line, R.drawable.red_line, R.drawable.yellow_line, R.drawable.darkbulue_line, R.drawable.skybulue_line)
 
         for (i in 0..5) {
             if (color_s.equals(color_2[i])) {

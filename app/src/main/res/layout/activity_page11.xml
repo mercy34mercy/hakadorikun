@@ -17,21 +17,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView37"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:gravity="center"
-        android:paddingTop="15dp"
-        android:textColor="#FFFFFF"
-        android:textSize="28sp"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbar11"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <Button
-        android:id="@+id/button29"
+        android:id="@+id/button_delete_page11"
         android:layout_width="120dp"
         android:layout_height="70dp"
         android:layout_marginEnd="150dp"
@@ -44,7 +31,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button26"
+        android:id="@+id/button_add_page11"
         android:layout_width="120dp"
         android:layout_height="70dp"
         android:layout_marginStart="150dp"
@@ -55,6 +42,14 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinner_page11"
+        android:layout_width="250dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="112dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar11" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -74,7 +69,7 @@
                 android:background="@android:color/darker_gray" />
 
             <EditText
-                android:id="@+id/editTextTextPersonName9"
+                android:id="@+id/edit_subject"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:background="#00000000"
@@ -111,6 +106,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@android:color/darker_gray" />
+
+            <TextView
+                android:id="@+id/textView37"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:paddingTop="15dp"
+                android:textColor="#FFFFFF"
+                android:textSize="28sp" />
         </LinearLayout>
     </ScrollView>
 

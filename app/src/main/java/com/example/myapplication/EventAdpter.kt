@@ -20,6 +20,24 @@ class CustomAdapter(context: Context, var mAnimalList: List<EveDB>) : ArrayAdapt
 
         //val event= mAnimalList[position]!!.uid + mAnimalList[position]!!.title
 
+        var stminute:String = ""
+
+        if(animal.start_minute < 10){
+            stminute = "0" + animal.start_minute.toString()
+        }else{
+            stminute = animal.start_minute.toString()
+        }
+
+        var edminute:String = ""
+
+        if(animal.end_minute < 10){
+            edminute = "0" + animal.end_minute.toString()
+        }else{
+            edminute = animal.end_minute.toString()
+        }
+
+
+
 
         // レイアウトの設定
         var view = convertView
@@ -39,10 +57,10 @@ class CustomAdapter(context: Context, var mAnimalList: List<EveDB>) : ArrayAdapt
 
 
         val starttime = view?.findViewById<TextView>(R.id.starttime_listevent)
-        starttime?.text = animal.start_hour.toString() + ":" + animal.start_minute
+        starttime?.text = animal.start_hour.toString() + ":" + stminute
 
         val endtime = view?.findViewById<TextView>(R.id.endtime_listevent)
-        endtime?.text = animal.end_hour.toString() + ":" + animal.end_minute.toString()
+        endtime?.text = animal.end_hour.toString() + ":" + edminute
 
         return view!!
     }

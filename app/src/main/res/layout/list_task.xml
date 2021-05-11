@@ -10,9 +10,10 @@
 
     <ImageView
         android:id="@+id/image_task"
-        android:layout_width="60dp"
+        android:layout_width="30dp"
         android:layout_height="match_parent"
-        android:padding="7dp"/>
+        android:padding="7dp"
+        app:srcCompat="@drawable/green_line" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,27 +30,33 @@
                 android:id="@+id/subject_listtask"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="left" />
+                android:gravity="center|left"
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/title_listtask"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="left" />
+                android:gravity="center|left"
+                android:textColor="#000000"
+                android:textSize="24sp" />
         </LinearLayout>
 
-        <LinearLayout
+        <ImageView
+            android:id="@+id/imageView30"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:srcCompat="@drawable/cmp_stamp" />
+
+        <TextView
+            android:id="@+id/deadtime_listtask"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center|right"
+            android:textColor="#000000"
+            android:textSize="18sp" />
 
-            <TextView
-                android:id="@+id/deadtime_listtask"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="right" />
-        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>

@@ -48,7 +48,7 @@ class TaskAdapter(context: Context, var mAnimalList: List<TaskDB>) : ArrayAdapte
         name?.text = animal.subject
 
         val deadtime = view?.findViewById<TextView>(R.id.deadtime_listtask)
-        deadtime?.text = animal.dead_hour.toString() + ":" + animal.dead_minute.toString()
+        deadtime?.text = animal.dead_hour.toString() + ":" + minute
 
 
 
