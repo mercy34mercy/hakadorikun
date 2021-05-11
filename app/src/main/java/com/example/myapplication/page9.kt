@@ -44,22 +44,6 @@ class page9 : AppCompatActivity() {
     lateinit var month:String
     lateinit var dayOfmonth:String
 
-    private val retrofit = Retrofit.Builder().apply {
-        baseUrl("https://hakadorikun.herokuapp.com/")
-    }.build()
-
-    //サービスクラスの実装オブジェクト取得
-    private val service = retrofit.create(MyService::class.java)
-
-    val get = service.getRawResponseForPosts()
-
-    // 通信全体で利用するMediaType
-    private val mediaType: MediaType = MediaType.parse("application/json; charset=utf-8")!!
-
-    private val myViewModel: MyViewModel by lazy {
-        ViewModelProvider.NewInstanceFactory().create(MyViewModel::class.java)
-    }
-
     val spinnerItem = arrayOf("red","green","bulue","yellow","skybulue")
 
     private val scope = CoroutineScope(Dispatchers.IO)
@@ -68,7 +52,7 @@ class page9 : AppCompatActivity() {
         val binding =
                 DataBindingUtil.setContentView<ActivityPage9Binding>(this, R.layout.activity_page9)
 
-        binding.model = myViewModel
+
         binding.lifecycleOwner = this
 
 

@@ -7,6 +7,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import com.example.myapplication.databinding.ActivityPage10Binding
 import io.realm.Realm
 import io.realm.RealmResults
@@ -19,6 +20,11 @@ class page11 : AppCompatActivity() {
     val spinnerItem = arrayOf("red","green","bulue","yellow","skybulue")
     var color_s:String = ""
     var icon_i:Int = 0
+
+    private val myViewModel: MyViewModel by lazy {
+        ViewModelProvider.NewInstanceFactory().create(MyViewModel::class.java)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding =
