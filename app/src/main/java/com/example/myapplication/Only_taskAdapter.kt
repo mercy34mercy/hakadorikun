@@ -53,6 +53,8 @@ class Only_TaskAdapter(context: Context, var mAnimalList: List<TaskDB>) : ArrayA
         val deadday = view?.findViewById<TextView>(R.id.dead_day_onlytask)
         deadday?.text = animal.dead_day
 
+        val title = view?.findViewById<TextView>(R.id.title_onlytask)
+        title?.text = animal.task_title
 
 
 

@@ -9,6 +9,7 @@ import android.widget.Spinner
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.myapplication.databinding.ActivityPage10Binding
+import com.example.myapplication.databinding.ActivityPage11Binding
 import io.realm.Realm
 import io.realm.RealmResults
 import kotlinx.android.synthetic.main.activity_page10.*
@@ -29,7 +30,7 @@ class page11 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding =
             DataBindingUtil.setContentView<ActivityPage11Binding>(this, R.layout.activity_page11)
-        //binding.model = myViewModel
+        binding.model = myViewModel
         binding.lifecycleOwner = this
 
         button_add_page11.setOnClickListener {
