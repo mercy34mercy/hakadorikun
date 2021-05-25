@@ -11,8 +11,9 @@ import kotlinx.android.synthetic.main.activity_page5.*
 import kotlinx.android.synthetic.main.activity_page6.*
 import kotlinx.android.synthetic.main.activity_page8.*
 
-class page6 : AppCompatActivity() {
+class  page6 : AppCompatActivity() {
     var list_position:Int = 0
+    var task_id:Int = 0
     lateinit var realm: Realm
     lateinit var result : RealmResults<TaskDB>
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,6 +24,7 @@ class page6 : AppCompatActivity() {
 
 
         list_position = intent.getIntExtra("position",0)
+        task_id = intent.getIntExtra("id",0)
 
 
 

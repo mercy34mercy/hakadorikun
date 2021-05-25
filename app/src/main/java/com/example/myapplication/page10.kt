@@ -13,7 +13,6 @@ import com.example.myapplication.databinding.ActivityPage10Binding
 import com.example.myapplication.databinding.ActivityPage9Binding
 import io.realm.Realm
 import io.realm.RealmResults
-import kotlinx.android.synthetic.main.activity_memotest.view.*
 import kotlinx.android.synthetic.main.activity_page10.*
 import kotlinx.android.synthetic.main.activity_page10.add_e_button
 
@@ -33,10 +32,6 @@ class page10 : AppCompatActivity() {
     var stminute:Int = 0
     var endhour:Int = 0
     var endminute:Int = 0
-
-
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -89,7 +84,21 @@ class page10 : AppCompatActivity() {
 
 
 
+        sthour_page10.maxValue = 23
+        sthour_page10.minValue = 0
+        sthour_page10.value = 0
 
+        stminute_page10.maxValue = 59
+        stminute_page10.minValue = 0
+        stminute_page10.value = 0
+
+        endhour_page10.maxValue = 23
+        endhour_page10.minValue = 0
+        endhour_page10.value = 0
+
+        endminte_page10.maxValue = 59
+        endminte_page10.minValue = 0
+        endminte_page10.value = 0
 
 
 
@@ -110,8 +119,8 @@ class page10 : AppCompatActivity() {
             endminute = newVal
         }
 
-        val m = result_page10[position]
-        m!!.start_hour
+//        val m = result_page10[position]
+//        m!!.start_hour
 
     }
 
@@ -133,7 +142,7 @@ class page10 : AppCompatActivity() {
         color_s = l!!.color_S
 
         spinner_page10.setSelection(l!!.iconInt)
-        set_spinner_value(l!!.start_hour,l!!.start_minute,l!!.end_hour,l!!.end_minute)
+        //set_spinner_value(l!!.start_hour,l!!.start_minute,l!!.end_hour,l!!.end_minute)
     }
 
     private fun set_spinner_value(a:Int,b:Int,c:Int,d:Int) {
@@ -185,8 +194,8 @@ class page10 : AppCompatActivity() {
         val selectDB = realm_p[position]
         selectDB!!.title = title_edit_page10.text.toString()
         selectDB!!.place = place_edit_page10.text.toString()
-        selectDB!!.startday = text_startday_page10.text.toString()
-        selectDB!!.endday   = text_endday_page10.text.toString()
+        selectDB!!.startday = create_month(text_startday_page10.text.toString())
+        selectDB!!.endday   = create_month(text_endday_page10.text.toString())
         selectDB.start_hour = sthour
         selectDB.start_minute = stminute
         selectDB.end_hour = endhour

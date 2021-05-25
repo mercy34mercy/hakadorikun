@@ -23,8 +23,7 @@
         android:layout_marginTop="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView15"
-        app:srcCompat="@drawable/husen" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView15" />
 
     <LinearLayout
         android:layout_width="0dp"
@@ -75,8 +74,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView16"
-        app:layout_constraintVertical_bias="0.281"
-        app:srcCompat="@drawable/zikan1" />
+        app:layout_constraintVertical_bias="0.281" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar7"
@@ -97,8 +95,7 @@
         android:layout_marginTop="28dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar7"
-        app:srcCompat="@drawable/husen" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar7" />
 
     <ImageView
         android:id="@+id/imageView22"

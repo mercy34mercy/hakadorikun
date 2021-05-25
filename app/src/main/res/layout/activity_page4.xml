@@ -59,8 +59,7 @@
         app:layout_constraintEnd_toEndOf="@+id/toolbar4"
         app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView14"
-        app:srcCompat="@drawable/kamokumei" />
+        app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout5"
@@ -96,7 +95,6 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/barnum"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
@@ -137,7 +135,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView15"
-        app:srcCompat="@drawable/group5" />
+         />
 
     <TextView
         android:id="@+id/textView18"
@@ -171,7 +169,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView20"
-        app:srcCompat="@drawable/group8" />
+      />
 
     <TextView
         android:id="@+id/textView23"
@@ -202,7 +200,7 @@
         style="@style/Widget.AppCompat.Button.Borderless.Colored"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/barnum"
+
         android:text="新規課題を追加"
         android:textColor="#80000000"
         app:backgroundTint="#FFFFFFFF"

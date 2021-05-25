@@ -166,12 +166,11 @@ class page9 : AppCompatActivity() {
     private fun addnewWord(){
 
 
-
         realm_p.beginTransaction()  //開始処理
         val eventDB = realm_p.createObject(EveDB::class.java)
 
         val color_2: Array<String> = arrayOf("green", "red", "yellow", "bulue", "skybulue")
-        val color: Array<Int> = arrayOf(R.drawable.green_line, R.drawable.red_line, R.drawable.yellow_line, R.drawable.darkbulue_line, R.drawable.white, R.drawable.skybulue_line)
+        val color: Array<Int> = arrayOf(R.drawable.green_line, R.drawable.red_line, R.drawable.yellow_line, R.drawable.darkbulue_line, R.drawable.skybulue_line)
 
         for (i in 0..4) {
             if (color_s.equals(color_2[i])) {
@@ -182,8 +181,8 @@ class page9 : AppCompatActivity() {
         eventDB.uid = "00000000"
         eventDB.title = title_edit_page9.text.toString()
         eventDB.place = place_edit_page9.text.toString()
-        eventDB.startday = startdate_edit_page9.text.toString()
-        eventDB.endday   = enddate_edit_page9.text.toString()
+        eventDB.startday = create_month(startdate_edit_page9.text.toString())
+        eventDB.endday   = create_month(enddate_edit_page9.text.toString())
         eventDB.start_hour = sthour
         eventDB.start_minute = stminute
         eventDB.end_hour = endhour
@@ -202,6 +201,8 @@ class page9 : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         realm_p = Realm.getDefaultInstance()
+
+
     }
 
     override fun onPause() {

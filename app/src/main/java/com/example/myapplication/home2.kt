@@ -25,6 +25,7 @@ class home2 : AppCompatActivity() {
     //どこでも使える変数
     lateinit var realm: Realm
 
+
     private val retrofit = Retrofit.Builder().apply {
         baseUrl("https://hakadorikun.herokuapp.com/")
     }.build()
@@ -46,15 +47,18 @@ class home2 : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//データの初期化に使う
+
         deleteRealm(this)
 
 
         val binding =
                 DataBindingUtil.setContentView<ActivityHome2Binding>(this, R.layout.activity_home2)
-
+        deleteRealm(this)
         binding.model = myViewModel
         binding.lifecycleOwner = this
+
+
+
 
 
 

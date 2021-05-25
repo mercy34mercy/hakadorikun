@@ -10,6 +10,7 @@ import android.widget.NumberPicker
 import android.widget.TextView
 import io.realm.Realm
 import io.realm.RealmResults
+import kotlinx.android.synthetic.main.activity_home3.*
 import kotlinx.android.synthetic.main.activity_page7_re.*
 import kotlin.math.min
 import com.example.myapplication.create_number as create_number1
@@ -37,9 +38,9 @@ class page7_re : AppCompatActivity() {
         val dayOfmonth:String = intent.getStringExtra("Dayofmonth").toString()
         val month:String      = intent.getStringExtra("month").toString()
         val year:String       = intent.getStringExtra("year").toString()
-        task_Year = year.toInt()
-        task_Month = month.toInt()
-        task_Day = dayOfmonth.toInt()
+//        task_Year = year.toInt()
+//        task_Month = month.toInt()
+//        task_Day = dayOfmonth.toInt()
 
         dead_day_page7.text = year+"/"+month+"/"+dayOfmonth
         name_button = intent.getStringExtra("name").toString()
@@ -108,6 +109,12 @@ class page7_re : AppCompatActivity() {
             showDatePicker(dead_day_page7)
         }
 
+        home_task.setOnClickListener {
+            val intent = Intent(this@page7_re,page11::class.java)
+
+            startActivity(intent)
+        }
+
 
 
 
@@ -162,7 +169,7 @@ class page7_re : AppCompatActivity() {
             taskDB.task_title = title_edit_page7.text.toString()
             //taskDB.subject = Kamoku_edit_button.text.toString()
             taskDB.subject = "数学2"
-            taskDB.dead_day = dead_day_page7.text.toString()
+            taskDB.dead_day = create_month(dead_day_page7.text.toString())
             taskDB.task_url = url_edit_page7.text.toString()
             taskDB.task_memo = memo_edit_page7.text.toString()
             taskDB.dead_hour = hour

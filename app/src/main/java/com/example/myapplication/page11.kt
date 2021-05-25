@@ -8,11 +8,9 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
-import com.example.myapplication.databinding.ActivityPage10Binding
 import com.example.myapplication.databinding.ActivityPage11Binding
 import io.realm.Realm
 import io.realm.RealmResults
-import kotlinx.android.synthetic.main.activity_page10.*
 import kotlinx.android.synthetic.main.activity_page11.*
 
 class page11 : AppCompatActivity() {
@@ -21,6 +19,7 @@ class page11 : AppCompatActivity() {
     val spinnerItem = arrayOf("red","green","bulue","yellow","skybulue")
     var color_s:String = ""
     var icon_i:Int = 0
+    var position:Int = 0
 
     private val myViewModel: MyViewModel by lazy {
         ViewModelProvider.NewInstanceFactory().create(MyViewModel::class.java)
@@ -33,17 +32,28 @@ class page11 : AppCompatActivity() {
         binding.model = myViewModel
         binding.lifecycleOwner = this
 
+        val zikanwari:Array<String> = arrayOf("月曜1限","月曜2限","月曜3限","月曜4限","月曜5限","月曜6限",
+                                                "火曜1限","火曜2限","火曜3限","火曜4限","火曜5限","火曜6限",
+                                                    "水曜1限","水曜2限","水曜3限","水曜4限","水曜5限","水曜6限",
+                                                        "木曜1限","木曜2限","木曜3限","木曜4限","木曜5限","木曜6限",
+                                                            "金曜1限","金曜2限","金曜3限","金曜4限","金曜5限","金曜6限")
+
+
+        position = intent.getStringExtra("position")!!.toInt()
+
         button_add_page11.setOnClickListener {
             if (edit_subject.text == null){
 
             }else {
-                add_new_subject()
+                add_new_subject(position)
                 finish()
             }
         }
 
+        zikan_text.text = zikanwari[position]
+
         button_delete_page11.setOnClickListener{
-            delete_subject()
+            deleteRealm(position)
         }
 
         val spadapter = ArrayAdapter(applicationContext,android.R.layout.simple_spinner_item,spinnerItem)
@@ -71,17 +81,14 @@ class page11 : AppCompatActivity() {
 
 
     }
-
-    private fun delete_subject() {
-        TODO("Not yet implemented")
-    }
-
-    private fun add_new_subject() {
+    private fun add_new_subject(p:Int) {
+        realm.beginTransaction()  //開始処理
         val zikanwariDB = realm.createObject(ZikanwariDB::class.java)
         zikanwariDB.zikanwari_title = edit_subject.text.toString()
         zikanwariDB.zikanwari_color_i = icon_i
-        zikanwariDB.kyoka_date
-        zikanwariDB.kyoka_zigen
+        zikanwariDB.kyoka_date = p
+        zikanwariDB.kyoka_zigen = position
+        realm.commitTransaction() //終了処理
     }
 
 
@@ -92,8 +99,30 @@ class page11 : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+
         realm = Realm.getDefaultInstance()
         //抽出
-        result_page11 = realm.where(ZikanwariDB::class.java).findAll().sort("zikanwari_color")
+        result_page11 = realm.where(ZikanwariDB::class.java).equalTo("kyoka_date",position).findAll()
+        if(result_page11.isEmpty()) {
+        }else {
+            val l = result_page11[0]
+            edit_subject.setText(l!!.zikanwari_title)
+            spinner_page11.setSelection(l.zikanwari_color_i)
+        }
+
+
+
+        }
+
+    private fun deleteRealm(id: Int) {
+        // プライマリーキーをもとに該当のデータを取得
+        val target = realm.where(ZikanwariDB::class.java)
+            .equalTo("kyoka_zigen",id)
+            .findAll()
+
+        // トランザクションして削除
+        realm.executeTransaction {
+            target.deleteFromRealm(0)
+        }
     }
 }

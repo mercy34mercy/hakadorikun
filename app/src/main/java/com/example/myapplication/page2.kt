@@ -22,7 +22,7 @@ class page2 : AppCompatActivity() {
         }
 
         home_button_page2.setOnClickListener {
-            val intent = Intent(this@page2, home2::class.java)
+            val intent = Intent(this@page2, home3::class.java)
             startActivity(intent)
         }
 
