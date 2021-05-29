@@ -115,6 +115,10 @@ class page7_re : AppCompatActivity() {
 //            startActivity(intent)
 //        }
 
+        cancel_page7.setOnClickListener {
+            finish()
+        }
+
 
 
 

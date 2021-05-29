@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.text.Spannable
@@ -29,7 +30,15 @@ class Page3_re : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_page3_re)
 
+        home_tab.setOnClickListener {
+            val intent = Intent(this@Page3_re,home3::class.java)
+            startActivity(intent)
+        }
 
+        calender_tab.setOnClickListener {
+            val intent = Intent(this@Page3_re,page2::class.java)
+            startActivity(intent)
+        }
 
 
    }
