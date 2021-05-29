@@ -131,6 +131,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="600dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -423,6 +425,17 @@
                         app:backgroundTintMode="screen" />
 
                     <Button
+                        android:id="@+id/z_44"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/zikan_none"
+                        android:textColor="#000000"
+                        android:textSize="10sp"
+                        app:backgroundTint="#00000000"
+                        app:backgroundTintMode="screen" />
+
+                    <Button
                         android:id="@+id/z_24"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -435,17 +448,6 @@
 
                     <Button
                         android:id="@+id/z_34"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="@drawable/zikan_none"
-                        android:textColor="#000000"
-                        android:textSize="10sp"
-                        app:backgroundTint="#00000000"
-                        app:backgroundTintMode="screen" />
-
-                    <Button
-                        android:id="@+id/z_44"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"

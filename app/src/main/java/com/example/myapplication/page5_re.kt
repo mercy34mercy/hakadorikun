@@ -123,7 +123,7 @@ class page5_re : AppCompatActivity() {
         val year_month_day_before:String =  year + "/" + month + "/"+ dayOfmonth
         val year_month_day:String = create_month(year_month_day_before)
         result = realm.where(EveDB::class.java).equalTo("startday",year_month_day).findAll()
-        task_result = realm2.where(TaskDB::class.java).equalTo("dead_day",year_month_day).findAll()
+        task_result = realm2.where(TaskDB::class.java).equalTo("dead_day",year_month_day).lessThan("task_condition",1).findAll()
         length = result.size
 
 

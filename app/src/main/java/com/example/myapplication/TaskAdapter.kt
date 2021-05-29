@@ -28,6 +28,7 @@ class TaskAdapter(context: Context, var mAnimalList: List<TaskDB>) : ArrayAdapte
         }
 
         if (animal.task_condition == 1){
+            view!!.layoutParams.height = 0
             val background = view?.findViewById<LinearLayout>(R.id.background)
             background?.setBackgroundResource(R.color.gray)
         }
@@ -41,9 +42,7 @@ class TaskAdapter(context: Context, var mAnimalList: List<TaskDB>) : ArrayAdapte
 
         // 各Viewの設定
         val imageView = view?.findViewById<ImageView>(R.id.image_task)
-        if (animal.task_condition == 1) {
-            imageView?.setImageResource(R.drawable.iconhakadorikun)
-        }
+
         val name = view?.findViewById<TextView>(R.id.subject_listtask)
         name?.text = animal.subject
 

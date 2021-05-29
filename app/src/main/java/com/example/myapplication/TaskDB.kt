@@ -12,7 +12,7 @@ open class TaskDB: RealmObject() {
     var dead_day:String = ""
     var task_url:String = ""
     var task_memo:String = ""
-    var task_condition:Int = NULL
+    var task_condition:Int = 0
     var task_year:Int = NULL
     var task_month:Int = NULL
     var task_day:Int = NULL

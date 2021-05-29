@@ -109,11 +109,11 @@ class page7_re : AppCompatActivity() {
             showDatePicker(dead_day_page7)
         }
 
-        home_task.setOnClickListener {
-            val intent = Intent(this@page7_re,page11::class.java)
-
-            startActivity(intent)
-        }
+//        home_task.setOnClickListener {
+//            val intent = Intent(this@page7_re,page11::class.java)
+//
+//            startActivity(intent)
+//        }
 
 
 
