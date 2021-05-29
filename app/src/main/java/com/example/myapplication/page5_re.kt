@@ -74,6 +74,10 @@ class page5_re : AppCompatActivity() {
             startActivity(intent)
         }
 
+        floatingActionButton.setOnClickListener {
+
+        }
+
 
 
 
