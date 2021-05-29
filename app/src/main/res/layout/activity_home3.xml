@@ -64,6 +64,8 @@
             android:id="@+id/imageView31"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
             android:layout_weight="1"
             app:srcCompat="@drawable/iconhakadorikun"
             tools:srcCompat="@drawable/iconhakadorikun" />
@@ -72,6 +74,7 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
             android:layout_weight="6"
             android:gravity="center|left"
             android:text="はかどりくん"
