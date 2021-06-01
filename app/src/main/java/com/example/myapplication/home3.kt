@@ -116,7 +116,7 @@ class home3 : AppCompatActivity() {
         task_result = realm.where(TaskDB::class.java).equalTo("dead_day",today).findAll().sort("task_number")
         val all_tasl:Double = task_result.size.toDouble()
 
-        val tasseiritu: Double = (done_task/all_tasl)*100
+        val tasseiritu:Int = ((done_task/all_tasl)*100).toInt()
         tasseiritu_home3.text = tasseiritu.toString()
 
         event_result = realm.where(EveDB::class.java).equalTo("startday",today).findAll()
