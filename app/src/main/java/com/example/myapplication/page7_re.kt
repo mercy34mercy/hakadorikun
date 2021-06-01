@@ -28,6 +28,7 @@ class page7_re : AppCompatActivity() {
     var task_Month:Int = 0
     var task_Day:Int = 0
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_page7_re)
@@ -35,6 +36,7 @@ class page7_re : AppCompatActivity() {
 
 
         //intentを受け取る
+
         val dayOfmonth:String = intent.getStringExtra("Dayofmonth").toString()
         val month:String      = intent.getStringExtra("month").toString()
         val year:String       = intent.getStringExtra("year").toString()
@@ -148,7 +150,10 @@ class page7_re : AppCompatActivity() {
         super.onResume()
         realm_page7 = Realm.getDefaultInstance()
         //抽出
-        result = realm_page7.where(TaskDB::class.java).findAll().sort("task_uid")
+
+
+            result = realm_page7.where(TaskDB::class.java).findAll().sort("task_uid")
+
         if(name_button.equals("編集完了")) {
             setText()
         }

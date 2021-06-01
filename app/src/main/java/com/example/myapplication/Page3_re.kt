@@ -28,7 +28,7 @@ import java.time.LocalDate
 class Page3_re : AppCompatActivity() {
     lateinit var realm:Realm
     lateinit var result:RealmResults<TaskDB>
-    lateinit var task:Only_TaskAdapter
+    lateinit var task:TaskAdapter
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,6 +58,15 @@ class Page3_re : AppCompatActivity() {
             startActivity(intent)
         }
 
+        add_biutton_page3.setOnClickListener {
+            val intent = Intent(this@Page3_re,page7_re::class.java)
+            intent.putExtra("name","追加")
+            intent.putExtra("Dayofmonth",day[2])
+            intent.putExtra("month",day[1])
+            intent.putExtra("year",day[0])
+            startActivity(intent)
+        }
+
 
    }
 
@@ -68,7 +77,7 @@ class Page3_re : AppCompatActivity() {
             .sort("task_number").findAll()
 
 
-        task = Only_TaskAdapter(this,result)
+        task = TaskAdapter(this,result)
         task_list.adapter = task
 
 

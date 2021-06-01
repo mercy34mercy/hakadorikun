@@ -16,13 +16,14 @@ class  page6 : AppCompatActivity() {
     var task_id:Int = 0
     lateinit var realm: Realm
     lateinit var result : RealmResults<TaskDB>
+    var all_or_day:Int = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_page6)
 
 
 
-
+        //all_or_day = intent.getStringArrayExtra("all").toString().toInt()
         list_position = intent.getIntExtra("position",0)
         task_id = intent.getIntExtra("id",0)
 
@@ -70,7 +71,7 @@ class  page6 : AppCompatActivity() {
         super.onResume()
         realm = Realm.getDefaultInstance()
         //抽出
-        result = realm.where(TaskDB::class.java).findAll().sort("task_uid")
+        result = realm.where(TaskDB::class.java).findAll().sort("task_number")
 
         val r = result[list_position]
         title_page6.text = r!!.task_title

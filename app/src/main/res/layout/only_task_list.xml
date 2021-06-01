@@ -43,7 +43,7 @@
         </LinearLayout>
 
         <ImageView
-            android:id="@+id/imageView30"
+            android:id="@+id/stamp_box"
             android:layout_width="60dp"
             android:layout_height="60dp"
             app:srcCompat="@drawable/cmp_stamp" />

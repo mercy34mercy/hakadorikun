@@ -113,7 +113,7 @@ class home3 : AppCompatActivity() {
         task_result_done = realm.where(TaskDB::class.java).equalTo("dead_day",today).greaterThanOrEqualTo("task_condition",1).findAll()
         val done_task:Int = task_result_done.size
 
-        task_result = realm.where(TaskDB::class.java).equalTo("dead_day",today).findAll()
+        task_result = realm.where(TaskDB::class.java).equalTo("dead_day",today).findAll().sort("task_number")
         val all_tasl:Double = task_result.size.toDouble()
 
         val tasseiritu: Double = (done_task/all_tasl)*100
