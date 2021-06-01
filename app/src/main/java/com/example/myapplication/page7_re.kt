@@ -233,7 +233,7 @@ class page7_re : AppCompatActivity() {
         realm_page7.commitTransaction()
     }
 
-    fun add_task(minute:Int,hour:Int){
+    fun add_task(hour:Int,minute: Int){
         val t = result[position]
         realm_page7.beginTransaction()  //開始処理
         t!!.task_title = title_edit_page7.text.toString()
