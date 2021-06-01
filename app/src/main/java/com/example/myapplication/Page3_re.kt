@@ -2,6 +2,7 @@ package com.example.myapplication
 
 import android.content.Intent
 import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
@@ -10,6 +11,7 @@ import android.text.style.ForegroundColorSpan
 import android.text.style.RelativeSizeSpan
 import android.view.Gravity
 import android.widget.*
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.graphics.scaleMatrix
 import androidx.databinding.DataBindingUtil
@@ -21,14 +23,20 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import okhttp3.MediaType
 import retrofit2.Retrofit
+import java.time.LocalDate
 
 class Page3_re : AppCompatActivity() {
     lateinit var realm:Realm
     lateinit var result:RealmResults<TaskDB>
     lateinit var task:Only_TaskAdapter
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_page3_re)
+
+        val onlyDate: LocalDate = LocalDate.now()
+        val s:String = onlyDate.toString()
+        val day = s.split("-")
 
         home_tab.setOnClickListener {
             val intent = Intent(this@Page3_re,home3::class.java)
@@ -37,6 +45,16 @@ class Page3_re : AppCompatActivity() {
 
         calender_tab.setOnClickListener {
             val intent = Intent(this@Page3_re,page2::class.java)
+            startActivity(intent)
+        }
+
+        task_list.setOnItemClickListener { parent, view, position, id ->
+            val intent = Intent(this@Page3_re, page6::class.java)
+            intent.putExtra("name","編集完了")
+            intent.putExtra("Dayofmonth",day[2])
+            intent.putExtra("month",day[1])
+            intent.putExtra("year",day[0])
+            intent.putExtra("position", position)
             startActivity(intent)
         }
 

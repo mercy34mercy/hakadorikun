@@ -41,11 +41,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <Button
+            android:id="@+id/add_button_page9"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            app:backgroundTint="#00000000"
+            app:layout_constraintEnd_toEndOf="@+id/toolbar2"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:orientation="vertical"
-            app:layout_constraintBottom_toTopOf="@+id/add_e_button"
             app:layout_constraintTop_toBottomOf="@+id/toolbar2"
             tools:layout_editor_absoluteX="-37dp">
 
@@ -53,7 +61,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="10dp"
-                android:background="@android:color/darker_gray"/>
+                android:background="@android:color/darker_gray" />
 
             <EditText
                 android:id="@+id/title_edit_page9"
@@ -63,13 +71,12 @@
                 android:ems="10"
                 android:hint="予定タイトル"
                 android:inputType="textPersonName"
-                android:paddingLeft="10dp"
-                />
+                android:paddingLeft="10dp" />
 
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="1dp"
-                android:background="@android:color/darker_gray"/>
+                android:background="@android:color/darker_gray" />
 
             <EditText
                 android:id="@+id/place_edit_page9"
@@ -84,13 +91,13 @@
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="1dp"
-                android:background="@android:color/darker_gray"/>
+                android:background="@android:color/darker_gray" />
 
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="20dp"
-                android:background="@android:color/darker_gray"/>
+                android:background="@android:color/darker_gray" />
 
             <TextView
                 android:id="@+id/syuzuitu_text"
@@ -106,7 +113,7 @@
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="1dp"
-                android:background="@android:color/darker_gray"/>
+                android:background="@android:color/darker_gray" />
 
             <Spinner
                 android:id="@+id/spinner"
@@ -122,7 +129,6 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:orientation="vertical"
-            app:layout_constraintBottom_toTopOf="@+id/add_e_button"
             app:layout_constraintTop_toBottomOf="@+id/toolbar2">
 
             <Switch
@@ -269,6 +275,8 @@
                 android:id="@+id/memo_edit_page9"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginEnd="1dp"
+                android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
                 android:background="#00000000"
                 android:ems="10"
@@ -276,9 +284,7 @@
                 android:hint="メモ"
                 android:inputType="textPersonName"
                 android:paddingLeft="10dp"
-                android:paddingTop="10dp"
-                android:layout_marginEnd="1dp"
-                android:layout_marginRight="1dp" />
+                android:paddingTop="10dp" />
 
             <View
                 android:layout_width="fill_parent"
@@ -286,21 +292,8 @@
                 android:background="@android:color/darker_gray" />
 
 
-
         </LinearLayout>
 
-
-        <Button
-            android:id="@+id/add_e_button"
-            android:layout_width="120dp"
-            android:layout_height="70dp"
-            android:layout_marginBottom="20dp"
-            android:text="追加"
-            android:textColor="#FFFFFF"
-            app:backgroundTint="@color/orange"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

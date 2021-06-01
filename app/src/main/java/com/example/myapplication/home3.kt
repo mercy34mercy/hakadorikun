@@ -2,8 +2,10 @@ package com.example.myapplication
 
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.widget.Button
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import io.realm.Realm
 
@@ -13,6 +15,7 @@ import kotlinx.android.synthetic.main.activity_home3.*
 import kotlinx.android.synthetic.main.activity_page5_re.*
 import java.text.DateFormat
 import java.text.SimpleDateFormat
+import java.time.LocalDate
 import java.util.*
 
 class home3 : AppCompatActivity() {
@@ -23,20 +26,28 @@ class home3 : AppCompatActivity() {
     lateinit var event_l:CustomAdapter
     lateinit var task_l:TaskAdapter
     lateinit var today:String
+    //課題達成率を求めるために課題の終わってるやつの要素数を取得する
+    lateinit var task_result_done: RealmResults<TaskDB>
 
 
 
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //データの初期化に使う
         setContentView(R.layout.activity_home3)
-        val subject_id: Array<Button> = arrayOf(z_11,z_12,z_13,z_14,z_15,z_16,
-            z_21,z_22,z_23,z_24,z_25,z_26,
-            z_31,z_32,z_33,z_34,z_35,z_36,
-            z_41,z_42,z_43,z_44,z_45,z_46,
-            z_51,z_52,z_53,z_54,z_55,z_56)
+        val subject_id: Array<Button> = arrayOf(
+            z_11, z_12, z_13, z_14, z_15, z_16,
+            z_21, z_22, z_23, z_24, z_25, z_26,
+            z_31, z_32, z_33, z_34, z_35, z_36,
+            z_41, z_42, z_43, z_44, z_45, z_46,
+            z_51, z_52, z_53, z_54, z_55, z_56
+        )
 
+        val onlyDate: LocalDate = LocalDate.now()
+        val s:String = onlyDate.toString()
+        val day = s.split("-")
 
 
 
@@ -59,17 +70,34 @@ class home3 : AppCompatActivity() {
         for (i in 0..29) {
             subject_id[i].setOnClickListener {
                 intent = Intent(this@home3, page11::class.java)
-                intent.putExtra("position",i.toString())
+                intent.putExtra("position", i.toString())
                 startActivity(intent)
             }
         }
 
-//        for(i in 0..29){
-//            subject_id[i].setBackgroundResource()
-//        }
+        home_task.setOnItemClickListener { parent, view, position, id ->
+            val intent = Intent(this@home3, page6::class.java)
+            intent.putExtra("name","編集完了")
+            intent.putExtra("Dayofmonth",day[2])
+            intent.putExtra("month",day[1])
+            intent.putExtra("year",day[0])
+            intent.putExtra("position", position)
+            startActivity(intent)
+        }
 
+
+        home_event.setOnItemClickListener { parent, view, position, id ->
+            val intent = Intent(this@home3, page8::class.java)
+            intent.putExtra("name","編集完了")
+            intent.putExtra("Dayofmonth",day[2])
+            intent.putExtra("month",day[1])
+            intent.putExtra("year",day[0])
+            intent.putExtra("list_position", position)
+            startActivity(intent)
+        }
 
     }
+
 
     override fun onResume() {
         super.onResume()
@@ -81,8 +109,17 @@ class home3 : AppCompatActivity() {
 
         realm = Realm.getDefaultInstance()
 
-        event_result = realm.where(EveDB::class.java).equalTo("startday",today).findAll()
+        //終わってる課題の要素数を調べる
+        task_result_done = realm.where(TaskDB::class.java).equalTo("dead_day",today).greaterThanOrEqualTo("task_condition",1).findAll()
+        val done_task:Int = task_result_done.size
+
         task_result = realm.where(TaskDB::class.java).equalTo("dead_day",today).findAll()
+        val all_tasl:Double = task_result.size.toDouble()
+
+        val tasseiritu: Double = (done_task/all_tasl)*100
+        tasseiritu_home3.text = tasseiritu.toString()
+
+        event_result = realm.where(EveDB::class.java).equalTo("startday",today).findAll()
         subject_result = realm.where(ZikanwariDB::class.java).findAll()
 
         val task_size:Int = task_result.size

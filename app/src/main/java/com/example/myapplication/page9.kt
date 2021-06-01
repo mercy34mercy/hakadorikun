@@ -16,7 +16,6 @@ import kotlinx.android.synthetic.main.activity_page10.*
 import kotlinx.android.synthetic.main.activity_page6.*
 import kotlinx.android.synthetic.main.activity_page8.*
 import kotlinx.android.synthetic.main.activity_page9.*
-import kotlinx.android.synthetic.main.activity_page9.add_e_button
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import okhttp3.MediaType
@@ -31,7 +30,7 @@ class page9 : AppCompatActivity() {
     lateinit var start_time:String
     lateinit var end_time:String
     lateinit var date_day:String
-    lateinit var button_text:String
+    var button_text:String = "設定完了"
     lateinit var result_page9 : RealmResults<EveDB>
     var position:Int = 0
     var resouse:Int = 0
@@ -81,7 +80,7 @@ class page9 : AppCompatActivity() {
         month      = intent.getStringExtra("month").toString()
         year       = intent.getStringExtra("year").toString()
         button_text = intent.getStringExtra("name").toString()
-        add_e_button.text = button_text
+        add_button_page9.text = button_text
         val day = "$year/$month/$dayOfmonth"
         startdate_edit_page9.text = day
         enddate_edit_page9.text = day
@@ -156,7 +155,7 @@ class page9 : AppCompatActivity() {
 
 
         //追加ボタンを押したときの処理
-        add_e_button.setOnClickListener {
+        add_button_page9.setOnClickListener {
             addnewWord()
         }
     }
