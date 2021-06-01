@@ -131,8 +131,8 @@ class page7_re : AppCompatActivity() {
         Number_time.minValue = 0
         Number_time.maxValue = 59
         Number_time.value = 0
-        Number_hour.setOnValueChangedListener { picker, oldVal, newVal ->
-            hour = newVal
+        Number_time.setOnValueChangedListener { picker, oldVal, newVal ->
+            minute = newVal
         }
     }
 
@@ -141,7 +141,7 @@ class page7_re : AppCompatActivity() {
         Number_hour.maxValue = 23
         Number_hour.value = 0
         Number_hour.setOnValueChangedListener { picker, oldVal, newVal ->
-            minute = newVal
+            hour = newVal
         }
 
     }

@@ -36,10 +36,10 @@ class TaskAdapter(context: Context, var mAnimalList: List<TaskDB>) : ArrayAdapte
         }
         var minute:String = ""
 
-        if(animal.dead_minute < 10){
-            minute = "0" + animal.dead_minute.toString()
+        minute = if(animal.dead_minute < 10){
+            "0" + animal.dead_minute.toString()
         }else{
-            minute = animal.dead_minute.toString()
+            animal.dead_minute.toString()
         }
 
         // 各Viewの設定
