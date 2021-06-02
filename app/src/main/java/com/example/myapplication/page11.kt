@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.activity_page11.*
 class page11 : AppCompatActivity() {
     lateinit var realm:Realm
     lateinit var result_page11:RealmResults<ZikanwariDB>
-    val spinnerItem = arrayOf("green","red","yellow","bulue","skybulue")
+    val spinnerItem = arrayOf("green","red","yellow","blue","skybulue")
     val color: Array<Int> = arrayOf(R.drawable.green_line, R.drawable.red_line, R.drawable.yellow_line, R.drawable.darkbulue_line, R.drawable.skybulue_line)
     var color_s:String = ""
     var icon_i:Int = 0
