@@ -72,10 +72,7 @@ class page7_re : AppCompatActivity() {
             position = intent.getIntExtra("position",0)
         }
 
-        Kamoku_edit_button.setOnClickListener {
-            val intent = Intent(this@page7_re,page11::class.java)
-            startActivity(intent)
-        }
+
 
 //        dead_time_page7.addTextChangedListener(object: TextWatcher {
 //            override fun afterTextChanged(p0: Editable?) {
