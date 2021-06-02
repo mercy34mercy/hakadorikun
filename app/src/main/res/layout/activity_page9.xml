@@ -160,8 +160,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="10"
-                    android:gravity="center"
-                    android:textColor="#000000" />
+                    android:gravity="center|left"
+                    android:textColor="#000000"
+                    android:textSize="24sp" />
 
 
                 <NumberPicker
@@ -208,8 +209,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="10"
-                    android:gravity="center"
-                    android:textColor="#000000" />
+                    android:gravity="center|left"
+                    android:textColor="#000000"
+                    android:textSize="24sp" />
 
                 <NumberPicker
                     android:id="@+id/endhour_event"

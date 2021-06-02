@@ -88,8 +88,10 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout7"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout6">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout6"
+        app:layout_constraintVertical_bias="1.0">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -434,17 +436,6 @@
                         app:backgroundTintMode="screen" />
 
                     <Button
-                        android:id="@+id/z_44"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="@drawable/zikan_none"
-                        android:textColor="#000000"
-                        android:textSize="10sp"
-                        app:backgroundTint="#00000000"
-                        app:backgroundTintMode="screen" />
-
-                    <Button
                         android:id="@+id/z_24"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -457,6 +448,17 @@
 
                     <Button
                         android:id="@+id/z_34"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/zikan_none"
+                        android:textColor="#000000"
+                        android:textSize="10sp"
+                        app:backgroundTint="#00000000"
+                        app:backgroundTintMode="screen" />
+
+                    <Button
+                        android:id="@+id/z_44"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"

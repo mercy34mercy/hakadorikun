@@ -42,14 +42,7 @@ class page11 : AppCompatActivity() {
 
         position = intent.getStringExtra("position")!!.toInt()
 
-        button_add_page11.setOnClickListener {
-            if (edit_subject.text == null){
 
-            }else {
-                add_new_subject(position)
-                finish()
-            }
-        }
 
         zikan_text.text = zikanwari[position]
 
@@ -89,12 +82,20 @@ class page11 : AppCompatActivity() {
         zikanwariDB.zikanwari_color_i = icon_i
         zikanwariDB.kyoka_date = p
         zikanwariDB.kyoka_zigen = position
-        zikanwariDB.zikanwari_color = color[position]
+        //2 zikanwariDB.zikanwari_color = color[position]
         realm.commitTransaction() //終了処理
+        finish()
     }
 
-    private fun renewal_new_subject(){
-
+    private fun renewal_new_subject(p:Int){
+        realm.beginTransaction()  //開始処理
+        val result_renewal = realm.where(ZikanwariDB::class.java).equalTo("kyoka_date",position).findAll()
+        result_renewal[0]!!.zikanwari_color_i = icon_i
+        result_renewal[0]!!.zikanwari_title = edit_subject.text.toString()
+        result_renewal[0]!!.kyoka_date = p
+        result_renewal[0]!!.kyoka_zigen = position
+        realm.commitTransaction() //終了処理
+        finish()
     }
 
 
@@ -110,10 +111,27 @@ class page11 : AppCompatActivity() {
         //抽出
         result_page11 = realm.where(ZikanwariDB::class.java).equalTo("kyoka_date",position).findAll()
         if(result_page11.isEmpty()) {
+
         }else {
+            button_add_page11.text = "編集完了"
             val l = result_page11[0]
             edit_subject.setText(l!!.zikanwari_title)
             spinner_page11.setSelection(l.zikanwari_color_i)
+        }
+
+        button_add_page11.setOnClickListener {
+            if (edit_subject.text == null){
+
+            }else {
+                if(result_page11.isEmpty()) {
+                    add_new_subject(position)
+                    finish()
+                }else{
+                    renewal_new_subject(position)
+                    finish()
+                }
+
+            }
         }
 
 
@@ -130,5 +148,6 @@ class page11 : AppCompatActivity() {
         realm.executeTransaction {
             target.deleteFromRealm(0)
         }
+        finish()
     }
 }

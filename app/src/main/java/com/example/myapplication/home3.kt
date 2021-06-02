@@ -37,13 +37,11 @@ class home3 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         //データの初期化に使う
         setContentView(R.layout.activity_home3)
-        val subject_id: Array<Button> = arrayOf(
-            z_11, z_12, z_13, z_14, z_15, z_16,
-            z_21, z_22, z_23, z_24, z_25, z_26,
-            z_31, z_32, z_33, z_34, z_35, z_36,
-            z_41, z_42, z_43, z_44, z_45, z_46,
-            z_51, z_52, z_53, z_54, z_55, z_56
-        )
+        val subject_id: Array<Button> = arrayOf(z_11,z_12,z_13,z_14,z_15,z_16,
+            z_21,z_22,z_23,z_24,z_25,z_26,
+            z_31,z_32,z_33,z_34,z_35,z_36,
+            z_41,z_42,z_43,z_44,z_45,z_46,
+            z_51,z_52,z_53,z_54,z_55,z_56)
 
         val onlyDate: LocalDate = LocalDate.now()
         val s:String = onlyDate.toString()

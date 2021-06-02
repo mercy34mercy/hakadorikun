@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.app.DatePickerDialog
 import android.icu.text.Transliterator
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,6 +8,7 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.myapplication.databinding.ActivityPage10Binding
@@ -80,6 +82,15 @@ class page10 : AppCompatActivity() {
 
             }
 
+        }
+
+        text_startday_page10.setOnClickListener {
+            showDatePicker(text_startday_page10)
+        }
+
+        //終了日を入力する
+        text_endday_page10.setOnClickListener {
+            showDatePicker(text_endday_page10)
         }
 
 
@@ -219,5 +230,16 @@ class page10 : AppCompatActivity() {
 
     }
 
+    fun showDatePicker(text_show: TextView){
+        val datePickerDialog = DatePickerDialog(
+            this,
+            DatePickerDialog.OnDateSetListener() { view, year, month, dayOfMonth->
+                text_show.setText("${year}/${month + 1}/${dayOfMonth}")
+            },
+            2021,
+            4,
+            1)
+        datePickerDialog.show()
+    }
 
 }
