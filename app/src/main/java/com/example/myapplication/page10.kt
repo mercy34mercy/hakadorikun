@@ -97,19 +97,18 @@ class page10 : AppCompatActivity() {
 
         sthour_page10.maxValue = 23
         sthour_page10.minValue = 0
-        sthour_page10.value = 0
+
 
         stminute_page10.maxValue = 59
         stminute_page10.minValue = 0
-        stminute_page10.value = 0
+
 
         endhour_page10.maxValue = 23
         endhour_page10.minValue = 0
-        endhour_page10.value = 0
+
 
         endminte_page10.maxValue = 59
         endminte_page10.minValue = 0
-        endminte_page10.value = 0
 
 
 
@@ -186,6 +185,16 @@ class page10 : AppCompatActivity() {
         url_edit_page10.setText(r.url)
         add_e_button.text = name_s
         icon_i = r.iconInt
+
+        sthour = r!!.start_hour
+        stminute = r!!.end_hour
+        endhour = r!!.end_hour
+        endminute = r!!.end_minute
+
+        endminte_page10.value = r!!.end_minute
+        endhour_page10.value = r!!.end_hour
+        stminute_page10.value  = r!!.end_hour
+        sthour_page10.value = r!!.start_hour
 
     }
 

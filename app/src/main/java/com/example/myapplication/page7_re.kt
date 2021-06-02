@@ -276,6 +276,8 @@ class page7_re : AppCompatActivity() {
         url_edit_page7.setText(r!!.task_url)
         memo_edit_page7.setText(r.task_memo)
         spinner.setSelection(r!!.zikanwari_color_task)
+        hour = r!!.dead_hour
+        minute = r!!.dead_minute
         this.initNumberhourPicker(r!!.dead_hour)
         this.initNumbertimePicker(r!!.dead_minute)
         realm_page7.commitTransaction()
