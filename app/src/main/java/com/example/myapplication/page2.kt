@@ -19,7 +19,6 @@ class page2 : AppCompatActivity() {
             intent.putExtra("month",(month+1).toString())
             intent.putExtra("year",year.toString())
             startActivity(intent)
-            overridePendingTransition(0, 0)
         }
 
         home_button_page2.setOnClickListener {

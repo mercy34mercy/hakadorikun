@@ -45,11 +45,13 @@ class Page3_re : AppCompatActivity() {
         home_tab.setOnClickListener {
             val intent = Intent(this@Page3_re,home3::class.java)
             startActivity(intent)
+            overridePendingTransition(0, 0)
         }
 
         calender_tab.setOnClickListener {
             val intent = Intent(this@Page3_re,page2::class.java)
             startActivity(intent)
+            overridePendingTransition(0, 0)
         }
 
         task_list.setOnItemClickListener { parent, view, position, id ->
