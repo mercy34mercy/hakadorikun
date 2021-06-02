@@ -112,7 +112,7 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
-                <Button
+                <TextView
                     android:id="@+id/Kamoku_edit_button"
                     style="?android:attr/borderlessButtonStyle"
                     android:layout_width="match_parent"
