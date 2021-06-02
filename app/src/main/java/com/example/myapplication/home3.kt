@@ -60,22 +60,26 @@ class home3 : AppCompatActivity() {
         calender_home3.setOnClickListener {
             intent = Intent(this@home3, page2::class.java)
             startActivity(intent)
+            overridePendingTransition(0, 0)
         }
 
         task_home3.setOnClickListener {
             intent = Intent(this@home3, Page3_re::class.java)
             startActivity(intent)
+            overridePendingTransition(0, 0)
         }
 
         setting_home3.setOnClickListener {
             intent = Intent(this@home3, home2::class.java)
             startActivity(intent)
+            overridePendingTransition(0, 0)
         }
         for (i in 0..29) {
             subject_id[i].setOnClickListener {
                 intent = Intent(this@home3, page11::class.java)
                 intent.putExtra("position", i.toString())
                 startActivity(intent)
+                overridePendingTransition(0, 0)
             }
         }
 
@@ -87,6 +91,7 @@ class home3 : AppCompatActivity() {
             intent.putExtra("year",day[0])
             intent.putExtra("position", position)
             startActivity(intent)
+            overridePendingTransition(0, 0)
         }
 
 
@@ -98,6 +103,7 @@ class home3 : AppCompatActivity() {
             intent.putExtra("year",day[0])
             intent.putExtra("list_position", position)
             startActivity(intent)
+            overridePendingTransition(0, 0)
         }
 
     }

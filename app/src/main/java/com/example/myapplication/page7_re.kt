@@ -15,6 +15,7 @@ import io.realm.Realm
 import io.realm.RealmResults
 import kotlinx.android.synthetic.main.activity_home3.*
 import kotlinx.android.synthetic.main.activity_page7_re.*
+import java.time.LocalDate
 import kotlin.math.min
 
 class page7_re : AppCompatActivity() {
@@ -36,6 +37,9 @@ class page7_re : AppCompatActivity() {
     var subject_s:String = ""
     lateinit var binding:ActivityPage7ReBinding
 
+    var task_Year_now:Int = 0
+    var task_Month_now:Int = 0
+    var task_Day_now:Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,9 +59,15 @@ class page7_re : AppCompatActivity() {
         val dayOfmonth:String = intent.getStringExtra("Dayofmonth").toString()
         val month:String      = intent.getStringExtra("month").toString()
         val year:String       = intent.getStringExtra("year").toString()
-//        task_Year = year.toInt()
-//        task_Month = month.toInt()
-//        task_Day = dayOfmonth.toInt()
+
+
+        val onlyDate: LocalDate = LocalDate.now()
+        val s:String = onlyDate.toString()
+        val day = s.split("-")
+
+        task_Year_now = day[0].toInt()
+        task_Month_now  = day[1].toInt()-1
+        task_Day_now  = day[2].toInt()
 
 
 
@@ -261,9 +271,9 @@ class page7_re : AppCompatActivity() {
                 task_Month = month
                 task_Day = dayOfMonth
             },
-            2021,
-            4,
-            1)
+            task_Year_now,
+            task_Month_now,
+            task_Day_now)
         datePickerDialog.show()
     }
 

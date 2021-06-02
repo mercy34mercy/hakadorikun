@@ -1,12 +1,14 @@
 package com.example.myapplication
 
 import android.app.DatePickerDialog
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.widget.*
+import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.myapplication.databinding.ActivityPage9Binding
@@ -20,6 +22,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import okhttp3.MediaType
 import retrofit2.Retrofit
+import java.time.LocalDate
 import java.util.*
 
 class page9 : AppCompatActivity() {
@@ -38,6 +41,13 @@ class page9 : AppCompatActivity() {
     var stminute:Int = 0
     var endhour:Int = 0
     var endminute:Int = 0
+    var task_Year:Int = 0
+    var task_Month:Int = 0
+    var task_Day:Int = 0
+
+    var task_Year_now:Int = 0
+    var task_Month_now:Int = 0
+    var task_Day_now:Int = 0
 
     lateinit var  year:String
     lateinit var month:String
@@ -46,6 +56,7 @@ class page9 : AppCompatActivity() {
     val spinnerItem = arrayOf("red","green","blue","yellow","skybulue")
 
     private val scope = CoroutineScope(Dispatchers.IO)
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding =
@@ -79,6 +90,15 @@ class page9 : AppCompatActivity() {
         dayOfmonth = intent.getStringExtra("Dayofmonth").toString()
         month      = intent.getStringExtra("month").toString()
         year       = intent.getStringExtra("year").toString()
+
+        val onlyDate: LocalDate = LocalDate.now()
+        val s:String = onlyDate.toString()
+        val day_2 = s.split("-")
+
+        task_Year_now = day_2[0].toInt()
+        task_Month_now  = day_2[1].toInt()-1
+        task_Day_now  = day_2[2].toInt()
+
         button_text = intent.getStringExtra("name").toString()
         add_button_page9.text = button_text
         val day = "$year/$month/$dayOfmonth"
@@ -217,9 +237,10 @@ class page9 : AppCompatActivity() {
                 DatePickerDialog.OnDateSetListener() {view, year, month, dayOfMonth->
                     text_show.setText("${year}/${month + 1}/${dayOfMonth}")
                 },
-                2021,
-                4,
-                1)
+                task_Year_now,
+                task_Month_now,
+                task_Day_now)
+
         datePickerDialog.show()
     }
 

@@ -2,6 +2,7 @@ package com.example.myapplication
 
 import android.app.DatePickerDialog
 import android.icu.text.Transliterator
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -9,6 +10,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.myapplication.databinding.ActivityPage10Binding
@@ -20,6 +22,7 @@ import kotlinx.android.synthetic.main.activity_page10.add_e_button
 
 import kotlinx.android.synthetic.main.activity_page8.*
 import kotlinx.android.synthetic.main.activity_page9.*
+import java.time.LocalDate
 
 class page10 : AppCompatActivity() {
     lateinit var realm:Realm
@@ -35,6 +38,11 @@ class page10 : AppCompatActivity() {
     var endhour:Int = 0
     var endminute:Int = 0
 
+    var task_Year_now:Int = 0
+    var task_Month_now:Int = 0
+    var task_Day_now:Int = 0
+
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding =
@@ -48,6 +56,13 @@ class page10 : AppCompatActivity() {
 
 
 
+        val onlyDate: LocalDate = LocalDate.now()
+        val s:String = onlyDate.toString()
+        val day = s.split("-")
+
+        task_Year_now = day[0].toInt()
+        task_Month_now  = day[1].toInt()-1
+        task_Day_now  = day[2].toInt()
 
 
         val position_S = intent.getIntExtra("position",0)
@@ -238,9 +253,9 @@ class page10 : AppCompatActivity() {
             DatePickerDialog.OnDateSetListener() { view, year, month, dayOfMonth->
                 text_show.setText("${year}/${month + 1}/${dayOfMonth}")
             },
-            2021,
-            4,
-            1)
+            task_Year_now,
+            task_Month_now,
+            task_Day_now)
         datePickerDialog.show()
     }
 

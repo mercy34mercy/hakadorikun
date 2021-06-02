@@ -19,16 +19,19 @@ class page2 : AppCompatActivity() {
             intent.putExtra("month",(month+1).toString())
             intent.putExtra("year",year.toString())
             startActivity(intent)
+            overridePendingTransition(0, 0)
         }
 
         home_button_page2.setOnClickListener {
             val intent = Intent(this@page2, home3::class.java)
             startActivity(intent)
+            overridePendingTransition(0, 0)
         }
 
         task_button_page2.setOnClickListener {
             val intent = Intent(this@page2,Page3_re::class.java)
             startActivity(intent)
+            overridePendingTransition(0, 0)
         }
 
         setting_button_page2.setOnClickListener {
