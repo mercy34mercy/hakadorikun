@@ -2,12 +2,14 @@ package com.example.myapplication
 
 import android.app.DatePickerDialog
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.widget.*
+import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import com.example.myapplication.databinding.ActivityPage7ReBinding
 import com.example.myapplication.databinding.ActivityPage9Binding
@@ -41,6 +43,7 @@ class page7_re : AppCompatActivity() {
     var task_Month_now:Int = 0
     var task_Day_now:Int = 0
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding =
@@ -191,6 +194,7 @@ class page7_re : AppCompatActivity() {
             spinnerItem += subjct_result[i]!!.zikanwari_title
         }
 
+
         //spnnerの設定
         val spadapter = ArrayAdapter(applicationContext,android.R.layout.simple_spinner_item,spinnerItem)
         spadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -211,6 +215,10 @@ class page7_re : AppCompatActivity() {
         if(name_button.equals("編集完了")) {
             setText()
         }
+
+        val swap = spinnerItem[0]
+        spinnerItem[0] = spinnerItem[result_size]
+        spinnerItem[result_size] = swap
 
 
 
