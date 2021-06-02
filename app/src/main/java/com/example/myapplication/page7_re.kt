@@ -220,9 +220,6 @@ class page7_re : AppCompatActivity() {
         spinnerItem[0] = spinnerItem[result_size]
         spinnerItem[result_size] = swap
 
-
-
-
     }
 
 
