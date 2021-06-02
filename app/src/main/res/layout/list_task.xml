@@ -50,6 +50,11 @@
                 android:textSize="24sp" />
         </LinearLayout>
 
+        <ImageView
+            android:id="@+id/stamp_box"
+            android:layout_width="40dp"
+            android:layout_height="match_parent" />
+
         <TextView
             android:id="@+id/deadtime_listtask"
             android:layout_width="match_parent"
@@ -58,11 +63,6 @@
             android:gravity="center|right"
             android:textColor="#000000"
             android:textSize="18sp" />
-
-        <ImageView
-            android:id="@+id/stamp_box"
-            android:layout_width="30dp"
-            android:layout_height="match_parent" />
 
     </LinearLayout>
 
