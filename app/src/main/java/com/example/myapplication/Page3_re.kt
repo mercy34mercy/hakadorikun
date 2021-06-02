@@ -38,6 +38,10 @@ class Page3_re : AppCompatActivity() {
         val s:String = onlyDate.toString()
         val day = s.split("-")
 
+        val m:String  = day[1].toInt().toString()
+        val d:String  = day[2].toInt().toString()
+
+
         home_tab.setOnClickListener {
             val intent = Intent(this@Page3_re,home3::class.java)
             startActivity(intent)
@@ -51,8 +55,8 @@ class Page3_re : AppCompatActivity() {
         task_list.setOnItemClickListener { parent, view, position, id ->
             val intent = Intent(this@Page3_re, page6::class.java)
             intent.putExtra("name","編集完了")
-            intent.putExtra("Dayofmonth",day[2])
-            intent.putExtra("month",day[1])
+            intent.putExtra("Dayofmonth",d)
+            intent.putExtra("month",m)
             intent.putExtra("year",day[0])
             intent.putExtra("position", position)
             startActivity(intent)
@@ -61,8 +65,8 @@ class Page3_re : AppCompatActivity() {
         add_biutton_page3.setOnClickListener {
             val intent = Intent(this@Page3_re,page7_re::class.java)
             intent.putExtra("name","追加")
-            intent.putExtra("Dayofmonth",day[2])
-            intent.putExtra("month",day[1])
+            intent.putExtra("Dayofmonth",d)
+            intent.putExtra("month",m)
             intent.putExtra("year",day[0])
             startActivity(intent)
         }

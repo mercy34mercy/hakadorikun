@@ -37,10 +37,7 @@ class  page6 : AppCompatActivity() {
             startActivity(intent)
         }
 
-        task_complete_button.setOnClickListener {
-            task_complete()
-            finish()
-        }
+
 
 
         /*これは文字数を数える処理
@@ -89,7 +86,28 @@ class  page6 : AppCompatActivity() {
         memo_edit_page6.text = r!!.task_memo
         url_page6.text = r!!.task_url
 
+        if(r!!.task_condition == 1) {
+            task_complete_button.text = "未提出にする"
+        }
 
+        task_complete_button.setOnClickListener {
+            if(r!!.task_condition == 1){
+                not_complete()
+                finish()
+            }else{
+                task_complete()
+                finish()
+            }
+
+        }
+
+    }
+
+    private fun not_complete() {
+        realm.beginTransaction()  //開始処理
+        val taskDB = result[list_position]
+        taskDB!!.task_condition = 0
+        realm.commitTransaction() //終了処理
     }
 
     override fun onPause() {

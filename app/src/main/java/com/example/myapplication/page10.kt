@@ -28,7 +28,7 @@ class page10 : AppCompatActivity() {
     var position:Int = 0
     lateinit var name_s:String
     var icon_i:Int = 0
-    val spinnerItem = arrayOf("red","green","bulue","yellow","skybulue")
+    val spinnerItem = arrayOf("red","green","blue","yellow","skybulue")
     var resouse:Int = 0
     var sthour:Int = 0
     var stminute:Int = 0

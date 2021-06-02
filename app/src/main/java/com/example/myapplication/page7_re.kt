@@ -134,25 +134,28 @@ class page7_re : AppCompatActivity() {
             finish()
         }
 
+        this.initNumberhourPicker()
+        this.initNumbertimePicker()
+
 
 
 
 
     }
 
-    private fun initNumbertimePicker(time:Int){
+    private fun initNumbertimePicker(){
         Number_time.minValue = 0
         Number_time.maxValue = 59
-        Number_time.value = time
+
         Number_time.setOnValueChangedListener { picker, oldVal, newVal ->
             minute = newVal
         }
     }
 
-    private fun initNumberhourPicker(hour_h:Int){
+    private fun initNumberhourPicker(){
         Number_hour.minValue = 0
         Number_hour.maxValue = 23
-        Number_hour.value = hour_h
+
         Number_hour.setOnValueChangedListener { picker, oldVal, newVal ->
             hour = newVal
         }
@@ -223,7 +226,7 @@ class page7_re : AppCompatActivity() {
             //taskDB.subject = Kamoku_edit_button.text.toString()
             taskDB.subject = subject_s
             taskDB.zikanwari_color_task = subject_i
-            taskDB.dead_day = create_month(dead_day_page7.text.toString())
+            taskDB.dead_day = dead_day_page7.text.toString()
             taskDB.task_url = url_edit_page7.text.toString()
             taskDB.task_memo = memo_edit_page7.text.toString()
             taskDB.dead_hour = hour
@@ -233,10 +236,7 @@ class page7_re : AppCompatActivity() {
             taskDB.task_day = task_Day
             taskDB.task_number = create_number(task_Year,task_Month,task_Day,hour,minute)
 
-            title_edit_page7.setText("")
-            Kamoku_edit_button.text = ""
-            url_edit_page7.setText("")
-            memo_edit_page7.setText("")
+
 
             realm_page7.commitTransaction() //終了処理
         finish()
@@ -278,8 +278,10 @@ class page7_re : AppCompatActivity() {
         spinner.setSelection(r!!.zikanwari_color_task)
         hour = r!!.dead_hour
         minute = r!!.dead_minute
-        this.initNumberhourPicker(r!!.dead_hour)
-        this.initNumbertimePicker(r!!.dead_minute)
+
+        Number_hour.value = hour
+        Number_time.value = minute
+
         realm_page7.commitTransaction()
     }
 

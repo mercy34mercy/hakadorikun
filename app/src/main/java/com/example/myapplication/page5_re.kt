@@ -40,6 +40,14 @@ class page5_re : AppCompatActivity() {
         month      = intent.getStringExtra("month").toString()
         year       = intent.getStringExtra("year").toString()
 
+        val d:Int = dayOfmonth.toInt()
+        val m:Int = month.toInt()
+        val y:Int = year.toInt()
+
+        dayOfmonth = d.toString()
+        month = m.toString()
+        year = y.toString()
+
 
         toolbar_page5_re.title = month + "月" + dayOfmonth + "日"
 
@@ -124,8 +132,7 @@ class page5_re : AppCompatActivity() {
         //抽出
         //result = realm.where(EveDB::class.java).findAll().sort("startday","")
 
-        val year_month_day_before:String =  year + "/" + month + "/"+ dayOfmonth
-        val year_month_day:String = create_month(year_month_day_before)
+        val year_month_day:String =  year + "/" + month + "/"+ dayOfmonth
         result = realm.where(EveDB::class.java).equalTo("startday",year_month_day).findAll()
         task_result = realm2.where(TaskDB::class.java).equalTo("dead_day",year_month_day).lessThan("task_condition",1).findAll().sort("task_number")
         length = result.size

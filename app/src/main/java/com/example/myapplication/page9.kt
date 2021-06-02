@@ -43,7 +43,7 @@ class page9 : AppCompatActivity() {
     lateinit var month:String
     lateinit var dayOfmonth:String
 
-    val spinnerItem = arrayOf("red","green","bulue","yellow","skybulue")
+    val spinnerItem = arrayOf("red","green","blue","yellow","skybulue")
 
     private val scope = CoroutineScope(Dispatchers.IO)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -154,10 +154,7 @@ class page9 : AppCompatActivity() {
         }
 
 
-        //追加ボタンを押したときの処理
-        add_button_page9.setOnClickListener {
-            addnewWord()
-        }
+
     }
 
 
@@ -194,14 +191,17 @@ class page9 : AppCompatActivity() {
         eventDB.event_condition = 0
 
         realm_p.commitTransaction() //終了処理
-        finish()
+        //finish()
     }
 
 
     override fun onResume() {
         super.onResume()
         realm_p = Realm.getDefaultInstance()
-
+        //追加ボタンを押したときの処理
+        add_button_page9.setOnClickListener {
+            addnewWord()
+        }
 
     }
 
