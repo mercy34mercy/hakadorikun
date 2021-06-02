@@ -144,7 +144,7 @@ class home3 : AppCompatActivity() {
     }
 
     private fun set_subject(size:Int) {
-        val color: Array<Int> = arrayOf( R.drawable.zikanwari_red,R.drawable.zikanwari_green, R.drawable.zikanwari_bulue, R.drawable.zikanwari_yellow, R.drawable.zikanwari_skybulue)
+        val color: Array<Int> = arrayOf( R.drawable.zikanwari_green,R.drawable.zikanwari_red, R.drawable.zikanwari_yellow, R.drawable.zikanwari_bulue, R.drawable.zikanwari_skybulue)
         val sub_id: Array<Button> = arrayOf(z_11,z_12,z_13,z_14,z_15,z_16,
             z_21,z_22,z_23,z_24,z_25,z_26,
             z_31,z_32,z_33,z_34,z_35,z_36,

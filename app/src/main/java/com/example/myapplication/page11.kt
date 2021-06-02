@@ -16,7 +16,8 @@ import kotlinx.android.synthetic.main.activity_page11.*
 class page11 : AppCompatActivity() {
     lateinit var realm:Realm
     lateinit var result_page11:RealmResults<ZikanwariDB>
-    val spinnerItem = arrayOf("red","green","bulue","yellow","skybulue")
+    val spinnerItem = arrayOf("green","red","yellow","buluew","skybulue")
+    val color: Array<Int> = arrayOf(R.drawable.green_line, R.drawable.red_line, R.drawable.yellow_line, R.drawable.darkbulue_line, R.drawable.skybulue_line)
     var color_s:String = ""
     var icon_i:Int = 0
     var position:Int = 0
@@ -88,7 +89,12 @@ class page11 : AppCompatActivity() {
         zikanwariDB.zikanwari_color_i = icon_i
         zikanwariDB.kyoka_date = p
         zikanwariDB.kyoka_zigen = position
+        zikanwariDB.zikanwari_color = color[position]
         realm.commitTransaction() //終了処理
+    }
+
+    private fun renewal_new_subject(){
+
     }
 
 

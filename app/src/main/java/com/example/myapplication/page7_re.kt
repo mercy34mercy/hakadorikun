@@ -6,8 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.widget.NumberPicker
-import android.widget.TextView
+import android.view.View
+import android.widget.*
+import androidx.databinding.DataBindingUtil
+import com.example.myapplication.databinding.ActivityPage7ReBinding
+import com.example.myapplication.databinding.ActivityPage9Binding
 import io.realm.Realm
 import io.realm.RealmResults
 import kotlinx.android.synthetic.main.activity_home3.*
@@ -18,6 +21,7 @@ import com.example.myapplication.create_number as create_number1
 class page7_re : AppCompatActivity() {
     lateinit var realm_page7: Realm
     lateinit var result: RealmResults<TaskDB>
+    lateinit var subjct_result: RealmResults<ZikanwariDB>
     lateinit var end_time:String
     lateinit var title_get:String
     lateinit var name_button:String
@@ -27,11 +31,22 @@ class page7_re : AppCompatActivity() {
     var task_Year:Int = 0
     var task_Month:Int = 0
     var task_Day:Int = 0
+    var spinnerItem = arrayOf("その他")
+    var subject_i:Int = 0
+    var subject_s:String = ""
+    lateinit var binding:ActivityPage7ReBinding
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_page7_re)
+        binding =
+            DataBindingUtil.setContentView<ActivityPage7ReBinding>(this, R.layout.activity_page7_re)
+
+
+        binding.lifecycleOwner = this
+
+
+
 
 
 
@@ -43,6 +58,8 @@ class page7_re : AppCompatActivity() {
 //        task_Year = year.toInt()
 //        task_Month = month.toInt()
 //        task_Day = dayOfmonth.toInt()
+
+
 
         dead_day_page7.text = year+"/"+month+"/"+dayOfmonth
         name_button = intent.getStringExtra("name").toString()
@@ -152,11 +169,35 @@ class page7_re : AppCompatActivity() {
         //抽出
 
 
-            result = realm_page7.where(TaskDB::class.java).findAll().sort("task_uid")
+        result = realm_page7.where(TaskDB::class.java).findAll().sort("task_uid")
+        subjct_result = realm_page7.where(ZikanwariDB::class.java).findAll()
+        val result_size:Int = subjct_result.size
 
         if(name_button.equals("編集完了")) {
             setText()
         }
+
+        for (i in 0 .. result_size-1) {
+            spinnerItem += subjct_result[i]!!.zikanwari_title
+        }
+
+        //spnnerの設定
+        val spadapter = ArrayAdapter(applicationContext,android.R.layout.simple_spinner_item,spinnerItem)
+        spadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        binding.spinner.adapter = spadapter
+        binding.spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                val spinnerParent = parent as Spinner
+                val item = spinnerParent.selectedItem as String
+                subject_s = parent.getItemAtPosition(position).toString()
+                subject_i = position
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+        }
+
 
     }
 
@@ -177,7 +218,7 @@ class page7_re : AppCompatActivity() {
             taskDB.task_uid = "00000000"
             taskDB.task_title = title_edit_page7.text.toString()
             //taskDB.subject = Kamoku_edit_button.text.toString()
-            taskDB.subject = "数学2"
+            taskDB.subject = subject_s
             taskDB.dead_day = create_month(dead_day_page7.text.toString())
             taskDB.task_url = url_edit_page7.text.toString()
             taskDB.task_memo = memo_edit_page7.text.toString()
@@ -237,7 +278,7 @@ class page7_re : AppCompatActivity() {
         val t = result[position]
         realm_page7.beginTransaction()  //開始処理
         t!!.task_title = title_edit_page7.text.toString()
-        t!!.subject   =  Kamoku_edit_button.text.toString()
+        t!!.subject   =  subject_s
         t!!.dead_day = dead_day_page7.text.toString()
         t!!.dead_minute  = minute
         t!!.dead_hour    =  hour
