@@ -187,13 +187,13 @@ class page10 : AppCompatActivity() {
         icon_i = r.iconInt
 
         sthour = r!!.start_hour
-        stminute = r!!.end_hour
+        stminute = r!!.start_minute
         endhour = r!!.end_hour
         endminute = r!!.end_minute
 
         endminte_page10.value = r!!.end_minute
         endhour_page10.value = r!!.end_hour
-        stminute_page10.value  = r!!.end_hour
+        stminute_page10.value  = r!!.start_minute
         sthour_page10.value = r!!.start_hour
 
     }
@@ -214,8 +214,8 @@ class page10 : AppCompatActivity() {
         val selectDB = realm_p[position]
         selectDB!!.title = title_edit_page10.text.toString()
         selectDB!!.place = place_edit_page10.text.toString()
-        selectDB!!.startday = create_month(text_startday_page10.text.toString())
-        selectDB!!.endday   = create_month(text_endday_page10.text.toString())
+        selectDB!!.startday = text_startday_page10.text.toString()
+        selectDB!!.endday   = text_endday_page10.text.toString()
         selectDB.start_hour = sthour
         selectDB.start_minute = stminute
         selectDB.end_hour = endhour
@@ -226,13 +226,6 @@ class page10 : AppCompatActivity() {
         selectDB!!.iconInt    = icon_i
         selectDB!!.color_S = color_s
         realm.commitTransaction()
-
-        title_edit_page10.setText("")
-        place_edit_page10.setText("")
-        text_startday_page10.text = ""
-        text_endday_page10.text   = ""
-        memo_edit_page10.setText("")
-        url_edit_page10.setText("")
         finish()
 
 

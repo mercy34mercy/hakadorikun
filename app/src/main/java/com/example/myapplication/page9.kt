@@ -180,8 +180,8 @@ class page9 : AppCompatActivity() {
         eventDB.uid = "00000000"
         eventDB.title = title_edit_page9.text.toString()
         eventDB.place = place_edit_page9.text.toString()
-        eventDB.startday = create_month(startdate_edit_page9.text.toString())
-        eventDB.endday   = create_month(enddate_edit_page9.text.toString())
+        eventDB.startday = startdate_edit_page9.text.toString()
+        eventDB.endday   = enddate_edit_page9.text.toString()
         eventDB.start_hour = sthour
         eventDB.start_minute = stminute
         eventDB.end_hour = endhour
