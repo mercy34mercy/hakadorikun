@@ -110,8 +110,7 @@ class page7_re : AppCompatActivity() {
             }
         })
 
-        this.initNumberhourPicker()
-        this.initNumbertimePicker()
+
 
         add_button.setOnClickListener {
             if(name_button.equals("編集完了")) {
@@ -141,19 +140,19 @@ class page7_re : AppCompatActivity() {
 
     }
 
-    private fun initNumbertimePicker(){
+    private fun initNumbertimePicker(time:Int){
         Number_time.minValue = 0
         Number_time.maxValue = 59
-        Number_time.value = 0
+        Number_time.value = time
         Number_time.setOnValueChangedListener { picker, oldVal, newVal ->
             minute = newVal
         }
     }
 
-    private fun initNumberhourPicker(){
+    private fun initNumberhourPicker(hour_h:Int){
         Number_hour.minValue = 0
         Number_hour.maxValue = 23
-        Number_hour.value = 0
+        Number_hour.value = hour_h
         Number_hour.setOnValueChangedListener { picker, oldVal, newVal ->
             hour = newVal
         }
@@ -199,6 +198,8 @@ class page7_re : AppCompatActivity() {
         if(name_button.equals("編集完了")) {
             setText()
         }
+
+
 
 
     }
@@ -275,6 +276,8 @@ class page7_re : AppCompatActivity() {
         url_edit_page7.setText(r!!.task_url)
         memo_edit_page7.setText(r.task_memo)
         spinner.setSelection(r!!.zikanwari_color_task)
+        this.initNumberhourPicker(r!!.dead_hour)
+        this.initNumbertimePicker(r!!.dead_minute)
         realm_page7.commitTransaction()
     }
 

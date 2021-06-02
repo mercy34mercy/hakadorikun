@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import io.realm.Realm
 import io.realm.RealmResults
 
@@ -47,7 +48,7 @@ class TaskAdapter(context: Context, var mAnimalList: List<TaskDB>) : ArrayAdapte
 
         if (animal.task_condition == 1) {
             //view!!.layoutParams.height = 0
-            val background = view?.findViewById<LinearLayout>(R.id.background)
+            val background = view?.findViewById<ConstraintLayout>(R.id.background)
             background?.setBackgroundResource(R.color.gray)
             val stamp = view?.findViewById<ImageView>(R.id.stamp_box)
             stamp?.setImageResource(R.drawable.iconhakadorikun)
