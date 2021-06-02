@@ -111,8 +111,6 @@ class page11 : AppCompatActivity() {
         //抽出
         result_page11 = realm.where(ZikanwariDB::class.java).equalTo("kyoka_date",position).findAll()
         if(result_page11.isEmpty()) {
-
-
         }else {
             button_add_page11.text = "編集完了"
             val l = result_page11[0]
