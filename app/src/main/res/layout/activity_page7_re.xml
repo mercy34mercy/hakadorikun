@@ -121,9 +121,11 @@
                     android:background="#00000000"
                     android:ems="10"
                     android:gravity="center|left"
-                    android:hint="科目を選択"
                     android:inputType="textPersonName"
                     android:paddingLeft="10dp"
+                    android:text="科目を選択"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
                     android:textSize="18sp"
                     app:backgroundTint="#00000000" />
 
