@@ -22,6 +22,8 @@ class page11 : AppCompatActivity() {
     var icon_i:Int = 0
     var position:Int = 0
 
+
+
     private val myViewModel: MyViewModel by lazy {
         ViewModelProvider.NewInstanceFactory().create(MyViewModel::class.java)
     }
