@@ -21,6 +21,7 @@ class page7_re : AppCompatActivity() {
     lateinit var realm_page7: Realm
     lateinit var result: RealmResults<TaskDB>
     lateinit var subjct_result: RealmResults<ZikanwariDB>
+    lateinit var subjct_result2: RealmResults<ZikanwariDB>
     lateinit var end_time:String
     lateinit var title_get:String
     lateinit var name_button:String
@@ -167,7 +168,10 @@ class page7_re : AppCompatActivity() {
 
         result = realm_page7.where(TaskDB::class.java).findAll().sort("task_uid")
         subjct_result = realm_page7.where(ZikanwariDB::class.java).findAll()
+
         val result_size:Int = subjct_result.size
+
+
 
         if(name_button.equals("編集完了")) {
             setText()
@@ -215,6 +219,7 @@ class page7_re : AppCompatActivity() {
             taskDB.task_title = title_edit_page7.text.toString()
             //taskDB.subject = Kamoku_edit_button.text.toString()
             taskDB.subject = subject_s
+            taskDB.zikanwari_color_task = subject_i
             taskDB.dead_day = create_month(dead_day_page7.text.toString())
             taskDB.task_url = url_edit_page7.text.toString()
             taskDB.task_memo = memo_edit_page7.text.toString()
@@ -263,11 +268,11 @@ class page7_re : AppCompatActivity() {
         val r = result[position]
         realm_page7.beginTransaction()  //開始処理
         title_edit_page7.setText(r!!.task_title)
-        Kamoku_edit_button.text = r!!.subject
         dead_day_page7.text = r!!.dead_day
         //Number_hour.setText(r!!.dead_time)
         url_edit_page7.setText(r!!.task_url)
         memo_edit_page7.setText(r.task_memo)
+        spinner.setSelection(r!!.zikanwari_color_task)
         realm_page7.commitTransaction()
     }
 
@@ -276,6 +281,7 @@ class page7_re : AppCompatActivity() {
         realm_page7.beginTransaction()  //開始処理
         t!!.task_title = title_edit_page7.text.toString()
         t!!.subject   =  subject_s
+        t!!.zikanwari_color_task = subject_i
         t!!.dead_day = dead_day_page7.text.toString()
         t!!.dead_minute  = minute
         t!!.dead_hour    =  hour
