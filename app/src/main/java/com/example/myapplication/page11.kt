@@ -48,9 +48,7 @@ class page11 : AppCompatActivity() {
 
         zikan_text.text = zikanwari[position]
 
-        button_delete_page11.setOnClickListener{
-            deleteRealm(position)
-        }
+
 
         val spadapter = ArrayAdapter(applicationContext,android.R.layout.simple_spinner_item,spinnerItem)
 
@@ -114,11 +112,20 @@ class page11 : AppCompatActivity() {
         result_page11 = realm.where(ZikanwariDB::class.java).equalTo("kyoka_date",position).findAll()
         if(result_page11.isEmpty()) {
 
+
         }else {
             button_add_page11.text = "編集完了"
             val l = result_page11[0]
             edit_subject.setText(l!!.zikanwari_title)
             spinner_page11.setSelection(l.zikanwari_color_i)
+        }
+
+        button_delete_page11.setOnClickListener{
+            if(result_page11.isEmpty()) {
+                finish()
+            }else{
+                deleteRealm(position)
+            }
         }
 
         button_add_page11.setOnClickListener {
