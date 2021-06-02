@@ -173,9 +173,7 @@ class page7_re : AppCompatActivity() {
 
 
 
-        if(name_button.equals("編集完了")) {
-            setText()
-        }
+
 
         for (i in 0 .. result_size-1) {
             spinnerItem += subjct_result[i]!!.zikanwari_title
@@ -196,6 +194,10 @@ class page7_re : AppCompatActivity() {
             override fun onNothingSelected(parent: AdapterView<*>?) {
 
             }
+        }
+
+        if(name_button.equals("編集完了")) {
+            setText()
         }
 
 
