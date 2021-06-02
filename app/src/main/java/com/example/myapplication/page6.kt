@@ -39,6 +39,7 @@ class  page6 : AppCompatActivity() {
 
         task_complete_button.setOnClickListener {
             task_complete()
+            finish()
         }
 
 
