@@ -2,6 +2,7 @@ package com.example.myapplication
 
 import android.app.Application
 import io.realm.Realm
+import io.realm.RealmConfiguration
 
 class Myapplication:Application() {
     override fun onCreate() {
@@ -11,5 +12,6 @@ class Myapplication:Application() {
 
 
         Realm.init(this)
+
     }
 }

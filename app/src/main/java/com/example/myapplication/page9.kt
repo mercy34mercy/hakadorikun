@@ -211,7 +211,7 @@ class page9 : AppCompatActivity() {
         eventDB.event_condition = 0
 
         realm_p.commitTransaction() //終了処理
-        //finish()
+        finish()
     }
 
 

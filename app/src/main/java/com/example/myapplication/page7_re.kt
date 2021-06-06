@@ -246,9 +246,6 @@ class page7_re : AppCompatActivity() {
             taskDB.task_memo = memo_edit_page7.text.toString()
             taskDB.dead_hour = hour
             taskDB.dead_minute =  minute
-            taskDB.task_year = task_Year
-            taskDB.task_month = task_Month
-            taskDB.task_day = task_Day
             taskDB.task_number = create_number(task_Year,task_Month,task_Day,hour,minute)
 
 
@@ -311,9 +308,7 @@ class page7_re : AppCompatActivity() {
         t!!.dead_hour    =  hour
         t!!.task_url   = url_edit_page7.text.toString()
         t!!.task_memo  = memo_edit_page7.text.toString()
-        t!!.task_year = task_Year
-        t!!.task_month = task_Month
-        t!!.task_day = task_Day
+
         t!!.task_number = com.example.myapplication.create_number(task_Year,task_Month,task_Day,hour,minute)
         realm_page7.commitTransaction()
         finish()
