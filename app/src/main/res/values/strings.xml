@@ -14,5 +14,7 @@
     <string name="b">[2020 秋セメスター] 心理学入門(101)</string>
     <string name="c">受付終了日時：2020-11-30</string>
     <string name="input_text_count"></string>
-    <string name="text_count_page9"></string>
+    <string name="text_count_page9" />
+    <string name="option_1">課題を追加</string>
+    <string name="option_2">予定を追加</string>
 </resources>

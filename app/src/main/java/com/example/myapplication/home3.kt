@@ -4,9 +4,13 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.view.*
+import android.widget.AdapterView
 import android.widget.Button
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
+import com.example.myapplication.databinding.ActivityHome3Binding
 import io.realm.Realm
 
 import io.realm.RealmResults
@@ -36,7 +40,11 @@ class home3 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //データの初期化に使う
-        setContentView(R.layout.activity_home3)
+        val binding =
+            DataBindingUtil.setContentView<ActivityHome3Binding>(this, R.layout.activity_home3)
+
+
+        binding.lifecycleOwner = this
         val subject_id: Array<Button> = arrayOf(z_11,z_12,z_13,z_14,z_15,z_16,
             z_21,z_22,z_23,z_24,z_25,z_26,
             z_31,z_32,z_33,z_34,z_35,z_36,
@@ -53,6 +61,8 @@ class home3 : AppCompatActivity() {
 
 
         today = day[0] + "/" + m + "/" + d
+
+
 
 
 
@@ -106,7 +116,24 @@ class home3 : AppCompatActivity() {
 
         }
 
+        sub_btn1.setOnClickListener {
+            val intent = Intent(this@home3, page7_re::class.java)
+            intent.putExtra("Dayofmonth",d)
+            intent.putExtra("month",m)
+            intent.putExtra("year",day[0])
+            startActivity(intent)
+        }
+
+        sub_btn2.setOnClickListener {
+            val intent = Intent(this@home3, page9::class.java)
+            intent.putExtra("Dayofmonth",d)
+            intent.putExtra("month",m)
+            intent.putExtra("year",day[0])
+            startActivity(intent)
+        }
+
     }
+
 
 
     override fun onResume() {
