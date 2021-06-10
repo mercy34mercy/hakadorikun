@@ -17,4 +17,6 @@
     <string name="text_count_page9" />
     <string name="option_1">課題を追加</string>
     <string name="option_2">予定を追加</string>
+    <string name="channel_name">ch1</string>
+    <string name="channel_description">テスト用</string>
 </resources>

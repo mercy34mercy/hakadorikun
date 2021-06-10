@@ -1,24 +1,35 @@
 package com.example.myapplication
 
 import android.app.DatePickerDialog
-import android.content.Intent
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
-import android.widget.*
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Spinner
+import android.widget.TextView
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.work.Data
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.WorkManager
+import androidx.work.workDataOf
 import com.example.myapplication.databinding.ActivityPage7ReBinding
-import com.example.myapplication.databinding.ActivityPage9Binding
 import io.realm.Realm
 import io.realm.RealmResults
-import kotlinx.android.synthetic.main.activity_home3.*
 import kotlinx.android.synthetic.main.activity_page7_re.*
+import java.text.ParseException
+import java.text.SimpleDateFormat
 import java.time.LocalDate
-import kotlin.math.min
+import java.time.LocalDateTime
+import java.time.ZoneId
+import java.time.format.DateTimeFormatter
+import java.time.temporal.ChronoUnit
+import java.util.*
+import java.util.concurrent.TimeUnit
 
 class page7_re : AppCompatActivity() {
     lateinit var realm_page7: Realm
@@ -230,7 +241,8 @@ class page7_re : AppCompatActivity() {
 
 
 
-    fun post_task(hour:Int,minute:Int){
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun post_task(hour:Int, minute:Int){
 
 
             realm_page7.beginTransaction()  //開始処理
@@ -247,13 +259,59 @@ class page7_re : AppCompatActivity() {
             taskDB.dead_hour = hour
             taskDB.dead_minute =  minute
             taskDB.task_number = create_number(task_Year,task_Month,task_Day,hour,minute)
+        val date_string:String = dead_day_page7.text.toString()
+        var date_split: MutableList<String> = date_string.split("/").toMutableList()
+        val month_i = date_split[1].toInt()
+        val day_i  =  date_split[2].toInt()
+        var hour_s = hour.toString()
+        var minute_s = minute.toString()
+        if(month_i < 10){
+            date_split[1] = "0" + date_split[1]
+        }
+        if(day_i < 10){
+            date_split[2] = "0" + date_split[2]
+        }
+        if(hour < 10){
+            hour_s = "0" + hour_s
+        }
+        if (minute<10){
+            minute_s = "0" + minute_s
+        }
+
+        val date_gattai:String = date_split[0]+ "/" + date_split[1] + "/" +  date_split[2] + " " + hour_s + ":" + minute_s + ":" + "00"
+
+        //val dtFt: DateTimeFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss")
+
+        val csvFormat = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss")
+
+        val now = LocalDateTime.now() //2019-07-28T15:31:59.754
+        val day1 = LocalDateTime.parse(date_gattai,csvFormat)
+
+        val diff = ChronoUnit.MINUTES.between(now, day1) // diff: 30
 
 
+
+
+
+
+        val myData: Data = workDataOf("title" to subject_s,
+            "text" to title_edit_page7.text.toString(),
+            "id" to create_number(task_Year,task_Month,task_Day,hour,minute))
+
+        val workRequest = OneTimeWorkRequestBuilder<LocalNotificationWorker>()
+            .setInitialDelay(diff, TimeUnit.MINUTES)
+            .setInputData(myData)
+            .build()
+        WorkManager.getInstance(this).enqueue(workRequest)
 
             realm_page7.commitTransaction() //終了処理
+
+
         finish()
 
     }
+
+
 
 
 
@@ -312,5 +370,13 @@ class page7_re : AppCompatActivity() {
         t!!.task_number = com.example.myapplication.create_number(task_Year,task_Month,task_Day,hour,minute)
         realm_page7.commitTransaction()
         finish()
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    @Throws(ParseException::class)
+    fun toLocalDateTime(date: String?, format: String?): LocalDateTime? {
+        val sdf = SimpleDateFormat(format)
+        val formatDate: Date = sdf.parse(date)
+        return LocalDateTime.ofInstant(formatDate.toInstant(), ZoneId.systemDefault())
     }
 }

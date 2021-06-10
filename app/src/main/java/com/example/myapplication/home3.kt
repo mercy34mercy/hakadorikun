@@ -1,5 +1,7 @@
 package com.example.myapplication
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
 import android.os.Build
@@ -9,6 +11,8 @@ import android.widget.AdapterView
 import android.widget.Button
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.databinding.DataBindingUtil
 import com.example.myapplication.databinding.ActivityHome3Binding
 import io.realm.Realm
@@ -43,8 +47,14 @@ class home3 : AppCompatActivity() {
         val binding =
             DataBindingUtil.setContentView<ActivityHome3Binding>(this, R.layout.activity_home3)
 
-
         binding.lifecycleOwner = this
+
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) { return }
+        val manager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        val channel = NotificationChannel("default", "Default", NotificationManager.IMPORTANCE_HIGH)
+        channel.description = "Local Notification Sample"
+        manager.createNotificationChannel(channel)
+
         val subject_id: Array<Button> = arrayOf(z_11,z_12,z_13,z_14,z_15,z_16,
             z_21,z_22,z_23,z_24,z_25,z_26,
             z_31,z_32,z_33,z_34,z_35,z_36,
@@ -63,11 +73,27 @@ class home3 : AppCompatActivity() {
         today = day[0] + "/" + m + "/" + d
 
 
+//        var builder = NotificationCompat.Builder(this, "CHANNEL_ID")
+//            .setSmallIcon(R.drawable.iconhakadorikun)
+//            .setContentTitle("My notification")
+//            .setContentText("Much longer text that cannot fit one line...")
+//            .setStyle(NotificationCompat.BigTextStyle()
+//                .bigText("Much longer text that cannot fit one line..."))
+//            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+
+
+
+
+
 
 
 
 
         calender_home3.setOnClickListener {
+//            with(NotificationManagerCompat.from(this)) {
+//                // notificationId is a unique int for each notification that you must define
+//                notify(1, builder.build())
+//            }
             intent = Intent(this@home3, page2::class.java)
             startActivity(intent)
             overridePendingTransition(0, 0)
@@ -133,6 +159,25 @@ class home3 : AppCompatActivity() {
         }
 
     }
+
+    /*
+    private fun createNotificationChannel() {
+        // Create the NotificationChannel, but only on API 26+ because
+        // the NotificationChannel class is new and not in the support library
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val name = getString(R.string.channel_name)
+            val descriptionText = getString(R.string.channel_description)
+            val importance = NotificationManager.IMPORTANCE_DEFAULT
+            val channel = NotificationChannel("CHANNEL_ID", name, importance).apply {
+                description = descriptionText
+            }
+            // Register the channel with the system
+            val notificationManager: NotificationManager =
+                getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            notificationManager.createNotificationChannel(channel)
+        }
+    }
+    */
 
 
 
