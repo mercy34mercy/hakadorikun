@@ -244,6 +244,8 @@ class home3 : AppCompatActivity() {
             button.text = subject_result[i]!!.zikanwari_title
         }
     }
+    
+    
 
     override fun onPause() {
         super.onPause()
