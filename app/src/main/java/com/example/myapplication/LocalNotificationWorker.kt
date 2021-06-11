@@ -60,7 +60,7 @@ class LocalNotificationWorker(context: Context, workerParams: WorkerParameters) 
                 .build()
 
             NotificationManagerCompat.from(applicationContext).apply {
-                notify(inputData.getInt("id",0), notification)
+                notify(inputData.getLong("id",0).toInt(), notification)
             }
 
 

@@ -243,8 +243,9 @@ class page7_re : AppCompatActivity() {
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun post_task(hour:Int, minute:Int){
-
-
+        val uuid = (UUID.randomUUID().toString()).split("-")
+        val uuid_string = (uuid[0] ).toUpperCase()
+        val uuid_int = uuid_string.toLong(radix = 16)
             realm_page7.beginTransaction()  //開始処理
             val taskDB: TaskDB = realm_page7.createObject(TaskDB::class.java)
 
@@ -296,7 +297,7 @@ class page7_re : AppCompatActivity() {
 
         val myData: Data = workDataOf("title" to subject_s,
             "text" to title_edit_page7.text.toString(),
-            "id" to create_number(task_Year,task_Month,task_Day,hour,minute))
+            "id" to uuid_int)
 
         val workRequest = OneTimeWorkRequestBuilder<LocalNotificationWorker>()
             .setInitialDelay(diff, TimeUnit.MINUTES)
