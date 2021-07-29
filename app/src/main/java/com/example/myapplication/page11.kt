@@ -1,17 +1,21 @@
 package com.example.myapplication
 
+import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.myapplication.databinding.ActivityPage11Binding
 import io.realm.Realm
 import io.realm.RealmResults
 import kotlinx.android.synthetic.main.activity_page11.*
+import java.time.LocalDate
 
 class page11 : AppCompatActivity() {
     lateinit var realm:Realm
@@ -28,6 +32,7 @@ class page11 : AppCompatActivity() {
         ViewModelProvider.NewInstanceFactory().create(MyViewModel::class.java)
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding =
@@ -43,6 +48,13 @@ class page11 : AppCompatActivity() {
 
 
         position = intent.getStringExtra("position")!!.toInt()
+
+        val onlyDate: LocalDate = LocalDate.now()
+        val s:String = onlyDate.toString()
+        val day = s.split("-")
+
+        val m:String  = day[1].toInt().toString()
+        val d:String  = day[2].toInt().toString()
 
 
 
@@ -70,6 +82,25 @@ class page11 : AppCompatActivity() {
 
             }
 
+        }
+
+        sub_btn1.setOnClickListener {
+            val intent = Intent(this@page11, page7_re::class.java)
+            intent.putExtra("subject",edit_subject.text.toString())
+            intent.putExtra("Dayofmonth",d)
+            intent.putExtra("month",m)
+            intent.putExtra("year",day[0])
+            intent.putExtra("name","追加")
+            startActivity(intent)
+        }
+        sub_btn2.setOnClickListener {
+
+            val intent = Intent(this@page11, page9::class.java)
+            intent.putExtra("Dayofmonth",d)
+            intent.putExtra("month",m)
+            intent.putExtra("year",day[0])
+            intent.putExtra("name","追加")
+            startActivity(intent)
         }
 
 

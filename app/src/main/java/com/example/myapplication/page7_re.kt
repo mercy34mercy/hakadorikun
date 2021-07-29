@@ -38,15 +38,15 @@ class page7_re : AppCompatActivity() {
     lateinit var subjct_result2: RealmResults<ZikanwariDB>
     lateinit var end_time:String
     lateinit var title_get:String
-    lateinit var name_button:String
+    var name_button:String = "追加"
     var position:Int = 0
     var hour:Int = 0
     var minute:Int = 0
     var task_Year:Int = 0
     var task_Month:Int = 0
     var task_Day:Int = 0
-    var spinnerItem = arrayOf("その他")
     var subject_i:Int = 0
+    var spinnerItem = arrayOf("その他")
     var subject_s:String = ""
     lateinit var binding:ActivityPage7ReBinding
 
@@ -87,6 +87,10 @@ class page7_re : AppCompatActivity() {
 
         dead_day_page7.text = year+"/"+month+"/"+dayOfmonth
         name_button = intent.getStringExtra("name").toString()
+        if(name_button.isNullOrEmpty())
+        {
+            name_button = "追加"
+        }
         add_button.text = name_button
 
 
@@ -188,12 +192,14 @@ class page7_re : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        var get_sub:Int = -1
         realm_page7 = Realm.getDefaultInstance()
+        val sub_name:String = intent.getStringExtra("subject").toString()
         //抽出
 
 
         result = realm_page7.where(TaskDB::class.java).findAll().sort("task_uid")
-        subjct_result = realm_page7.where(ZikanwariDB::class.java).findAll()
+        subjct_result = realm_page7.where(ZikanwariDB::class.java).findAll().sort("kyoka_date")
 
         val result_size:Int = subjct_result.size
 
@@ -203,6 +209,12 @@ class page7_re : AppCompatActivity() {
 
         for (i in 0 .. result_size-1) {
             spinnerItem += subjct_result[i]!!.zikanwari_title
+            if(subjct_result[i]!!.zikanwari_title == sub_name)
+            {
+
+                    get_sub =  i
+
+            }
         }
 
 
@@ -210,6 +222,7 @@ class page7_re : AppCompatActivity() {
         val spadapter = ArrayAdapter(applicationContext,android.R.layout.simple_spinner_item,spinnerItem)
         spadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.spinner.adapter = spadapter
+
         binding.spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 val spinnerParent = parent as Spinner
@@ -230,6 +243,18 @@ class page7_re : AppCompatActivity() {
         val swap = spinnerItem[0]
         spinnerItem[0] = spinnerItem[result_size]
         spinnerItem[result_size] = swap
+
+        for (i in 0 .. result_size) {
+
+            if(spinnerItem[i] == sub_name)
+            {
+                get_sub =  i
+
+            }
+        }
+        if(get_sub != -1) {
+            spinner.setSelection(get_sub)
+        }
 
     }
 

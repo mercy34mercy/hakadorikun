@@ -147,6 +147,7 @@ class home3 : AppCompatActivity() {
             intent.putExtra("Dayofmonth",d)
             intent.putExtra("month",m)
             intent.putExtra("year",day[0])
+            intent.putExtra("name","追加")
             startActivity(intent)
         }
 
@@ -155,6 +156,7 @@ class home3 : AppCompatActivity() {
             intent.putExtra("Dayofmonth",d)
             intent.putExtra("month",m)
             intent.putExtra("year",day[0])
+            intent.putExtra("name","追加")
             startActivity(intent)
         }
 

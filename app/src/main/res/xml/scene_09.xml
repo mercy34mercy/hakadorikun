@@ -68,7 +68,10 @@
         </Constraint>
         <Constraint
             android:id="@id/sub_btn2"
-            android:visibility="invisible">
+            android:visibility="invisible"
+            motion:layout_constraintStart_toStartOf="@id/sub_btn1"
+            motion:layout_constraintBottom_toBottomOf="@+id/fab"
+            motion:layout_constraintEnd_toEndOf="@id/sub_btn1">
             <Layout
                 android:layout_marginBottom="8dp"
                 motion:layout_constraintStart_toStartOf="@id/sub_btn1"
