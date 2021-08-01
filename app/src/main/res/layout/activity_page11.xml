@@ -64,14 +64,15 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/motionLayout_page11"
         app:layout_constraintTop_toBottomOf="@+id/toolbar11"
         tools:layout_editor_absoluteX="16dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <View
                 android:layout_width="match_parent"
@@ -102,6 +103,7 @@
 
             <Button
                 android:id="@+id/textView26"
+                style="?android:attr/borderlessButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:background="#00000000"
@@ -110,22 +112,18 @@
                 android:text="色"
                 android:textColor="#000000"
                 android:textSize="18sp"
-                app:backgroundTint="#00000000"
-                style="?android:attr/borderlessButtonStyle"/>
+                app:backgroundTint="#00000000" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@android:color/darker_gray" />
 
-            <TextView
-                android:id="@+id/textView37"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:gravity="center"
-                android:paddingTop="15dp"
-                android:textColor="#FFFFFF"
-                android:textSize="28sp" />
+            <ListView
+                android:id="@+id/listview_page11"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
         </LinearLayout>
     </ScrollView>
 

@@ -259,6 +259,7 @@ class page7_re : AppCompatActivity() {
     }
 
 
+
     override fun onPause() {
         super.onPause()
         realm_page7.close()

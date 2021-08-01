@@ -19,7 +19,9 @@ import java.time.LocalDate
 
 class page11 : AppCompatActivity() {
     lateinit var realm:Realm
+    lateinit var realm2:Realm
     lateinit var result_page11:RealmResults<ZikanwariDB>
+    lateinit var result_task_page11:RealmResults<TaskDB>
     val spinnerItem = arrayOf("green","red","yellow","blue","skybulue")
     val color: Array<Int> = arrayOf(R.drawable.green_line, R.drawable.red_line, R.drawable.yellow_line, R.drawable.darkbulue_line, R.drawable.skybulue_line)
     var color_s:String = ""
@@ -84,6 +86,7 @@ class page11 : AppCompatActivity() {
 
         }
 
+        //右下のプラスボタンその１
         sub_btn1.setOnClickListener {
             val intent = Intent(this@page11, page7_re::class.java)
             intent.putExtra("subject",edit_subject.text.toString())
@@ -93,6 +96,8 @@ class page11 : AppCompatActivity() {
             intent.putExtra("name","追加")
             startActivity(intent)
         }
+
+        //右下のプラスボタンその２
         sub_btn2.setOnClickListener {
 
             val intent = Intent(this@page11, page9::class.java)
@@ -104,8 +109,17 @@ class page11 : AppCompatActivity() {
         }
 
 
+        listview_page11.setOnItemClickListener { parent, view, position, id ->
+            val intent = Intent(this@page11,page6::class.java)
+            intent.putExtra("position",position)
+            startActivity(intent)
+        }
+
+
 
     }
+
+    //Realmのデータを新しくする
     private fun add_new_subject(p:Int) {
         realm.beginTransaction()  //開始処理
         val zikanwariDB = realm.createObject(ZikanwariDB::class.java)
@@ -118,6 +132,7 @@ class page11 : AppCompatActivity() {
         finish()
     }
 
+    //Realmのデータを更新する
     private fun renewal_new_subject(p:Int){
         realm.beginTransaction()  //開始処理
         val result_renewal = realm.where(ZikanwariDB::class.java).equalTo("kyoka_date",position).findAll()
@@ -137,18 +152,34 @@ class page11 : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-
+        //Realm作成
         realm = Realm.getDefaultInstance()
-        //抽出
+        realm2 = Realm.getDefaultInstance()
+
+        //課題のデータを入れる
+        var Task:TaskAdapter
+
+        //Realmよりデータを抽出
+        //教科
         result_page11 = realm.where(ZikanwariDB::class.java).equalTo("kyoka_date",position).findAll()
+
+
+        //時間割がその時間に登録されているかを判定
         if(result_page11.isEmpty()) {
         }else {
+
             button_add_page11.text = "編集完了"
             val l = result_page11[0]
             edit_subject.setText(l!!.zikanwari_title)
             spinner_page11.setSelection(l.zikanwari_color_i)
+
+            //選択した教科の課題の抽出とアダプタの設定
+            result_task_page11 = realm2.where(TaskDB::class.java).equalTo("subject",l!!.zikanwari_title).findAll()
+            Task = TaskAdapter(this,result_task_page11)
+            listview_page11.adapter = Task
         }
 
+        //削除ボタンが押されてた時の動作
         button_delete_page11.setOnClickListener{
             if(result_page11.isEmpty()) {
                 finish()
@@ -157,9 +188,11 @@ class page11 : AppCompatActivity() {
             }
         }
 
+        //追加ボタンが押された時の動作
         button_add_page11.setOnClickListener {
+            //何も入力されていない場合は何も出さない
             if (edit_subject.text == null){
-
+                //TODO　ここにトーストを入れる
             }else {
                 if(result_page11.isEmpty()) {
                     add_new_subject(position)
@@ -175,7 +208,7 @@ class page11 : AppCompatActivity() {
 
 
         }
-
+    //Realmからデータを削除する
     private fun deleteRealm(id: Int) {
         // プライマリーキーをもとに該当のデータを取得
         val target = realm.where(ZikanwariDB::class.java)
