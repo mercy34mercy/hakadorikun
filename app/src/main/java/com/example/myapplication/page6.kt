@@ -37,6 +37,7 @@ class  page6 : AppCompatActivity() {
             startActivity(intent)
         }
 
+        //TODO convert_allを使う
 
 
 
