@@ -17,38 +17,43 @@
     <LinearLayout
         android:id="@+id/linearLayout7"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="80dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="-40dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <ImageView
             android:id="@+id/home_home3"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            app:srcCompat="@drawable/tabhome" />
+            android:paddingBottom="10dp"
+            app:srcCompat="@drawable/home_on" />
 
         <ImageView
             android:id="@+id/calender_home3"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            app:srcCompat="@drawable/tabcal" />
+            android:paddingBottom="10dp"
+            app:srcCompat="@drawable/calendar_off" />
 
         <ImageView
             android:id="@+id/task_home3"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            app:srcCompat="@drawable/tabtask" />
+            android:paddingBottom="10dp"
+            app:srcCompat="@drawable/kadai_off" />
 
         <ImageView
             android:id="@+id/setting_home3"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            app:srcCompat="@drawable/tabopt" />
+            android:paddingBottom="10dp"
+            app:srcCompat="@drawable/tool_off" />
     </LinearLayout>
 
     <LinearLayout

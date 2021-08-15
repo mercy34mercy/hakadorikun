@@ -6,41 +6,47 @@
     android:layout_height="match_parent"
     tools:context=".Page3_re">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar9"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:gravity="center"
+        android:text="課題"
+        android:textColor="@color/black"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:title="課題"
-        app:titleMargin="12dp"
-        app:titleTextColor="#FFFFFF" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/add_biutton_page3"
         style="@style/Widget.AppCompat.Button.Borderless.Colored"
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:text="追加"
-        app:layout_constraintEnd_toEndOf="@+id/toolbar9"
+        android:layout_height="80dp"
+        android:text="未提出"
+        android:textColor="@color/orange"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <ListView
         android:id="@+id/task_list"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout9"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar9"
         tools:layout_editor_absoluteX="0dp" />
 
     <LinearLayout
         android:id="@+id/linearLayout9"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="80dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -51,28 +57,32 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            app:srcCompat="@drawable/home_icon" />
+            android:paddingBottom="10dp"
+            app:srcCompat="@drawable/home_off" />
 
         <ImageView
             android:id="@+id/calender_tab"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            app:srcCompat="@drawable/tabcal" />
+            android:paddingBottom="10dp"
+            app:srcCompat="@drawable/calendar_off" />
 
         <ImageView
             android:id="@+id/book_tab"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            app:srcCompat="@drawable/kadai_icon" />
+            android:paddingBottom="10dp"
+            app:srcCompat="@drawable/kadai_on" />
 
         <ImageView
             android:id="@+id/setting_tab"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            app:srcCompat="@drawable/tabopt" />
+            app:srcCompat="@drawable/tool_off"
+            android:paddingBottom="10dp" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

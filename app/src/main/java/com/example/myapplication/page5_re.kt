@@ -49,26 +49,26 @@ class page5_re : AppCompatActivity() {
         year = y.toString()
 
 
-        toolbar_page5_re.title = month + "月" + dayOfmonth + "日"
+        toolbar_page5_re.text = month + "月" + dayOfmonth + "日"
 
 
-        add_task.setOnClickListener {
-            val intent = Intent(this@page5_re,page7_re::class.java)
-            intent.putExtra("name","追加")
-            intent.putExtra("Dayofmonth",dayOfmonth)
-            intent.putExtra("month",month)
-            intent.putExtra("year",year)
-            startActivity(intent)
-        }
-
-        add_event.setOnClickListener {
-            val intent = Intent(this@page5_re,page9::class.java)
-            intent.putExtra("name","追加")
-            intent.putExtra("Dayofmonth",dayOfmonth)
-            intent.putExtra("month",month)
-            intent.putExtra("year",year)
-            startActivity(intent)
-        }
+//        add_task.setOnClickListener {
+//            val intent = Intent(this@page5_re,page7_re::class.java)
+//            intent.putExtra("name","追加")
+//            intent.putExtra("Dayofmonth",dayOfmonth)
+//            intent.putExtra("month",month)
+//            intent.putExtra("year",year)
+//            startActivity(intent)
+//        }
+//
+//        add_event.setOnClickListener {
+//            val intent = Intent(this@page5_re,page9::class.java)
+//            intent.putExtra("name","追加")
+//            intent.putExtra("Dayofmonth",dayOfmonth)
+//            intent.putExtra("month",month)
+//            intent.putExtra("year",year)
+//            startActivity(intent)
+//        }
 
         List_Task.setOnItemClickListener { parent, view, position, id ->
             val intent = Intent(this@page5_re,page6::class.java)

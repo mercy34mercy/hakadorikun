@@ -6,28 +6,24 @@
     android:layout_height="match_parent"
     tools:context=".page2">
 
-    <CalendarView
-        android:id="@+id/calendarView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:firstDayOfWeek="2"
-        app:layout_constraintBottom_toTopOf="@+id/imageView7"
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:gravity="center"
+        android:text="カレンダ―"
+        android:textColor="@color/black"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar6" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar6"
+    <View
+        android:id="@+id/view3"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@drawable/header"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:title="カレンダー"
-        app:titleTextColor="#FFFFFF" />
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
     <ImageView
         android:id="@+id/imageView7"
@@ -40,41 +36,54 @@
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/hakadorikunotete" />
 
+    <CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:firstDayOfWeek="2"
+        app:layout_constraintBottom_toTopOf="@+id/imageView7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view3" />
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="80dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        >
+        app:layout_constraintStart_toStartOf="parent">
 
         <ImageView
             android:id="@+id/home_button_page2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            app:srcCompat="@drawable/home_icon" />
+            android:paddingBottom="10dp"
+            app:srcCompat="@drawable/home_off" />
 
         <ImageView
             android:id="@+id/imageView5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            app:srcCompat="@drawable/calender_icon" />
+            android:paddingBottom="10dp"
+            app:srcCompat="@drawable/calendar_on" />
 
         <ImageView
             android:id="@+id/task_button_page2"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            app:srcCompat="@drawable/tabtask" />
+            android:paddingBottom="10dp"
+            app:srcCompat="@drawable/kadai_off" />
 
         <ImageView
             android:id="@+id/setting_button_page2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            app:srcCompat="@drawable/tabopt" />
+            android:paddingBottom="10dp"
+            app:srcCompat="@drawable/tool_off" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,19 +8,14 @@
     tools:context=".page5_re">
 
 
-    <androidx.appcompat.widget.Toolbar
+    <TextView
         android:id="@+id/toolbar_page5_re"
-        android:layout_width="match_parent"
-        android:layout_height="80sp"
-        android:background="@drawable/header"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:subtitleTextColor="#FFFFFF"
-        app:title="3月20日"
-        app:titleTextColor="#FFFFFF" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/linearLayout8"
@@ -49,17 +44,6 @@
             app:layout_constraintTop_toBottomOf="@+id/textView31"
             tools:layout_editor_absoluteX="-16dp" />
 
-        <Button
-            android:id="@+id/add_task"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_weight="0"
-            android:text="課題を追加"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/List_Task" />
-
         <TextView
             android:id="@+id/textView33"
             android:layout_width="match_parent"
@@ -82,16 +66,6 @@
 
         </ListView>
 
-        <Button
-            android:id="@+id/add_event"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_weight="0"
-            android:text="予定を追加"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/List_Event" />
     </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
