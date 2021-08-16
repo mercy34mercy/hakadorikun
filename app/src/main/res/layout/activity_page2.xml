@@ -86,4 +86,74 @@
             android:paddingBottom="10dp"
             app:srcCompat="@drawable/tool_off" />
     </LinearLayout>
+
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:id="@+id/motionLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layoutDescription="@xml/scene_09"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:showPaths="true">
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <TextView
+            android:id="@+id/sub_text1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="課題"
+            tools:layout_editor_absoluteX="200dp"
+            tools:layout_editor_absoluteY="553dp" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/orange"
+            android:src="@drawable/ic_plus"
+            app:fabCustomSize="48dp"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="355dp" />
+
+        <TextView
+            android:id="@+id/sub_text2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="予定"
+            tools:layout_editor_absoluteX="297dp"
+            tools:layout_editor_absoluteY="714dp" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/sub_btn1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/orange"
+            android:clickable="true"
+            android:src="@drawable/ic_baseline_menu_book_24"
+            app:fabCustomSize="32dp"
+            app:layout_constraintBottom_toTopOf="@+id/sub_btn2"
+            app:layout_constraintTop_toBottomOf="@+id/fab"
+            tools:layout_editor_absoluteX="332dp" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/sub_btn2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/orange"
+            android:clickable="true"
+            android:src="@drawable/ic_baseline_calendar_today_24"
+            app:fabCustomSize="32dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view"
+            tools:layout_editor_absoluteX="363dp" />
+
+
+    </androidx.constraintlayout.motion.widget.MotionLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

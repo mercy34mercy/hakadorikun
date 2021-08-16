@@ -142,23 +142,23 @@ class home3 : AppCompatActivity() {
 
         }
 
-        sub_btn1.setOnClickListener {
-            val intent = Intent(this@home3, page7_re::class.java)
-            intent.putExtra("Dayofmonth",d)
-            intent.putExtra("month",m)
-            intent.putExtra("year",day[0])
-            intent.putExtra("name","追加")
-            startActivity(intent)
-        }
-
-        sub_btn2.setOnClickListener {
-            val intent = Intent(this@home3, page9::class.java)
-            intent.putExtra("Dayofmonth",d)
-            intent.putExtra("month",m)
-            intent.putExtra("year",day[0])
-            intent.putExtra("name","追加")
-            startActivity(intent)
-        }
+//        sub_btn1_home.setOnClickListener {
+//            val intent = Intent(this@home3, page7_re::class.java)
+//            intent.putExtra("Dayofmonth",d)
+//            intent.putExtra("month",m)
+//            intent.putExtra("year",day[0])
+//            intent.putExtra("name","追加")
+//            startActivity(intent)
+//        }
+//
+//        sub_btn2_home.setOnClickListener {
+//            val intent = Intent(this@home3, page9::class.java)
+//            intent.putExtra("Dayofmonth",d)
+//            intent.putExtra("month",m)
+//            intent.putExtra("year",day[0])
+//            intent.putExtra("name","追加")
+//            startActivity(intent)
+//        }
 
     }
 

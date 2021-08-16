@@ -14,10 +14,13 @@
 
     <ConstraintSet
         android:id="@+id/start">
-        <Constraint android:id="@id/view">
+        <Constraint android:id="@id/view"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintBottom_toBottomOf="parent">
             <Layout
                 android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:layout_height="match_parent"
                 motion:layout_constraintTop_toTopOf="parent"
                 motion:layout_constraintBottom_toBottomOf="parent"
                 motion:layout_constraintStart_toStartOf="parent"
@@ -28,11 +31,17 @@
                 motion:customColorValue="#00FFFFFF"
                 />
         </Constraint>
-        <Constraint android:id="@id/fab">
+        <Constraint android:id="@id/fab"
+            android:layout_marginEnd="8dp"
+            android:layout_height="48dp"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="48dp"
+            android:layout_marginBottom="80dp"
+            motion:transitionEasing="accelerate">
             <Layout
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="120dp"
                 android:layout_marginEnd="8dp"
                 motion:layout_constraintEnd_toEndOf="parent"
                 motion:layout_constraintBottom_toBottomOf="parent"
@@ -44,14 +53,15 @@
         </Constraint>
         <Constraint
             android:id="@id/sub_btn1"
-            android:visibility="invisible">
+            android:visibility="invisible"
+            android:layout_marginBottom="0dp">
             <Layout
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_marginBottom="8dp"
                 motion:layout_constraintStart_toStartOf="@id/fab"
                 motion:layout_constraintEnd_toEndOf="@id/fab"
-                motion:layout_constraintBottom_toBottomOf="parent"
+                motion:layout_constraintBottom_toBottomOf="@id/fab"
                 />
         </Constraint>
         <Constraint
@@ -76,7 +86,7 @@
                 android:layout_marginBottom="8dp"
                 motion:layout_constraintStart_toStartOf="@id/sub_btn1"
                 motion:layout_constraintEnd_toEndOf="@id/sub_btn1"
-                motion:layout_constraintBottom_toBottomOf="parent"
+                motion:layout_constraintBottom_toBottomOf="@id/fab"
                 />
         </Constraint>
         <Constraint
@@ -101,10 +111,11 @@
 
     <ConstraintSet
         android:id="@+id/end">
-        <Constraint android:id="@id/view">
+        <Constraint android:id="@id/view"
+            android:layout_marginBottom="100dp">
             <Layout
                 android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:layout_height="match_parent"
                 motion:layout_constraintTop_toTopOf="parent"
                 motion:layout_constraintBottom_toBottomOf="parent"
                 motion:layout_constraintStart_toStartOf="parent"
@@ -115,11 +126,16 @@
                 motion:customColorValue="@color/clear"
                 />
         </Constraint>
-        <Constraint android:id="@id/fab">
+        <Constraint android:id="@id/fab"
+            android:layout_marginEnd="8dp"
+            android:layout_height="48dp"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="48dp"
+            motion:layout_editor_absoluteY="543dp">
             <Layout
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="120dp"
                 android:layout_marginEnd="8dp"
                 motion:layout_constraintEnd_toEndOf="parent"
                 motion:layout_constraintBottom_toBottomOf="parent"
