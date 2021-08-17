@@ -116,6 +116,7 @@ class home3 : AppCompatActivity() {
                 intent = Intent(this@home3, page11::class.java)
                 intent.putExtra("position", i.toString())
                 startActivity(intent)
+                overridePendingTransition(0, 0)
 
             }
         }
@@ -128,7 +129,7 @@ class home3 : AppCompatActivity() {
             intent.putExtra("year",day[0])
             intent.putExtra("position", position)
             startActivity(intent)
-
+            overridePendingTransition(0, 0)
         }
 
 
@@ -140,7 +141,7 @@ class home3 : AppCompatActivity() {
             intent.putExtra("year",day[0])
             intent.putExtra("list_position", position)
             startActivity(intent)
-
+            overridePendingTransition(0, 0)
         }
 
         floatingActionButton.setOnClickListener {
@@ -170,6 +171,7 @@ class home3 : AppCompatActivity() {
             intent.putExtra("year",day[0])
             intent.putExtra("name","追加")
             startActivity(intent)
+            overridePendingTransition(0, 0)
         }
 
         task_home3.setOnClickListener {
@@ -179,6 +181,7 @@ class home3 : AppCompatActivity() {
             intent.putExtra("year",day[0])
             intent.putExtra("name","追加")
             startActivity(intent)
+            overridePendingTransition(0, 0)
         }
 
     }
