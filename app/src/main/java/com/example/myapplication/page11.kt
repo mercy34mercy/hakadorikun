@@ -14,7 +14,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.myapplication.databinding.ActivityPage11Binding
 import io.realm.Realm
 import io.realm.RealmResults
+import kotlinx.android.synthetic.main.activity_home3.*
 import kotlinx.android.synthetic.main.activity_page11.*
+import kotlinx.android.synthetic.main.activity_page11.listview_page11
 import java.time.LocalDate
 
 class page11 : AppCompatActivity() {
@@ -27,6 +29,7 @@ class page11 : AppCompatActivity() {
     var color_s:String = ""
     var icon_i:Int = 0
     var position:Int = 0
+    var clickcnt:Int = 0
 
 
 
@@ -87,7 +90,7 @@ class page11 : AppCompatActivity() {
         }
 
         //右下のプラスボタンその１
-        sub_btn1_page11.setOnClickListener {
+        event_page11.setOnClickListener {
             val intent = Intent(this@page11, page7_re::class.java)
             intent.putExtra("subject",edit_subject.text.toString())
             intent.putExtra("Dayofmonth",d)
@@ -98,7 +101,7 @@ class page11 : AppCompatActivity() {
         }
 
         //右下のプラスボタンその２
-        sub_btn2_page11.setOnClickListener {
+        task_page11.setOnClickListener {
 
             val intent = Intent(this@page11, page9::class.java)
             intent.putExtra("Dayofmonth",d)
@@ -107,6 +110,28 @@ class page11 : AppCompatActivity() {
             intent.putExtra("name","追加")
             startActivity(intent)
         }
+
+        floatingActionButton_page11.setOnClickListener {
+            if(clickcnt%2 == 0) {
+                task_page11.isClickable = true
+                event_page11.isClickable = true
+
+                task_page11.text = "予定を追加"
+                event_page11.text = "課題を追加"
+                task_page11.setBackgroundResource(R.drawable.fillline)
+                event_page11.setBackgroundResource(R.drawable.fillline)
+            }else{
+                task_page11.isClickable = false
+                event_page11.isClickable = false
+                task_page11.text = ""
+                event_page11.text = ""
+                task_page11.setBackgroundResource(R.color.clear)
+                event_page11.setBackgroundResource(R.color.clear)
+            }
+            clickcnt++
+        }
+
+
 
 
         listview_page11.setOnItemClickListener { parent, view, position, id ->

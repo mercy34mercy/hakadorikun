@@ -67,12 +67,13 @@ class Page3_re : AppCompatActivity() {
         }
 
         add_biutton_page3.setOnClickListener {
-            val intent = Intent(this@Page3_re,page7_re::class.java)
-            intent.putExtra("name","追加")
-            intent.putExtra("Dayofmonth",d)
-            intent.putExtra("month",m)
-            intent.putExtra("year",day[0])
+            val intent = Intent(this@Page3_re,Page3_2::class.java)
+//            intent.putExtra("name","追加")
+//            intent.putExtra("Dayofmonth",d)
+//            intent.putExtra("month",m)
+//            intent.putExtra("year",day[0])
             startActivity(intent)
+            overridePendingTransition(0, 0)
         }
 
         //右下のプラスボタンその１

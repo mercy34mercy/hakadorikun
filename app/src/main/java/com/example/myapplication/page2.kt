@@ -51,25 +51,25 @@ class page2 : AppCompatActivity() {
         }
 
         //右下のプラスボタンその１
-        sub_btn1_home3.setOnClickListener {
-            val intent = Intent(this@page2, page7_re::class.java)
-            intent.putExtra("subject","")
-            intent.putExtra("Dayofmonth",d)
-            intent.putExtra("month",m)
-            intent.putExtra("year",day[0])
-            intent.putExtra("name","追加")
-            startActivity(intent)
-        }
-
-        //右下のプラスボタンその２
-        sub_btn2_home3.setOnClickListener {
-
-            val intent = Intent(this@page2, page9::class.java)
-            intent.putExtra("Dayofmonth",d)
-            intent.putExtra("month",m)
-            intent.putExtra("year",day[0])
-            intent.putExtra("name","追加")
-            startActivity(intent)
-        }
+//        sub_btn1_home3.setOnClickListener {
+//            val intent = Intent(this@page2, page7_re::class.java)
+//            intent.putExtra("subject","")
+//            intent.putExtra("Dayofmonth",d)
+//            intent.putExtra("month",m)
+//            intent.putExtra("year",day[0])
+//            intent.putExtra("name","追加")
+//            startActivity(intent)
+//        }
+//
+//        //右下のプラスボタンその２
+//        sub_btn2_home3.setOnClickListener {
+//
+//            val intent = Intent(this@page2, page9::class.java)
+//            intent.putExtra("Dayofmonth",d)
+//            intent.putExtra("month",m)
+//            intent.putExtra("year",day[0])
+//            intent.putExtra("name","追加")
+//            startActivity(intent)
+//        }
     }
 }

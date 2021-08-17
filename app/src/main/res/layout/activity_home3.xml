@@ -645,23 +645,28 @@
 
         <Button
             android:id="@+id/task_home3"
+            style="@style/Widget.AppCompat.Button.Small"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="@color/clear"
+            android:clickable="false"
             android:gravity="center"
             android:textColor="@color/black"
             app:backgroundTint="@color/clear" />
 
         <Button
             android:id="@+id/event_home3"
+            style="@style/Widget.AppCompat.Button.Small"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="@color/clear"
+            android:clickable="false"
             android:gravity="center"
             android:textAllCaps="false"
             android:textColor="@color/black"
             android:textSize="14sp"
-            app:backgroundTint="@color/clear" />
+            app:backgroundTint="@color/clear"
+            app:srcCompat="@drawable/fillline" />
     </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
