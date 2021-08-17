@@ -14,6 +14,48 @@
     android:layout_height="match_parent"
     tools:context=".page11">
 
+    <LinearLayout
+        android:id="@+id/linearLayout7"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:layout_marginBottom="170dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/delete_re"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/clear"
+            android:gravity="center" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/yes_page11"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/clear"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/no_page11"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/clear"
+                android:gravity="center" />
+        </LinearLayout>
+    </LinearLayout>
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar11"
         android:layout_width="match_parent"
@@ -25,11 +67,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <View
-        android:id="@+id/view"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@android:color/darker_gray" />
+    <TextView
+        android:id="@+id/return_page11"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:gravity="center"
+        android:text="キャンセル"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/zikan_text"
@@ -47,9 +93,9 @@
         android:layout_width="120dp"
         android:layout_height="70dp"
         android:layout_marginEnd="150dp"
-        android:layout_marginRight="150dp"
+        android:layout_marginBottom="10dp"
         android:text="削除"
-        app:backgroundTint="@color/orange"
+        app:backgroundTint="@color/gray"
         app:iconTint="@color/orange"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -60,7 +106,7 @@
         android:layout_width="120dp"
         android:layout_height="70dp"
         android:layout_marginStart="150dp"
-        android:layout_marginLeft="150dp"
+        android:layout_marginBottom="10dp"
         android:text="追加"
         app:backgroundTint="@color/orange"
         app:iconTint="@color/orange"
@@ -68,71 +114,67 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <ScrollView
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="@+id/motionLayout_page11"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar11"
-        tools:layout_editor_absoluteX="16dp">
+        android:layout_height="match_parent"
+        android:layout_marginTop="80dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:background="@android:color/darker_gray" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="20dp"
-                android:background="@android:color/darker_gray" />
+        <EditText
+            android:id="@+id/edit_subject"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="#00000000"
+            android:ems="10"
+            android:hint="科目名"
+            android:inputType="textPersonName"
+            android:paddingLeft="10dp" />
 
-            <EditText
-                android:id="@+id/edit_subject"
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:background="#00000000"
-                android:ems="10"
-                android:hint="科目名"
-                android:inputType="textPersonName"
-                android:paddingLeft="10dp" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@android:color/darker_gray" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:background="@android:color/darker_gray" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="20dp"
-                android:background="@android:color/darker_gray" />
+        <Button
+            android:id="@+id/textView26"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="#00000000"
+            android:gravity="center|left"
+            android:paddingLeft="10dp"
+            android:text="色"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            app:backgroundTint="#00000000" />
 
-            <Button
-                android:id="@+id/textView26"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:background="#00000000"
-                android:gravity="center|left"
-                android:paddingLeft="10dp"
-                android:text="色"
-                android:textColor="#000000"
-                android:textSize="18sp"
-                app:backgroundTint="#00000000" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@android:color/darker_gray" />
+        <ListView
+            android:id="@+id/listview_page11"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp" />
 
-            <ListView
-                android:id="@+id/listview_page11"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="20dp" />
+    </LinearLayout>
 
-        </LinearLayout>
-    </ScrollView>
 
     <Spinner
         android:id="@+id/spinner_page11"

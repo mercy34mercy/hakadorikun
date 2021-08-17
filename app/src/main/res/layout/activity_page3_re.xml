@@ -7,13 +7,24 @@
     tools:context=".Page3_re">
 
     <TextView
+        android:id="@+id/return_page3_re"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:gravity="center"
+        android:text="キャンセル"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="80dp"
         android:gravity="center"
         android:text="課題"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="28sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -87,6 +98,55 @@
             app:srcCompat="@drawable/tool_off"
             android:paddingBottom="10dp" />
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="140dp"
+        android:layout_height="126dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="130dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <Button
+            android:id="@+id/task_page3"
+            style="@style/Widget.AppCompat.Button.Small"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/clear"
+            android:clickable="false"
+            android:gravity="center"
+            android:textColor="@color/black"
+            app:backgroundTint="@color/clear" />
+
+        <Button
+            android:id="@+id/event_page3"
+            style="@style/Widget.AppCompat.Button.Small"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/clear"
+            android:clickable="false"
+            android:gravity="center"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:backgroundTint="@color/clear"
+            app:srcCompat="@drawable/fillline" />
+    </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton_page3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="100dp"
+        android:clickable="true"
+        app:backgroundTint="@color/orange"
+        app:fabCustomSize="60dp"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_plus" />
 
 
 

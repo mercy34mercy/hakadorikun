@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.DisplayMetrics
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -30,8 +31,7 @@ class page11 : AppCompatActivity() {
     var icon_i:Int = 0
     var position:Int = 0
     var clickcnt:Int = 0
-
-
+    var clickcnt2:Int = 0
 
     private val myViewModel: MyViewModel by lazy {
         ViewModelProvider.NewInstanceFactory().create(MyViewModel::class.java)
@@ -97,6 +97,7 @@ class page11 : AppCompatActivity() {
             intent.putExtra("month",m)
             intent.putExtra("year",day[0])
             intent.putExtra("name","追加")
+            clickcnt++
             startActivity(intent)
         }
 
@@ -108,6 +109,7 @@ class page11 : AppCompatActivity() {
             intent.putExtra("month",m)
             intent.putExtra("year",day[0])
             intent.putExtra("name","追加")
+            clickcnt++
             startActivity(intent)
         }
 
@@ -131,7 +133,27 @@ class page11 : AppCompatActivity() {
             clickcnt++
         }
 
+//                //削除ボタンが押されてた時の動作
+//        button_delete_page11.setOnClickListener{
+//            if(result_page11.isEmpty()) {
+//                finish()
+//            }else{
+//                deleteRealm(position)
+//            }
+//        }
 
+        button_delete_page11.setOnClickListener {
+            if(clickcnt2 == 0)
+            {
+                delete_re.text = "本当に削除しますか"
+                yes_page11.text = "はい"
+                no_page11.text = "いいえ"
+                delete_re.setBackgroundResource(R.drawable.fillline)
+                yes_page11.setBackgroundResource(R.drawable.fillline)
+                no_page11.setBackgroundResource(R.drawable.fillline)
+            }else{
+            }
+        }
 
 
         listview_page11.setOnItemClickListener { parent, view, position, id ->
@@ -140,6 +162,16 @@ class page11 : AppCompatActivity() {
             startActivity(intent)
         }
 
+        return_page11.setOnClickListener {
+            finish()
+        }
+
+
+        val dm = DisplayMetrics()
+        windowManager.defaultDisplay.getMetrics(dm)
+        val height = dm.heightPixels
+        button_delete_page11.layoutParams.height = height/20
+        button_add_page11.layoutParams.height = height/20
 
 
     }
@@ -204,14 +236,7 @@ class page11 : AppCompatActivity() {
             listview_page11.adapter = Task
         }
 
-        //削除ボタンが押されてた時の動作
-        button_delete_page11.setOnClickListener{
-            if(result_page11.isEmpty()) {
-                finish()
-            }else{
-                deleteRealm(position)
-            }
-        }
+
 
         //追加ボタンが押された時の動作
         button_add_page11.setOnClickListener {
@@ -228,6 +253,26 @@ class page11 : AppCompatActivity() {
                 }
 
             }
+        }
+
+        yes_page11.setOnClickListener {
+            //TODO　なんかうまくいってない
+            deleteRealm(position)
+            delete_re.setBackgroundResource(R.color.clear)
+            yes_page11.setBackgroundResource(R.color.clear)
+            no_page11.setBackgroundResource(R.color.clear)
+            delete_re.text = ""
+            yes_page11.text = ""
+            no_page11.text = ""
+        }
+
+        no_page11.setOnClickListener {
+            delete_re.setBackgroundResource(R.color.clear)
+            yes_page11.setBackgroundResource(R.color.clear)
+            no_page11.setBackgroundResource(R.color.clear)
+            delete_re.text = ""
+            yes_page11.text = ""
+            no_page11.text = ""
         }
 
 

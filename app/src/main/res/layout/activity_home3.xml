@@ -15,7 +15,7 @@
     tools:context=".home3">
 
     <LinearLayout
-        android:id="@+id/linearLayout7"
+        android:id="@+id/select_liner_home3"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:orientation="horizontal"
@@ -91,7 +91,7 @@
         android:id="@+id/scrollView3"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout7"
+        app:layout_constraintBottom_toTopOf="@+id/select_liner_home3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -649,7 +649,6 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="@color/clear"
-            android:clickable="false"
             android:gravity="center"
             android:textColor="@color/black"
             app:backgroundTint="@color/clear" />
@@ -660,7 +659,6 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="@color/clear"
-            android:clickable="false"
             android:gravity="center"
             android:textAllCaps="false"
             android:textColor="@color/black"

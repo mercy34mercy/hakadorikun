@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.util.DisplayMetrics
 import android.view.*
 import android.widget.Button
 import androidx.annotation.RequiresApi
@@ -72,6 +73,8 @@ class home3 : AppCompatActivity() {
 
 
         today = day[0] + "/" + m + "/" + d
+
+
 
 
 //        var builder = NotificationCompat.Builder(this, "CHANNEL_ID")
@@ -170,6 +173,7 @@ class home3 : AppCompatActivity() {
             intent.putExtra("month",m)
             intent.putExtra("year",day[0])
             intent.putExtra("name","追加")
+            clickcnt++
             startActivity(intent)
             overridePendingTransition(0, 0)
         }
@@ -180,9 +184,14 @@ class home3 : AppCompatActivity() {
             intent.putExtra("month",m)
             intent.putExtra("year",day[0])
             intent.putExtra("name","追加")
+            clickcnt++
             startActivity(intent)
             overridePendingTransition(0, 0)
         }
+        val dm = DisplayMetrics()
+        windowManager.defaultDisplay.getMetrics(dm)
+        val height = dm.heightPixels
+        select_liner_home3.layoutParams.height = height/20
 
     }
 
@@ -214,6 +223,9 @@ class home3 : AppCompatActivity() {
             z_31,z_32,z_33,z_34,z_35,z_36,
             z_41,z_42,z_43,z_44,z_45,z_46,
             z_51,z_52,z_53,z_54,z_55,z_56)
+
+        task_home3.isClickable = false
+        event_home3.isClickable = false
 
         realm = Realm.getDefaultInstance()
 

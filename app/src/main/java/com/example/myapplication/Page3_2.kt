@@ -4,9 +4,11 @@ import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.DisplayMetrics
 import androidx.annotation.RequiresApi
 import io.realm.Realm
 import io.realm.RealmResults
+import kotlinx.android.synthetic.main.activity_home3.*
 import kotlinx.android.synthetic.main.activity_page3_2.*
 import kotlinx.android.synthetic.main.activity_page3_re.*
 import java.time.LocalDate
@@ -15,6 +17,7 @@ class Page3_2 : AppCompatActivity() {
     lateinit var realm: Realm
     lateinit var result: RealmResults<TaskDB>
     lateinit var task:TaskAdapter
+    var clickcnt:Int = 0
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,6 +57,57 @@ class Page3_2 : AppCompatActivity() {
             startActivity(intent)
             overridePendingTransition(0, 0)
         }
+
+        floatingActionButton_page3_2.setOnClickListener {
+            if(clickcnt%2 == 0) {
+                task_plus_page3_2.isClickable = true
+                event_plus_page3_2.isClickable = true
+
+                task_plus_page3_2.text = "予定を追加"
+                event_plus_page3_2.text = "課題を追加"
+                task_plus_page3_2.setBackgroundResource(R.drawable.fillline)
+                event_plus_page3_2.setBackgroundResource(R.drawable.fillline)
+            }else{
+                task_plus_page3_2.isClickable = false
+                event_plus_page3_2.isClickable = false
+                task_plus_page3_2.text = ""
+                event_plus_page3_2.text = ""
+                task_plus_page3_2.setBackgroundResource(R.color.clear)
+                event_plus_page3_2.setBackgroundResource(R.color.clear)
+            }
+            clickcnt++
+        }
+
+        event_plus_page3_2.setOnClickListener {
+            val intent = Intent(this@Page3_2, page7_re::class.java)
+            intent.putExtra("Dayofmonth",d)
+            intent.putExtra("month",m)
+            intent.putExtra("year",day[0])
+            intent.putExtra("name","追加")
+            clickcnt++
+            startActivity(intent)
+            overridePendingTransition(0, 0)
+        }
+
+        task_plus_page3_2.setOnClickListener {
+            val intent = Intent(this@Page3_2, page9::class.java)
+            intent.putExtra("Dayofmonth",d)
+            intent.putExtra("month",m)
+            intent.putExtra("year",day[0])
+            intent.putExtra("name","追加")
+            clickcnt++
+            startActivity(intent)
+            overridePendingTransition(0, 0)
+        }
+
+        return_page3_2.setOnClickListener {
+            finish()
+        }
+
+        val dm = DisplayMetrics()
+        windowManager.defaultDisplay.getMetrics(dm)
+        val height = dm.heightPixels
+        linearLayout10.layoutParams.height = height/20
     }
 
     override fun onResume() {
