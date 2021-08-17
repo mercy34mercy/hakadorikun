@@ -133,6 +133,30 @@ class page11 : AppCompatActivity() {
             clickcnt++
         }
 
+        yes_page11.setOnClickListener {
+            //TODO　なんかうまくいってない
+            yes_page11.isClickable = false
+            no_page11.isClickable = false
+            delete_re.setBackgroundResource(R.color.clear)
+            yes_page11.setBackgroundResource(R.color.clear)
+            no_page11.setBackgroundResource(R.color.clear)
+            delete_re.text = ""
+            yes_page11.text = ""
+            no_page11.text = ""
+        }
+
+        no_page11.setOnClickListener {
+            yes_page11.isClickable = false
+            no_page11.isClickable = false
+            delete_re.setBackgroundResource(R.color.clear)
+            yes_page11.setBackgroundResource(R.color.clear)
+            no_page11.setBackgroundResource(R.color.clear)
+            delete_re.text = ""
+            yes_page11.text = ""
+            no_page11.text = ""
+        }
+
+
 //                //削除ボタンが押されてた時の動作
 //        button_delete_page11.setOnClickListener{
 //            if(result_page11.isEmpty()) {
@@ -145,6 +169,8 @@ class page11 : AppCompatActivity() {
         button_delete_page11.setOnClickListener {
             if(clickcnt2 == 0)
             {
+                yes_page11.isClickable = true
+                no_page11.isClickable = true
                 delete_re.text = "本当に削除しますか"
                 yes_page11.text = "はい"
                 no_page11.text = "いいえ"
@@ -254,29 +280,13 @@ class page11 : AppCompatActivity() {
 
             }
         }
-
         yes_page11.setOnClickListener {
-            //TODO　なんかうまくいってない
-            deleteRealm(position)
-            delete_re.setBackgroundResource(R.color.clear)
-            yes_page11.setBackgroundResource(R.color.clear)
-            no_page11.setBackgroundResource(R.color.clear)
-            delete_re.text = ""
-            yes_page11.text = ""
-            no_page11.text = ""
+            if(result_page11.isEmpty()) {
+                finish()
+            }else{
+                deleteRealm(position)
+            }
         }
-
-        no_page11.setOnClickListener {
-            delete_re.setBackgroundResource(R.color.clear)
-            yes_page11.setBackgroundResource(R.color.clear)
-            no_page11.setBackgroundResource(R.color.clear)
-            delete_re.text = ""
-            yes_page11.text = ""
-            no_page11.text = ""
-        }
-
-
-
         }
     //Realmからデータを削除する
     private fun deleteRealm(id: Int) {
