@@ -18,6 +18,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import io.realm.Realm
 import io.realm.RealmResults
+import kotlinx.android.synthetic.main.activity_page11.*
+import kotlinx.android.synthetic.main.activity_page2.*
 import kotlinx.android.synthetic.main.activity_page3_re.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -72,6 +74,28 @@ class Page3_re : AppCompatActivity() {
             intent.putExtra("year",day[0])
             startActivity(intent)
         }
+
+        //右下のプラスボタンその１
+//        sub_btn1_home3.setOnClickListener {
+//            val intent = Intent(this@Page3_re, page7_re::class.java)
+//            intent.putExtra("subject","")
+//            intent.putExtra("Dayofmonth",d)
+//            intent.putExtra("month",m)
+//            intent.putExtra("year",day[0])
+//            intent.putExtra("name","追加")
+//            startActivity(intent)
+//        }
+//
+//        //右下のプラスボタンその２
+//        sub_btn2.setOnClickListener {
+//
+//            val intent = Intent(this@Page3_re, page9::class.java)
+//            intent.putExtra("Dayofmonth",d)
+//            intent.putExtra("month",m)
+//            intent.putExtra("year",day[0])
+//            intent.putExtra("name","追加")
+//            startActivity(intent)
+//        }
 
 
    }

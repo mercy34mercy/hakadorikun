@@ -180,19 +180,19 @@
             tools:layout_editor_absoluteY="714dp" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/sub_btn1"
+            android:id="@+id/sub_btn1_page11"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/orange"
             android:clickable="true"
             android:src="@drawable/ic_baseline_menu_book_24"
             app:fabCustomSize="32dp"
-            app:layout_constraintBottom_toTopOf="@+id/sub_btn2"
+            app:layout_constraintBottom_toTopOf="@+id/sub_btn2_page11"
             app:layout_constraintTop_toBottomOf="@+id/fab"
             tools:layout_editor_absoluteX="332dp" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/sub_btn2"
+            android:id="@+id/sub_btn2_page11"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/orange"

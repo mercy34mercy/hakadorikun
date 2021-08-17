@@ -12,7 +12,14 @@
         android:roundIcon="@drawable/iconhakadorikun"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
-
+        <activity
+            android:name=".testActivity"
+            android:exported="true"
+            android:label="@string/title_activity_test" />
+        <activity
+            android:name=".ui.login.LoginActivity"
+            android:exported="true"
+            android:label="@string/title_activity_login" />
         <activity android:name=".home2" />
         <activity android:name=".page7_re" />
         <activity android:name=".page4_re" />

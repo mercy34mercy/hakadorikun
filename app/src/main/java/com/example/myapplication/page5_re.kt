@@ -8,6 +8,8 @@ import android.widget.TextView
 import com.google.android.material.button.MaterialButton
 import io.realm.Realm
 import io.realm.RealmResults
+import kotlinx.android.synthetic.main.activity_page11.*
+import kotlinx.android.synthetic.main.activity_page2.*
 import kotlinx.android.synthetic.main.activity_page5_re.*
 import java.util.ArrayList
 
@@ -79,6 +81,28 @@ class page5_re : AppCompatActivity() {
         List_Event.setOnItemClickListener { parent, view, position, id ->
             val intent = Intent(this@page5_re,page8::class.java)
             intent.putExtra("list_position",position)
+            startActivity(intent)
+        }
+
+        //右下のプラスボタンその１
+        sub_btn1_page5.setOnClickListener {
+            val intent = Intent(this@page5_re, page7_re::class.java)
+            intent.putExtra("subject",edit_subject.text.toString())
+            intent.putExtra("Dayofmonth",dayOfmonth)
+            intent.putExtra("month",month)
+            intent.putExtra("year",year)
+            intent.putExtra("name","追加")
+            startActivity(intent)
+        }
+
+        //右下のプラスボタンその２
+        sub_btn2_page5.setOnClickListener {
+
+            val intent = Intent(this@page5_re, page9::class.java)
+            intent.putExtra("Dayofmonth",dayOfmonth)
+            intent.putExtra("month",month)
+            intent.putExtra("year",year)
+            intent.putExtra("name","追加")
             startActivity(intent)
         }
 

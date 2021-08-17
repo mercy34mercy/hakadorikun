@@ -7,12 +7,9 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.*
-import android.widget.AdapterView
 import android.widget.Button
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
 import androidx.databinding.DataBindingUtil
 import com.example.myapplication.databinding.ActivityHome3Binding
 import io.realm.Realm
@@ -20,7 +17,10 @@ import io.realm.Realm
 import io.realm.RealmResults
 
 import kotlinx.android.synthetic.main.activity_home3.*
+import kotlinx.android.synthetic.main.activity_home3.event_home3
+import kotlinx.android.synthetic.main.activity_home3.floatingActionButton
 import kotlinx.android.synthetic.main.activity_page5_re.*
+
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.time.LocalDate
@@ -34,6 +34,7 @@ class home3 : AppCompatActivity() {
     lateinit var event_l:CustomAdapter
     lateinit var task_l:TaskAdapter
     lateinit var today:String
+    var clickcnt:Int = 0
     //課題達成率を求めるために課題の終わってるやつの要素数を取得する
     lateinit var task_result_done: RealmResults<TaskDB>
 
@@ -99,7 +100,7 @@ class home3 : AppCompatActivity() {
             overridePendingTransition(0, 0)
         }
 
-        task_home3.setOnClickListener {
+        taskbutton_home3.setOnClickListener {
             intent = Intent(this@home3, Page3_re::class.java)
             startActivity(intent)
             overridePendingTransition(0, 0)
@@ -142,23 +143,43 @@ class home3 : AppCompatActivity() {
 
         }
 
-//        sub_btn1_home.setOnClickListener {
-//            val intent = Intent(this@home3, page7_re::class.java)
-//            intent.putExtra("Dayofmonth",d)
-//            intent.putExtra("month",m)
-//            intent.putExtra("year",day[0])
-//            intent.putExtra("name","追加")
-//            startActivity(intent)
-//        }
-//
-//        sub_btn2_home.setOnClickListener {
-//            val intent = Intent(this@home3, page9::class.java)
-//            intent.putExtra("Dayofmonth",d)
-//            intent.putExtra("month",m)
-//            intent.putExtra("year",day[0])
-//            intent.putExtra("name","追加")
-//            startActivity(intent)
-//        }
+        floatingActionButton.setOnClickListener {
+            if(clickcnt%2 == 0) {
+                task_home3.isClickable = true
+                event_home3.isClickable = true
+
+                task_home3.text = "予定を追加"
+                event_home3.text = "課題を追加"
+                task_home3.setBackgroundResource(R.drawable.fillline)
+                event_home3.setBackgroundResource(R.drawable.fillline)
+            }else{
+                task_home3.isClickable = false
+                event_home3.isClickable = false
+                task_home3.text = ""
+                event_home3.text = ""
+                task_home3.setBackgroundResource(R.color.clear)
+                event_home3.setBackgroundResource(R.color.clear)
+            }
+            clickcnt++
+        }
+
+        event_home3.setOnClickListener {
+            val intent = Intent(this@home3, page7_re::class.java)
+            intent.putExtra("Dayofmonth",d)
+            intent.putExtra("month",m)
+            intent.putExtra("year",day[0])
+            intent.putExtra("name","追加")
+            startActivity(intent)
+        }
+
+        task_home3.setOnClickListener {
+            val intent = Intent(this@home3, page9::class.java)
+            intent.putExtra("Dayofmonth",d)
+            intent.putExtra("month",m)
+            intent.putExtra("year",day[0])
+            intent.putExtra("name","追加")
+            startActivity(intent)
+        }
 
     }
 

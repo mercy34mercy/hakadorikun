@@ -87,7 +87,7 @@ class page11 : AppCompatActivity() {
         }
 
         //右下のプラスボタンその１
-        sub_btn1.setOnClickListener {
+        sub_btn1_page11.setOnClickListener {
             val intent = Intent(this@page11, page7_re::class.java)
             intent.putExtra("subject",edit_subject.text.toString())
             intent.putExtra("Dayofmonth",d)
@@ -98,7 +98,7 @@ class page11 : AppCompatActivity() {
         }
 
         //右下のプラスボタンその２
-        sub_btn2.setOnClickListener {
+        sub_btn2_page11.setOnClickListener {
 
             val intent = Intent(this@page11, page9::class.java)
             intent.putExtra("Dayofmonth",d)
