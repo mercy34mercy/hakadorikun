@@ -74,7 +74,8 @@ class home3 : AppCompatActivity() {
 
         today = day[0] + "/" + m + "/" + d
 
-
+        //初期状態ではbuttonは消しておく
+        delete_button()
 
 
 //        var builder = NotificationCompat.Builder(this, "CHANNEL_ID")
@@ -149,20 +150,9 @@ class home3 : AppCompatActivity() {
 
         floatingActionButton.setOnClickListener {
             if(clickcnt%2 == 0) {
-                task_home3.isClickable = true
-                event_home3.isClickable = true
-
-                task_home3.text = "予定を追加"
-                event_home3.text = "課題を追加"
-                task_home3.setBackgroundResource(R.drawable.fillline)
-                event_home3.setBackgroundResource(R.drawable.fillline)
+                create_button()
             }else{
-                task_home3.isClickable = false
-                event_home3.isClickable = false
-                task_home3.text = ""
-                event_home3.text = ""
-                task_home3.setBackgroundResource(R.color.clear)
-                event_home3.setBackgroundResource(R.color.clear)
+                delete_button()
             }
             clickcnt++
         }
@@ -174,6 +164,7 @@ class home3 : AppCompatActivity() {
             intent.putExtra("year",day[0])
             intent.putExtra("name","追加")
             clickcnt++
+            delete_button()
             startActivity(intent)
             overridePendingTransition(0, 0)
         }
@@ -185,6 +176,7 @@ class home3 : AppCompatActivity() {
             intent.putExtra("year",day[0])
             intent.putExtra("name","追加")
             clickcnt++
+            delete_button()
             startActivity(intent)
             overridePendingTransition(0, 0)
         }
@@ -214,6 +206,25 @@ class home3 : AppCompatActivity() {
     }
     */
 
+    private fun delete_button()
+    {
+        task_home3.isClickable = false
+        event_home3.isClickable = false
+        task_home3.text = ""
+        event_home3.text = ""
+        task_home3.setBackgroundResource(R.color.clear)
+        event_home3.setBackgroundResource(R.color.clear)
+    }
+
+    private fun create_button()
+    {
+        task_home3.isClickable = true
+        event_home3.isClickable = true
+        task_home3.text = "予定を追加"
+        event_home3.text = "課題を追加"
+        task_home3.setBackgroundResource(R.drawable.fillline)
+        event_home3.setBackgroundResource(R.drawable.fillline)
+    }
 
 
     override fun onResume() {

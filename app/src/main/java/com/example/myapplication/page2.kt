@@ -57,20 +57,9 @@ class page2 : AppCompatActivity() {
 
         floatingActionButton_page2.setOnClickListener {
             if(clickcnt%2 == 0) {
-                task_plus_page2.isClickable = true
-                event_plus_page2.isClickable = true
-
-                task_plus_page2.text = "予定を追加"
-                event_plus_page2.text = "課題を追加"
-                task_plus_page2.setBackgroundResource(R.drawable.fillline)
-                event_plus_page2.setBackgroundResource(R.drawable.fillline)
+                create_button()
             }else{
-                task_plus_page2.isClickable = false
-                event_plus_page2.isClickable = false
-                task_plus_page2.text = ""
-                event_plus_page2.text = ""
-                task_plus_page2.setBackgroundResource(R.color.clear)
-                event_plus_page2.setBackgroundResource(R.color.clear)
+                delete_button()
             }
             clickcnt++
         }
@@ -83,6 +72,7 @@ class page2 : AppCompatActivity() {
             intent.putExtra("name","追加")
             startActivity(intent)
             clickcnt++
+            delete_button()
             overridePendingTransition(0, 0)
         }
 
@@ -94,6 +84,7 @@ class page2 : AppCompatActivity() {
             intent.putExtra("name","追加")
             startActivity(intent)
             clickcnt++
+            delete_button()
             overridePendingTransition(0, 0)
         }
 
@@ -101,5 +92,24 @@ class page2 : AppCompatActivity() {
         windowManager.defaultDisplay.getMetrics(dm)
         val height = dm.heightPixels
         liner_home_page2.layoutParams.height = height/20
+    }
+
+    private fun delete_button()
+    {
+        task_plus_page2.isClickable = false
+        event_plus_page2.isClickable = false
+        task_plus_page2.text = ""
+        event_plus_page2.text = ""
+        task_plus_page2.setBackgroundResource(R.color.clear)
+        event_plus_page2.setBackgroundResource(R.color.clear)
+    }
+    private fun create_button()
+    {
+        task_plus_page2.isClickable = true
+        event_plus_page2.isClickable = true
+        task_plus_page2.text = "予定を追加"
+        event_plus_page2.text = "課題を追加"
+        task_plus_page2.setBackgroundResource(R.drawable.fillline)
+        event_plus_page2.setBackgroundResource(R.drawable.fillline)
     }
 }

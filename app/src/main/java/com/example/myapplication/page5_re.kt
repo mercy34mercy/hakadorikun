@@ -10,6 +10,7 @@ import io.realm.Realm
 import io.realm.RealmResults
 import kotlinx.android.synthetic.main.activity_page11.*
 import kotlinx.android.synthetic.main.activity_page2.*
+import kotlinx.android.synthetic.main.activity_page3_re.*
 import kotlinx.android.synthetic.main.activity_page5_re.*
 import java.util.ArrayList
 
@@ -25,7 +26,7 @@ class page5_re : AppCompatActivity() {
     lateinit var year:String
     lateinit var dayOfmonth:String
     lateinit var month:String
-
+    var clickcnt:Int = 0
 
 
 //    var array_button:ArrayList<MaterialButton> = ArrayList<MaterialButton>()
@@ -53,24 +54,8 @@ class page5_re : AppCompatActivity() {
 
         toolbar_page5_re.text = month + "月" + dayOfmonth + "日"
 
-
-//        add_task.setOnClickListener {
-//            val intent = Intent(this@page5_re,page7_re::class.java)
-//            intent.putExtra("name","追加")
-//            intent.putExtra("Dayofmonth",dayOfmonth)
-//            intent.putExtra("month",month)
-//            intent.putExtra("year",year)
-//            startActivity(intent)
-//        }
-//
-//        add_event.setOnClickListener {
-//            val intent = Intent(this@page5_re,page9::class.java)
-//            intent.putExtra("name","追加")
-//            intent.putExtra("Dayofmonth",dayOfmonth)
-//            intent.putExtra("month",month)
-//            intent.putExtra("year",year)
-//            startActivity(intent)
-//        }
+        //初期状態ではボタンは消しておく
+        delete_button()
 
         List_Task.setOnItemClickListener { parent, view, position, id ->
             val intent = Intent(this@page5_re,page6::class.java)
@@ -106,13 +91,38 @@ class page5_re : AppCompatActivity() {
 //            startActivity(intent)
 //        }
 
+        floatingActionButton_page5.setOnClickListener {
+            if(clickcnt%2 == 0) {
+                create_button()
+            }else{
+                delete_button()
+            }
+            clickcnt++
+        }
 
+        event_page5.setOnClickListener {
+            val intent = Intent(this@page5_re, page7_re::class.java)
+            intent.putExtra("Dayofmonth",dayOfmonth)
+            intent.putExtra("month",month)
+            intent.putExtra("year",year)
+            intent.putExtra("name","追加")
+            delete_button()
+            clickcnt++
+            startActivity(intent)
+            overridePendingTransition(0, 0)
+        }
 
-
-
-
-
-
+        task_page5.setOnClickListener {
+            val intent = Intent(this@page5_re, page9::class.java)
+            intent.putExtra("Dayofmonth",dayOfmonth)
+            intent.putExtra("month",month)
+            intent.putExtra("year",year)
+            intent.putExtra("name","追加")
+            delete_button()
+            clickcnt++
+            startActivity(intent)
+            overridePendingTransition(0, 0)
+        }
 
 /*
         for (i in 0..length-1) {
@@ -142,6 +152,26 @@ class page5_re : AppCompatActivity() {
 
 
 
+    }
+
+    private fun delete_button()
+    {
+        task_page5.isClickable = false
+        event_page5.isClickable = false
+        task_page5.text = ""
+        event_page5.text = ""
+        task_page5.setBackgroundResource(R.color.clear)
+        event_page5.setBackgroundResource(R.color.clear)
+    }
+
+    private fun create_button()
+    {
+        task_page5.isClickable = true
+        event_page5.isClickable = true
+        task_page5.text = "予定を追加"
+        event_page5.text = "課題を追加"
+        task_page5.setBackgroundResource(R.drawable.fillline)
+        event_page5.setBackgroundResource(R.drawable.fillline)
     }
 
 

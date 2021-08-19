@@ -98,6 +98,7 @@ class page11 : AppCompatActivity() {
             intent.putExtra("year",day[0])
             intent.putExtra("name","追加")
             clickcnt++
+            delete_button()
             startActivity(intent)
         }
 
@@ -110,25 +111,15 @@ class page11 : AppCompatActivity() {
             intent.putExtra("year",day[0])
             intent.putExtra("name","追加")
             clickcnt++
+            delete_button()
             startActivity(intent)
         }
 
         floatingActionButton_page11.setOnClickListener {
             if(clickcnt%2 == 0) {
-                task_page11.isClickable = true
-                event_page11.isClickable = true
-
-                task_page11.text = "予定を追加"
-                event_page11.text = "課題を追加"
-                task_page11.setBackgroundResource(R.drawable.fillline)
-                event_page11.setBackgroundResource(R.drawable.fillline)
+                create_button()
             }else{
-                task_page11.isClickable = false
-                event_page11.isClickable = false
-                task_page11.text = ""
-                event_page11.text = ""
-                task_page11.setBackgroundResource(R.color.clear)
-                event_page11.setBackgroundResource(R.color.clear)
+                delete_button()
             }
             clickcnt++
         }
@@ -200,6 +191,26 @@ class page11 : AppCompatActivity() {
         button_add_page11.layoutParams.height = height/20
 
 
+    }
+
+    private fun delete_button()
+    {
+        task_page11.isClickable = false
+        event_page11.isClickable = false
+        task_page11.text = ""
+        event_page11.text = ""
+        task_page11.setBackgroundResource(R.color.clear)
+        event_page11.setBackgroundResource(R.color.clear)
+    }
+
+    private fun create_button()
+    {
+        task_page11.isClickable = true
+        event_page11.isClickable = true
+        task_page11.text = "予定を追加"
+        event_page11.text = "課題を追加"
+        task_page11.setBackgroundResource(R.drawable.fillline)
+        event_page11.setBackgroundResource(R.drawable.fillline)
     }
 
     //Realmのデータを新しくする

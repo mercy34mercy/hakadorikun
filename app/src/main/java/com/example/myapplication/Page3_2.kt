@@ -30,6 +30,9 @@ class Page3_2 : AppCompatActivity() {
         val m:String  = day[1].toInt().toString()
         val d:String  = day[2].toInt().toString()
 
+        //初期状態ではbuttonは消しておく
+        delete_button()
+
         home_page3_2.setOnClickListener {
             val intent = Intent(this@Page3_2,home3::class.java)
             startActivity(intent)
@@ -60,20 +63,9 @@ class Page3_2 : AppCompatActivity() {
 
         floatingActionButton_page3_2.setOnClickListener {
             if(clickcnt%2 == 0) {
-                task_plus_page3_2.isClickable = true
-                event_plus_page3_2.isClickable = true
-
-                task_plus_page3_2.text = "予定を追加"
-                event_plus_page3_2.text = "課題を追加"
-                task_plus_page3_2.setBackgroundResource(R.drawable.fillline)
-                event_plus_page3_2.setBackgroundResource(R.drawable.fillline)
+                create_button()
             }else{
-                task_plus_page3_2.isClickable = false
-                event_plus_page3_2.isClickable = false
-                task_plus_page3_2.text = ""
-                event_plus_page3_2.text = ""
-                task_plus_page3_2.setBackgroundResource(R.color.clear)
-                event_plus_page3_2.setBackgroundResource(R.color.clear)
+                delete_button()
             }
             clickcnt++
         }
@@ -85,6 +77,7 @@ class Page3_2 : AppCompatActivity() {
             intent.putExtra("year",day[0])
             intent.putExtra("name","追加")
             clickcnt++
+            delete_button()
             startActivity(intent)
             overridePendingTransition(0, 0)
         }
@@ -97,6 +90,7 @@ class Page3_2 : AppCompatActivity() {
             intent.putExtra("name","追加")
             clickcnt++
             startActivity(intent)
+            delete_button()
             overridePendingTransition(0, 0)
         }
 
@@ -108,6 +102,25 @@ class Page3_2 : AppCompatActivity() {
         windowManager.defaultDisplay.getMetrics(dm)
         val height = dm.heightPixels
         linearLayout10.layoutParams.height = height/20
+    }
+
+    private fun delete_button()
+    {
+        task_plus_page3_2.isClickable = false
+        event_plus_page3_2.isClickable = false
+        task_plus_page3_2.text = ""
+        event_plus_page3_2.text = ""
+        task_plus_page3_2.setBackgroundResource(R.color.clear)
+        event_plus_page3_2.setBackgroundResource(R.color.clear)
+    }
+    private fun create_button()
+    {
+        task_plus_page3_2.isClickable = true
+        event_plus_page3_2.isClickable = true
+        task_plus_page3_2.text = "予定を追加"
+        event_plus_page3_2.text = "課題を追加"
+        task_plus_page3_2.setBackgroundResource(R.drawable.fillline)
+        event_plus_page3_2.setBackgroundResource(R.drawable.fillline)
     }
 
     override fun onResume() {
