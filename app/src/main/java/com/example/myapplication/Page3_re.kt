@@ -26,8 +26,7 @@ import kotlinx.android.synthetic.main.activity_page3_2.*
 import kotlinx.android.synthetic.main.activity_page3_re.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import okhttp3.MediaType
-import retrofit2.Retrofit
+
 import java.time.LocalDate
 
 class Page3_re : AppCompatActivity() {

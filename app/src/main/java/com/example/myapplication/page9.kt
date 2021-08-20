@@ -20,8 +20,7 @@ import kotlinx.android.synthetic.main.activity_page8.*
 import kotlinx.android.synthetic.main.activity_page9.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import okhttp3.MediaType
-import retrofit2.Retrofit
+
 import java.time.LocalDate
 import java.util.*
 

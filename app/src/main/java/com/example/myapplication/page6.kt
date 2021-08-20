@@ -7,7 +7,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import io.realm.Realm
 import io.realm.RealmResults
-import kotlinx.android.synthetic.main.activity_page5.*
+
 import kotlinx.android.synthetic.main.activity_page6.*
 import kotlinx.android.synthetic.main.activity_page8.*
 
