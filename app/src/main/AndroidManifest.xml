@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
+            android:name=".Login_activity"
+            android:exported="true" />
+        <activity
             android:name=".Page3_2"
             android:exported="true" />
         <activity

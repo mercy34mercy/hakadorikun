@@ -11,6 +11,7 @@ import android.view.*
 import android.widget.Button
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.marginLeft
 import androidx.databinding.DataBindingUtil
 import com.example.myapplication.databinding.ActivityHome3Binding
 import io.realm.Realm
@@ -38,6 +39,7 @@ class home3 : AppCompatActivity() {
     var clickcnt:Int = 0
     //課題達成率を求めるために課題の終わってるやつの要素数を取得する
     lateinit var task_result_done: RealmResults<TaskDB>
+    val layout_left_margin:Int = 20
 
 
 
@@ -85,6 +87,8 @@ class home3 : AppCompatActivity() {
 //            .setStyle(NotificationCompat.BigTextStyle()
 //                .bigText("Much longer text that cannot fit one line..."))
 //            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+
+
 
 
 
@@ -183,7 +187,14 @@ class home3 : AppCompatActivity() {
         val dm = DisplayMetrics()
         windowManager.defaultDisplay.getMetrics(dm)
         val height = dm.heightPixels
+        val width = dm.widthPixels
+        val margin_left_right:Int = width/layout_left_margin
         select_liner_home3.layoutParams.height = height/20
+        Top_bar.layoutParams.height = height/15
+        tasseiritsu.setPadding(width/12,height/20,width/12,0)
+        kyonoyotei.setPadding(width/12,0,width/12,0)
+
+        set_margin(height,width,linerlayout_home3)
 
     }
 
@@ -206,6 +217,13 @@ class home3 : AppCompatActivity() {
     }
     */
 
+    private fun set_margin(height:Int,width:Int,set:View)
+    {
+        val MLP = set.layoutParams as ViewGroup.MarginLayoutParams
+        MLP.setMargins(width/30,0,width/30,0)
+        set.layoutParams = MLP
+    }
+
     private fun delete_button()
     {
         task_home3.isClickable = false
@@ -224,6 +242,7 @@ class home3 : AppCompatActivity() {
         event_home3.text = "課題を追加"
         task_home3.setBackgroundResource(R.drawable.fillline)
         event_home3.setBackgroundResource(R.drawable.fillline)
+
     }
 
 
@@ -248,7 +267,7 @@ class home3 : AppCompatActivity() {
         val all_tasl:Double = task_result.size.toDouble()
 
         val tasseiritu:Int = ((done_task/all_tasl)*100).toInt()
-        tasseiritu_home3.text = tasseiritu.toString()
+        tasseiritu_home3.text = tasseiritu.toString()+"%"
 
         event_result = realm.where(EveDB::class.java).equalTo("startday",today).findAll()
         subject_result = realm.where(ZikanwariDB::class.java).findAll()

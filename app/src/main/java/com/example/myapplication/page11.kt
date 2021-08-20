@@ -104,7 +104,6 @@ class page11 : AppCompatActivity() {
 
         //右下のプラスボタンその２
         task_page11.setOnClickListener {
-
             val intent = Intent(this@page11, page9::class.java)
             intent.putExtra("Dayofmonth",d)
             intent.putExtra("month",m)

@@ -117,6 +117,7 @@ class Page3_re : AppCompatActivity() {
         val dm = DisplayMetrics()
         windowManager.defaultDisplay.getMetrics(dm)
         val height = dm.heightPixels
+        val width = dm.widthPixels
         linearLayout9.layoutParams.height = height/20
    }
 
