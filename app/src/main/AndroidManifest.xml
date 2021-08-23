@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
+            android:name=".google_login"
+            android:exported="true" />
+        <activity
             android:name=".Login_activity"
             android:exported="true" />
         <activity

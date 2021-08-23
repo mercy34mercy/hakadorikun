@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -32,8 +33,14 @@ class Login_activity : AppCompatActivity() {
             createAccount(mail_address,input_passwprd)
         }
 
-
+        sign_in_button.setOnClickListener {
+            val intent = Intent(this@Login_activity,google_login::class.java)
+            startActivity(intent)
+            overridePendingTransition(0, 0)
+        }
     }
+
+
 
 
     public override fun onStart() {
@@ -105,6 +112,12 @@ class Login_activity : AppCompatActivity() {
 
     companion object {
         private const val TAG = "EmailPassword"
+    }
+
+    private fun signOut() {
+        // [START auth_sign_out]
+        Firebase.auth.signOut()
+        // [END auth_sign_out]
     }
 
 
