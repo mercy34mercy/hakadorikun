@@ -3,6 +3,8 @@
     package="com.example.myapplication">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name=".Myapplication"
@@ -21,29 +23,16 @@
         <activity
             android:name=".Page3_2"
             android:exported="true" />
-        <activity
-            android:name=".testActivity"
-            android:exported="true"
-            android:label="@string/title_activity_test" />
-        <activity
-            android:name=".ui.login.LoginActivity"
-            android:exported="true"
-            android:label="@string/title_activity_login" />
-        <activity android:name=".home2" />
         <activity android:name=".page7_re" />
-        <activity android:name=".page4_re" />
         <activity android:name=".page11" />
         <activity android:name=".page2" />
         <activity android:name=".page10" />
-        <activity android:name=".Page7_2" />
         <activity
             android:name=".Page3_re"
             android:launchMode="singleTask" />
         <activity android:name=".page5_re" />
-        <activity android:name=".page4" />
         <activity android:name=".page6" />
         <activity android:name=".page8" />
-        <activity android:name=".page5" />
         <activity android:name=".page9" />
         <activity
             android:name=".home3"
