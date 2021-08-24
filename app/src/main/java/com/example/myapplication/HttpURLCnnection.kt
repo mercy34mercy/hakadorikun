@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.TextView
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+
 import java.io.*
 import java.net.HttpURLConnection
 import java.net.URL
@@ -47,6 +48,12 @@ val READ_TIMEOUT_MILLISECONDS = 6000
         bufferedReader.close()
 
         Log.d("レスポンスデータ : ", responseBody)
-        textbox.text = responseBody
+        textbox.text
     }
+
+//    fun get_text(json_text:String) {
+//        val json = json_text
+//        val obj = Json.nonstrict.parse(parse.serializer(), json)
+//    }
 }
+
