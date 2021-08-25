@@ -14,31 +14,33 @@ class MainActivity : AppCompatActivity() {
     lateinit var realm: Realm
     lateinit var result: RealmResults<UserDB>
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        Realm.init(this)
-        val realmConfiguration = RealmConfiguration.Builder().build()
-        Realm.deleteRealm(realmConfiguration) // Delete Realm between app restarts.
-        Realm.setDefaultConfiguration(realmConfiguration)
+//        Realm.init(this)
+//        val realmConfiguration = RealmConfiguration.Builder().build()
+//        Realm.deleteRealm(realmConfiguration) // Delete Realm between app restarts.
+//        Realm.setDefaultConfiguration(realmConfiguration)
     }
 
     override fun onResume() {
         super.onResume()
         realm = Realm.getDefaultInstance()
         result = realm.where(UserDB::class.java).findAll()
+        if(result.size ==0){
+            new_user()
+            result = realm.where(UserDB::class.java).findAll()
+        }
 
 
-
-
-
-        var email = result[0]?.user_email_address
+        var email = result[0]?.user_email_address?:"err"
         var email_size:Int = 0
         if (email != null) {
             email_size = email.length
         }else{
-            new_user()
-            email = result[0]?.user_email_address
+
+            email = result[0]?.user_email_address?:"err"
             if (email != null) {
                 email_size = email.length
             }
@@ -67,6 +69,13 @@ class MainActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         realm.close()
+    }
+
+    fun addone(){
+        realm.beginTransaction()  //開始処理
+        val CntDB = realm.createObject(CntDB::class.java)
+        CntDB.cnt=1
+        realm.commitTransaction() //終了処理
     }
 
     fun new_user(){

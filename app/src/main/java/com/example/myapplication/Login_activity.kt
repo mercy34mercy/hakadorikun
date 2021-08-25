@@ -3,7 +3,10 @@ package com.example.myapplication
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.DisplayMetrics
 import android.util.Log
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -15,6 +18,7 @@ import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_google_login.*
+import kotlinx.android.synthetic.main.activity_home3.*
 import kotlinx.android.synthetic.main.activity_login.*
 
 
@@ -40,6 +44,24 @@ class Login_activity : AppCompatActivity() {
         // Initialize Firebase Auth
         auth = Firebase.auth
 
+        val dm = DisplayMetrics()
+        windowManager.defaultDisplay.getMetrics(dm)
+        val height = dm.heightPixels
+        val width = dm.widthPixels
+        topbar_login.layoutParams.height = height/15
+        create_account.layoutParams.height = height/15
+        text_google.layoutParams.height = height/15
+        sign_in_button.layoutParams.height = height/15
+        login_account.layoutParams.height = height/15
+        text_account.layoutParams.height = height/15
+        set_margin(height,width,view_over_textgoogle, 20)
+        set_margin_button(height,width,sign_in_button,20)
+        set_margin_button(height,width,create_account,20)
+        set_margin(height,width,text_mail,20)
+        set_margin(height,width,text_password,20)
+        set_margin(height,width,over_text_account,20)
+        set_margin_button(height,width,login_account,20)
+
 
 
         create_account.setOnClickListener {
@@ -48,7 +70,18 @@ class Login_activity : AppCompatActivity() {
 
             val input_passwprd =
                 passwprd_input.text.toString()
-            signIn(mail_address,input_passwprd)
+            if(mail_address.isNullOrEmpty() || input_passwprd.isNullOrEmpty()) {
+                Toast.makeText(applicationContext, "mailaddressとpasswordを入力して下さい", Toast.LENGTH_LONG).show()
+            }else{
+                createAccount(mail_address,input_passwprd)
+            }
+
+        }
+
+        button2.setOnClickListener {
+            val intent = Intent(this@Login_activity,home3::class.java)
+            startActivity(intent)
+            overridePendingTransition(0, 0)
         }
 
         sign_in_button.setOnClickListener {
@@ -57,11 +90,32 @@ class Login_activity : AppCompatActivity() {
 //            overridePendingTransition(0, 0)
             google_signIn()
         }
+
+        login_account.setOnClickListener {
+            val intent = Intent(this@Login_activity,Login_mail::class.java)
+            startActivity(intent)
+            overridePendingTransition(0, 0)
+        }
+
+        logout.setOnClickListener {
+            signOut()
+        }
     }
 
 
+    private fun set_margin(height:Int,width:Int,set: View,warukazu:Int)
+    {
+        val MLP = set.layoutParams as ViewGroup.MarginLayoutParams
+        MLP.setMargins(0,height/warukazu,0,0)
+        set.layoutParams = MLP
+    }
 
-
+    private fun set_margin_button(height:Int,width:Int,set: View,warukazu:Int)
+    {
+        val MLP = set.layoutParams as ViewGroup.MarginLayoutParams
+        MLP.setMargins(width/warukazu,height/warukazu,width/warukazu,0)
+        set.layoutParams = MLP
+    }
     public override fun onStart() {
         super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.
@@ -91,25 +145,7 @@ class Login_activity : AppCompatActivity() {
         // [END create_user_with_email]
     }
 
-    private fun signIn(email: String, password: String) {
-        // [START sign_in_with_email]
-        auth.signInWithEmailAndPassword(email, password)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
-                    Log.d(TAG, "signInWithEmail:success")
-                    val user = auth.currentUser
-                    updateUI(user)
-                } else {
-                    // If sign in fails, display a message to the user.
-                    Log.w(TAG, "signInWithEmail:failure", task.exception)
-                    Toast.makeText(baseContext, "Authentication failed.",
-                        Toast.LENGTH_SHORT).show()
-                    updateUI(null)
-                }
-            }
-        // [END sign_in_with_email]
-    }
+
 
     private fun sendEmailVerification() {
         // [START send_email_verification]

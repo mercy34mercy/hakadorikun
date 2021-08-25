@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.util.DisplayMetrics
 import android.view.*
 import android.widget.Button
+import android.widget.ImageView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.marginLeft
@@ -92,8 +93,7 @@ class home3 : AppCompatActivity() {
 
 
 
-
-
+        getUserProfile(User_image)
 
 
 
@@ -335,7 +335,7 @@ class home3 : AppCompatActivity() {
         val metrics = context.getResources().getDisplayMetrics()
         return dp * metrics.density
     }
-    private fun getUserProfile() {
+    private fun getUserProfile(view:ImageView) {
         // [START get_user_profile]
         val user = Firebase.auth.currentUser
         user?.let {
@@ -343,6 +343,7 @@ class home3 : AppCompatActivity() {
             val name = user.displayName
             val email = user.email
             val photoUrl = user.photoUrl
+            view.setImageURI(photoUrl)
 
             // Check if user's email is verified
             val emailVerified = user.isEmailVerified
