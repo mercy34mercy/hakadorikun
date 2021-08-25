@@ -6,6 +6,8 @@ import android.view.View
 import android.widget.TextView
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.json.Json
 
 import java.io.*
 import java.net.HttpURLConnection
@@ -40,15 +42,15 @@ val READ_TIMEOUT_MILLISECONDS = 6000
            }
        }
    }
-
+    fun getJsonString(input:String) = input
 
     fun readStream(inputStream: InputStream,textbox:TextView) {
         val bufferedReader = BufferedReader(InputStreamReader(inputStream))
         val responseBody = bufferedReader.use { it.readText() }
         bufferedReader.close()
-
+        val a = Json.decodeFromString<sample_data>(getJsonString(responseBody))
         Log.d("レスポンスデータ : ", responseBody)
-        textbox.text
+        textbox.text = a.name
     }
 
 //    fun get_text(json_text:String) {
