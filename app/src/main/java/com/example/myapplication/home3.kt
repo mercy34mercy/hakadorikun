@@ -117,9 +117,9 @@ class home3 : AppCompatActivity() {
         }
 
         setting_home3.setOnClickListener {
-//            intent = Intent(this@home3,Login_activity::class.java)
-//            startActivity(intent)
-//            overridePendingTransition(0, 0)
+            intent = Intent(this@home3,Login_activity::class.java)
+            startActivity(intent)
+            overridePendingTransition(0, 0)
             Download().get("https://jsondata.okiba.me/v1/json/yrLhY210825060212",kyonoyotei)
         }
         for (i in 0..29) {
