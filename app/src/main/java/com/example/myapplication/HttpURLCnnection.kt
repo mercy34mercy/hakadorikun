@@ -48,9 +48,9 @@ val READ_TIMEOUT_MILLISECONDS = 6000
         val bufferedReader = BufferedReader(InputStreamReader(inputStream))
         val responseBody = bufferedReader.use { it.readText() }
         bufferedReader.close()
-        val a = Json.decodeFromString<sample_data>(getJsonString(responseBody))
+        val a = Json.decodeFromString<sample_data_2_2>(getJsonString(responseBody))
         Log.d("レスポンスデータ : ", responseBody)
-        textbox.text = a.name
+        textbox.text = a.task[2].name
     }
 
 //    fun get_text(json_text:String) {
