@@ -13,7 +13,6 @@ import kotlinx.android.synthetic.main.activity_page11.*
 class MainActivity : AppCompatActivity() {
     lateinit var realm: Realm
     lateinit var result: RealmResults<UserDB>
-    var hantei = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,15 +28,20 @@ class MainActivity : AppCompatActivity() {
         realm = Realm.getDefaultInstance()
         result = realm.where(UserDB::class.java).findAll()
 
-        if(hantei == 0) {
-            new_user()
-            hantei++
-        }
 
-        val email = result[0]?.user_email_address
+
+
+
+        var email = result[0]?.user_email_address
         var email_size:Int = 0
         if (email != null) {
             email_size = email.length
+        }else{
+            new_user()
+            email = result[0]?.user_email_address
+            if (email != null) {
+                email_size = email.length
+            }
         }
 
             if(email_size < 7 ){
