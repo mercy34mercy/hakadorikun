@@ -3,6 +3,8 @@ package com.example.myapplication
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import io.realm.Realm
 import io.realm.RealmResults
 import kotlinx.android.synthetic.main.activity_page3_re.*
@@ -18,52 +20,36 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-//        Realm.init(this)
-//        val realmConfiguration = RealmConfiguration.Builder().build()
-//        Realm.deleteRealm(realmConfiguration) // Delete Realm between app restarts.
-//        Realm.setDefaultConfiguration(realmConfiguration)
+        Realm.init(this)
+        val realmConfiguration = RealmConfiguration.Builder().build()
+        Realm.deleteRealm(realmConfiguration) // Delete Realm between app restarts.
+        Realm.setDefaultConfiguration(realmConfiguration)
     }
 
     override fun onResume() {
         super.onResume()
-        realm = Realm.getDefaultInstance()
-        result = realm.where(UserDB::class.java).findAll()
-        if(result.size ==0){
-            new_user()
-            result = realm.where(UserDB::class.java).findAll()
+//        realm = Realm.getDefaultInstance()
+//        result = realm.where(UserDB::class.java).findAll()
+//        if(result.size ==0){
+//            new_user()
+//            result = realm.where(UserDB::class.java).findAll()
+//        }
+
+
+
+        val user = Firebase.auth.currentUser
+        if (user != null) {
+            // User is signed in
+            val intent = Intent(this@MainActivity, home3::class.java)
+            startActivity(intent)
+            overridePendingTransition(0, 0)
+
+        } else {
+            // No user is signed in
+            val intent = Intent(this@MainActivity, Login_activity::class.java)
+            startActivity(intent)
+            overridePendingTransition(0, 0)
         }
-
-
-        var email = result[0]?.user_email_address?:"err"
-        var email_size:Int = 0
-        if (email != null) {
-            email_size = email.length
-        }else{
-
-            email = result[0]?.user_email_address?:"err"
-            if (email != null) {
-                email_size = email.length
-            }
-        }
-
-            if(email_size < 7 ){
-                val intent = Intent(this@MainActivity, Login_activity::class.java)
-                startActivity(intent)
-                overridePendingTransition(0, 0)
-
-
-            }else if(result[0]!!.user_google_login == true) {
-                val intent = Intent(this@MainActivity, home3::class.java)
-                startActivity(intent)
-                overridePendingTransition(0, 0)
-            }else
-            {
-                val intent = Intent(this@MainActivity, home3::class.java)
-                startActivity(intent)
-                overridePendingTransition(0, 0)
-
-            }
-
     }
 
     override fun onPause() {
@@ -81,10 +67,8 @@ class MainActivity : AppCompatActivity() {
     fun new_user(){
         realm.beginTransaction()  //開始処理
         val UserDB = realm.createObject(UserDB::class.java)
-        UserDB.user_email_address = "sample"
-        UserDB.user_password = "sample"
+        UserDB.user_email_login = false
         UserDB.user_google_login = false
-        UserDB.user_id = "sample"
         realm.commitTransaction() //終了処理
     }
 

@@ -44,7 +44,7 @@
             android:inputType="textPassword" />
 
         <Button
-            android:id="@+id/sing_in_button"
+            android:id="@+id/log_in_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="ログイン" />

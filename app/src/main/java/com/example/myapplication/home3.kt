@@ -4,8 +4,10 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
+import android.content.Intent.CATEGORY_HOME
 import android.os.Build
 import android.os.Bundle
+import android.system.Os.close
 import android.util.DisplayMetrics
 import android.view.*
 import android.widget.Button
@@ -15,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.marginLeft
 import androidx.databinding.DataBindingUtil
 import com.example.myapplication.databinding.ActivityHome3Binding
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import io.realm.Realm
@@ -43,12 +46,14 @@ class home3 : AppCompatActivity() {
     //課題達成率を求めるために課題の終わってるやつの要素数を取得する
     lateinit var task_result_done: RealmResults<TaskDB>
     val layout_left_margin:Int = 20
+    private lateinit var auth: FirebaseAuth
 
 
 
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
+        auth = Firebase.auth
         super.onCreate(savedInstanceState)
         //データの初期化に使う
         val binding =
@@ -94,6 +99,8 @@ class home3 : AppCompatActivity() {
 
 
         getUserProfile(User_image)
+
+
 
 
 
@@ -296,6 +303,9 @@ class home3 : AppCompatActivity() {
             set_subject(subject_size)
         }
 
+
+
+
     }
 
     private fun set_subject(size:Int) {
@@ -355,6 +365,35 @@ class home3 : AppCompatActivity() {
         }
         // [END get_user_profile]
     }
+
+//    override fun dispatchKeyEvent(event: KeyEvent): Boolean {
+//
+//        // Backボタン検知する
+//        if (event.keyCode === KeyEvent.KEYCODE_BACK) {
+//            //Log.d(TAG, "Press back button")
+//            intent = Intent(this@home3, CATEGORY_HOME::class.java)
+//            startActivity(intent)
+//            overridePendingTransition(0, 0)
+//
+//        }
+//        // Backボタンに関わらないボタンが押された場合は、通常処理.
+//        return super.dispatchKeyEvent(event)
+//    }
+
+
+    //戻るボタンを押したときにandroidのホーム画面に戻る方法
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        return if (keyCode == KeyEvent.KEYCODE_BACK) {
+            val homeIntent = Intent(Intent.ACTION_MAIN)
+            homeIntent.addCategory(CATEGORY_HOME)
+            homeIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            this@home3.startActivity(homeIntent)
+            super.onKeyDown(keyCode, event)
+        } else {
+            super.onKeyDown(keyCode, event)
+        }
+    }
+
 
 
 }
