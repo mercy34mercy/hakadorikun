@@ -228,7 +228,7 @@
                 android:ems="10"
                 android:gravity="top|left"
                 android:hint="メモ"
-                android:inputType="textPersonName"
+                android:inputType="textMultiLine"
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp"
                 android:textSize="18sp" />

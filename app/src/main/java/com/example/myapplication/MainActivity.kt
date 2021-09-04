@@ -13,8 +13,7 @@ import kotlinx.android.synthetic.main.activity_page11.*
 
 
 class MainActivity : AppCompatActivity() {
-    lateinit var realm: Realm
-    lateinit var result: RealmResults<UserDB>
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,12 +27,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-//        realm = Realm.getDefaultInstance()
-//        result = realm.where(UserDB::class.java).findAll()
-//        if(result.size ==0){
-//            new_user()
-//            result = realm.where(UserDB::class.java).findAll()
-//        }
+
 
 
 
@@ -54,22 +48,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onPause() {
         super.onPause()
-        realm.close()
-    }
 
-    fun addone(){
-        realm.beginTransaction()  //開始処理
-        val CntDB = realm.createObject(CntDB::class.java)
-        CntDB.cnt=1
-        realm.commitTransaction() //終了処理
-    }
-
-    fun new_user(){
-        realm.beginTransaction()  //開始処理
-        val UserDB = realm.createObject(UserDB::class.java)
-        UserDB.user_email_login = false
-        UserDB.user_google_login = false
-        realm.commitTransaction() //終了処理
     }
 
 }

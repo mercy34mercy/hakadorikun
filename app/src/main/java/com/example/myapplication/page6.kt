@@ -1,10 +1,12 @@
 package com.example.myapplication
 
 import android.content.Intent
+import android.graphics.Paint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.widget.TextView
 import io.realm.Realm
 import io.realm.RealmResults
 
@@ -26,6 +28,10 @@ class  page6 : AppCompatActivity() {
         //all_or_day = intent.getStringArrayExtra("all").toString().toInt()
         list_position = intent.getIntExtra("position",0)
         task_id = intent.getIntExtra("id",0)
+
+        url_page6.underline()
+
+
 
 
 
@@ -83,8 +89,8 @@ class  page6 : AppCompatActivity() {
             minute = r!!.dead_minute.toString()
         }
 
-        dead_line_page6.text = r!!.dead_day + r!!.dead_hour.toString() + ":" + minute
-        memo_edit_page6.text = r!!.task_memo
+        dead_line_page6.text = r!!.dead_day + "  " + r!!.dead_hour.toString() + ":" + minute
+        memo_page6.text = r!!.task_memo
         url_page6.text = r!!.task_url
 
         if(r!!.task_condition == 1) {
@@ -100,6 +106,12 @@ class  page6 : AppCompatActivity() {
                 finish()
             }
 
+        }
+
+        url_page6.setOnClickListener {
+            intent = Intent(this@page6,webview::class.java)
+            intent.putExtra("url",r!!.task_url)
+            startActivity(intent)
         }
 
     }
@@ -121,6 +133,10 @@ class  page6 : AppCompatActivity() {
         val taskDB = result[list_position]
         taskDB!!.task_condition = 1
         realm.commitTransaction() //終了処理
+    }
+
+    fun TextView.underline() {
+        paintFlags = paintFlags or Paint.UNDERLINE_TEXT_FLAG
     }
 
 

@@ -3,6 +3,7 @@ package com.example.myapplication
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.DisplayMetrics
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import com.google.android.material.button.MaterialButton
@@ -68,6 +69,17 @@ class page5_re : AppCompatActivity() {
             intent.putExtra("list_position",position)
             startActivity(intent)
         }
+
+        val dm = DisplayMetrics()
+        windowManager.defaultDisplay.getMetrics(dm)
+        val height = dm.heightPixels
+        val width = dm.widthPixels
+
+        kadai_text_page5.layoutParams.height = height/27
+        yotei_text_page5.layoutParams.height = height/30
+
+        kadai_text_page5.setPadding(width/20,0,0,0)
+        yotei_text_page5.setPadding(width/20,0,0,0)
 
         //右下のプラスボタンその１
 //        sub_btn1_page5.setOnClickListener {

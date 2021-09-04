@@ -48,6 +48,8 @@ class page9 : AppCompatActivity() {
     var task_Month_now:Int = 0
     var task_Day_now:Int = 0
 
+    var syuzitu:Int = 0
+
     lateinit var  year:String
     lateinit var month:String
     lateinit var dayOfmonth:String
@@ -172,6 +174,27 @@ class page9 : AppCompatActivity() {
             showDatePicker(enddate_edit_page9)
         }
 
+        chip_page9.setOnCheckedChangeListener { buttonView, isChecked ->
+            if(isChecked == true){
+                syuzitu = 1
+                starthour_event.setBackgroundResource(R.color.gray)
+                startminute_event.setBackgroundResource(R.color.gray)
+                endhour_event.setBackgroundResource(R.color.gray)
+                endminute_event.setBackgroundResource(R.color.gray)
+
+
+
+            }else{
+                syuzitu = 0
+                starthour_event.setBackgroundResource(R.color.clear)
+                startminute_event.setBackgroundResource(R.color.clear)
+                endhour_event.setBackgroundResource(R.color.clear)
+                endminute_event.setBackgroundResource(R.color.clear)
+
+
+            }
+        }
+
 
 
     }
@@ -208,6 +231,8 @@ class page9 : AppCompatActivity() {
         eventDB.iconInt = color_i
         eventDB.color_S = color_s
         eventDB.event_condition = 0
+        eventDB.alltime = syuzitu
+
 
         realm_p.commitTransaction() //終了処理
         finish()

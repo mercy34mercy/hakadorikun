@@ -140,6 +140,7 @@
                 android:layout_marginTop="174dp" />
 
             <LinearLayout
+                android:id="@+id/liner_st_page9"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:orientation="horizontal">
@@ -190,6 +191,7 @@
 
 
             <LinearLayout
+                android:id="@+id/liner_ed_page9"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:orientation="horizontal">

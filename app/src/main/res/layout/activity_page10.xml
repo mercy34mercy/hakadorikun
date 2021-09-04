@@ -132,9 +132,10 @@
                 android:layout_marginTop="174dp" />
 
             <LinearLayout
+                android:id="@+id/st_liner"
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
 
+                android:layout_height="70dp"
                 android:orientation="horizontal">
 
 
@@ -179,6 +180,7 @@
 
 
             <LinearLayout
+                android:id="@+id/ed_liner"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:orientation="horizontal">

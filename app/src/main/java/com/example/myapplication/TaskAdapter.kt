@@ -46,13 +46,16 @@ class TaskAdapter(context: Context, var mAnimalList: List<TaskDB>) : ArrayAdapte
             view = layoutInflater.inflate(R.layout.list_task, parent, false)
         }
 
+        //課題完了時の効果
         if (animal.task_condition == 1) {
             //view!!.layoutParams.height = 0
-            val background = view?.findViewById<ConstraintLayout>(R.id.background)
+            val background = view?.findViewById<LinearLayout>(R.id.background_list)
             background?.setBackgroundResource(R.color.gray)
             val stamp = view?.findViewById<ImageView>(R.id.stamp_box)
             stamp?.setImageResource(R.drawable.iconhakadorikun)
         }
+
+
         var minute: String = ""
 
         minute = if (animal.dead_minute < 10) {

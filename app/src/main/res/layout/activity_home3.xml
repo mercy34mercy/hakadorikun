@@ -173,6 +173,7 @@
                 android:layout_height="wrap_content" />
 
             <LinearLayout
+                android:id="@+id/linerlayout_zikanwari"
                 android:layout_width="match_parent"
                 android:layout_height="500dp"
                 android:orientation="vertical">

@@ -39,10 +39,29 @@ class CustomAdapter(context: Context, var mAnimalList: List<EveDB>) : ArrayAdapt
 
 
 
+
+
+
         // レイアウトの設定
         var view = convertView
         if (convertView == null) {
             view = layoutInflater.inflate(R.layout.list_event, parent, false)
+        }
+
+
+        //終日設定
+        if(animal.alltime == 1){
+            val sttime_ = view?.findViewById<TextView>(R.id.starttime_listevent)
+            val edtime_ = view?.findViewById<TextView>(R.id.endtime_listevent)
+            sttime_?.text = "終"
+            edtime_?.text = "日"
+
+        }else{
+            val starttime = view?.findViewById<TextView>(R.id.starttime_listevent)
+            starttime?.text = animal.start_hour.toString() + ":" + stminute
+
+            val endtime = view?.findViewById<TextView>(R.id.endtime_listevent)
+            endtime?.text = animal.end_hour.toString() + ":" + edminute
         }
 
         // 各Viewの設定
@@ -56,11 +75,7 @@ class CustomAdapter(context: Context, var mAnimalList: List<EveDB>) : ArrayAdapt
         title?.text = animal.title
 
 
-        val starttime = view?.findViewById<TextView>(R.id.starttime_listevent)
-        starttime?.text = animal.start_hour.toString() + ":" + stminute
 
-        val endtime = view?.findViewById<TextView>(R.id.endtime_listevent)
-        endtime?.text = animal.end_hour.toString() + ":" + edminute
 
         return view!!
     }

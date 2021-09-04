@@ -6,22 +6,15 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Spinner
-import android.widget.TextView
+import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.myapplication.databinding.ActivityPage10Binding
-import com.example.myapplication.databinding.ActivityPage9Binding
 import io.realm.Realm
 import io.realm.RealmResults
 import kotlinx.android.synthetic.main.activity_page10.*
 import kotlinx.android.synthetic.main.activity_page10.add_e_button
-
-import kotlinx.android.synthetic.main.activity_page8.*
-import kotlinx.android.synthetic.main.activity_page9.*
 import java.time.LocalDate
 
 class page10 : AppCompatActivity() {
@@ -41,6 +34,8 @@ class page10 : AppCompatActivity() {
     var task_Year_now:Int = 0
     var task_Month_now:Int = 0
     var task_Day_now:Int = 0
+
+    var syuzitu:Int = 0
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -99,6 +94,23 @@ class page10 : AppCompatActivity() {
 
         }
 
+
+        chip_page10.setOnCheckedChangeListener { buttonView, isChecked ->
+            if(chip_page10.isChecked){
+                syuzitu = 1
+                sthour_page10.setBackgroundResource(R.color.gray)
+                stminute_page10.setBackgroundResource(R.color.gray)
+                endhour_page10.setBackgroundResource(R.color.gray)
+                endminte_page10.setBackgroundResource(R.color.gray)
+            }else{
+                syuzitu = 0
+                sthour_page10.setBackgroundResource(R.color.clear)
+                stminute_page10.setBackgroundResource(R.color.clear)
+                endhour_page10.setBackgroundResource(R.color.clear)
+                endminte_page10.setBackgroundResource(R.color.clear)
+            }
+        }
+
         text_startday_page10.setOnClickListener {
             showDatePicker(text_startday_page10)
         }
@@ -147,6 +159,13 @@ class page10 : AppCompatActivity() {
 //        val m = result_page10[position]
 //        m!!.start_hour
 
+
+
+
+
+
+
+
     }
 
 
@@ -168,6 +187,11 @@ class page10 : AppCompatActivity() {
 
         spinner_page10.setSelection(l!!.iconInt)
         //set_spinner_value(l!!.start_hour,l!!.start_minute,l!!.end_hour,l!!.end_minute)
+
+
+
+
+
     }
 
     private fun set_spinner_value(a:Int,b:Int,c:Int,d:Int) {
@@ -206,6 +230,12 @@ class page10 : AppCompatActivity() {
         endhour = r!!.end_hour
         endminute = r!!.end_minute
 
+        if(r.alltime == 1) {
+            chip_page10.isChecked = true
+        }else{
+            chip_page10.isChecked = false
+        }
+
         endminte_page10.value = r!!.end_minute
         endhour_page10.value = r!!.end_hour
         stminute_page10.value  = r!!.start_minute
@@ -240,6 +270,7 @@ class page10 : AppCompatActivity() {
         selectDB!!.iconstyle  = resouse
         selectDB!!.iconInt    = icon_i
         selectDB!!.color_S = color_s
+        selectDB!!.alltime = syuzitu
         realm.commitTransaction()
         finish()
 
@@ -259,4 +290,7 @@ class page10 : AppCompatActivity() {
         datePickerDialog.show()
     }
 
+
 }
+
+

@@ -16,7 +16,6 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.marginLeft
 import androidx.databinding.DataBindingUtil
-import com.example.myapplication.databinding.ActivityHome3Binding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -55,11 +54,14 @@ class home3 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         auth = Firebase.auth
         super.onCreate(savedInstanceState)
-        //データの初期化に使う
-        val binding =
-            DataBindingUtil.setContentView<ActivityHome3Binding>(this, R.layout.activity_home3)
+        setContentView(R.layout.activity_home3)
 
-        binding.lifecycleOwner = this
+        val subject_id: Array<Button> = arrayOf(z_11,z_12,z_13,z_14,z_15,z_16,
+            z_21,z_22,z_23,z_24,z_25,z_26,
+            z_31,z_32,z_33,z_34,z_35,z_36,
+            z_41,z_42,z_43,z_44,z_45,z_46,
+            z_51,z_52,z_53,z_54,z_55,z_56)
+
 
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) { return }
         val manager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
@@ -67,11 +69,7 @@ class home3 : AppCompatActivity() {
         channel.description = "Local Notification Sample"
         manager.createNotificationChannel(channel)
 
-        val subject_id: Array<Button> = arrayOf(z_11,z_12,z_13,z_14,z_15,z_16,
-            z_21,z_22,z_23,z_24,z_25,z_26,
-            z_31,z_32,z_33,z_34,z_35,z_36,
-            z_41,z_42,z_43,z_44,z_45,z_46,
-            z_51,z_52,z_53,z_54,z_55,z_56)
+
 
         val onlyDate: LocalDate = LocalDate.now()
         val s:String = onlyDate.toString()
@@ -206,7 +204,7 @@ class home3 : AppCompatActivity() {
         tasseiritsu.setPadding(width/12,height/20,width/12,0)
         kyonoyotei.setPadding(width/12,0,width/12,0)
 
-        set_margin(height,width,linerlayout_home3)
+        set_margin(height,width,linerlayout_zikanwari)
 
     }
 
