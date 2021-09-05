@@ -157,8 +157,9 @@ class page10 : AppCompatActivity() {
             endminute = newVal
         }
 
-//        val m = result_page10[position]
-//        m!!.start_hour
+        backbutton_page10.setOnClickListener {
+            finish()
+        }
 
 
 

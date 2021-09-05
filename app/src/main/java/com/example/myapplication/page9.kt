@@ -195,6 +195,10 @@ class page9 : AppCompatActivity() {
             }
         }
 
+        backbutton_pasge9.setOnClickListener {
+            finish()
+        }
+
 
 
     }

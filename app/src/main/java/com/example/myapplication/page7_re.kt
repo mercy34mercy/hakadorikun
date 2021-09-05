@@ -1,6 +1,7 @@
 package com.example.myapplication
 
 import android.app.DatePickerDialog
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.text.Editable
@@ -20,6 +21,7 @@ import androidx.work.workDataOf
 import com.example.myapplication.databinding.ActivityPage7ReBinding
 import io.realm.Realm
 import io.realm.RealmResults
+import kotlinx.android.synthetic.main.activity_home3.*
 import kotlinx.android.synthetic.main.activity_page7_re.*
 import java.text.ParseException
 import java.text.SimpleDateFormat
@@ -87,10 +89,16 @@ class page7_re : AppCompatActivity() {
 
         dead_day_page7.text = year+"/"+month+"/"+dayOfmonth
         name_button = intent.getStringExtra("name").toString()
-        if(name_button.isNullOrEmpty())
+        if(name_button.equals("追加"))
         {
             name_button = "追加"
+            view_top.setBackgroundResource(R.color.clear)
+            view_bottom.setBackgroundResource(R.color.clear)
+            delete_page7.text = ""
         }
+
+
+
         add_button.text = name_button
 
 
@@ -164,6 +172,12 @@ class page7_re : AppCompatActivity() {
 
         this.initNumberhourPicker()
         this.initNumbertimePicker()
+
+        delete_page7.setOnClickListener {
+            if(name_button.equals("編集完了")){
+                delete_realm()
+            }
+        }
 
 
 
@@ -255,6 +269,8 @@ class page7_re : AppCompatActivity() {
         if(get_sub != -1) {
             spinner.setSelection(get_sub)
         }
+
+
 
     }
 
@@ -362,6 +378,17 @@ class page7_re : AppCompatActivity() {
             task_Month_now,
             task_Day_now)
         datePickerDialog.show()
+    }
+
+    fun delete_realm(){
+        val a = result[position]
+        val target = a
+
+        realm_page7.executeTransaction {
+            intent = Intent(this@page7_re, home3::class.java)
+            startActivity(intent)
+            target!!.deleteFromRealm()
+        }
     }
 
     fun setText(){
