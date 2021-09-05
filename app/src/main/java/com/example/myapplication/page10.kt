@@ -1,6 +1,7 @@
 package com.example.myapplication
 
 import android.app.DatePickerDialog
+import android.content.Intent
 import android.icu.text.Transliterator
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -186,6 +187,16 @@ class page10 : AppCompatActivity() {
         color_s = l!!.color_S
 
         spinner_page10.setSelection(l!!.iconInt)
+
+        delete_page10.setOnClickListener {
+            val target = l
+
+            realm.executeTransaction {
+                intent = Intent(this@page10, home3::class.java)
+                startActivity(intent)
+                target.deleteFromRealm()
+            }
+        }
         //set_spinner_value(l!!.start_hour,l!!.start_minute,l!!.end_hour,l!!.end_minute)
 
 

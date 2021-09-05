@@ -19,18 +19,6 @@
         app:titleTextColor="#FFFFFF" />
 
     <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="編集"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@id/button_page8_to_page9"
-        app:layout_constraintEnd_toEndOf="@+id/button_page8_to_page9"
-        app:layout_constraintStart_toStartOf="@+id/button_page8_to_page9"
-        app:layout_constraintTop_toTopOf="@+id/button_page8_to_page9" />
-
-    <TextView
         android:id="@+id/textView_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -49,11 +37,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
         android:layout_marginTop="8dp"
         android:text="場所 : COMPASS小倉"
         android:textAlignment="textStart"
-        android:textColor="#FF3733FF"
+        android:textColor="@color/gray"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_title" />
@@ -72,68 +59,67 @@
         app:layout_constraintTop_toBottomOf="@+id/textview_place" />
 
     <TextView
-        android:id="@+id/textView21"
-        android:layout_width="wrap_content"
+        android:id="@+id/textView_url"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginLeft="28dp"
-        android:layout_marginTop="16dp"
-        android:text="メモ"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        android:textStyle="bold"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="32dp"
+        android:textColor="@color/orange"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_day" />
 
-    <TextView
-        android:id="@+id/textView20"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="32dp"
-        android:text="URL"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView10" />
+    <View
+        android:id="@+id/view13"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/whitegray"
+        app:layout_constraintTop_toBottomOf="@+id/textView_url" />
 
-    <ImageView
-        android:id="@+id/imageView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView21" />
-
-    <TextView
-        android:id="@+id/textView_memo"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:lines="10"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView10"
-        app:layout_constraintEnd_toEndOf="@+id/imageView10"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/imageView10"
-        app:layout_constraintTop_toTopOf="@+id/imageView10"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/button_url"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginRight="25dp"
-        android:textColor="#000000"
-        app:backgroundTint="@color/cardview_shadow_end_color"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView20" />
+        app:layout_constraintTop_toBottomOf="@+id/view13">
+
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center|left"
+            android:paddingLeft="32dp"
+            android:paddingRight="32dp"
+            android:text="メモ"
+            android:textColor="@color/gray"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textView_memo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="20"
+            android:gravity="top|left"
+            android:paddingLeft="32dp"
+            android:paddingRight="32dp"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/memo_length"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:gravity="center|right"
+            android:paddingLeft="32dp"
+            android:paddingRight="32dp" />
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/button_page8_to_page9"

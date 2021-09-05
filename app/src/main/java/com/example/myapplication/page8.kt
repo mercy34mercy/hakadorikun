@@ -1,11 +1,14 @@
 package com.example.myapplication
 
 import android.content.Intent
+import android.graphics.Paint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Adapter
+import android.widget.TextView
 import io.realm.Realm
 import io.realm.RealmResults
+import kotlinx.android.synthetic.main.activity_home3.*
 import kotlinx.android.synthetic.main.activity_page8.*
 
 class page8 : AppCompatActivity() {
@@ -25,6 +28,8 @@ class page8 : AppCompatActivity() {
             intent.putExtra("name","編集完了")
             startActivity(intent)
         }
+
+        textView_url.underline()
     }
 
     override fun onPause() {
@@ -38,10 +43,26 @@ class page8 : AppCompatActivity() {
         //抽出
         result = realm.where(EveDB::class.java).findAll().sort("uid")
         textView_title.text = result[list_positin]!!.title.toString()
-        textview_place.text = result[list_positin]!!.place.toString()
-        textView_day.text   = result[list_positin]!!.startday.toString() + result[list_positin]!!.start_hour.toString() + ":" + result[list_positin]!!.start_minute.toString() + "~" + result[list_positin]!!.end_hour.toString() + ":" + result[list_positin]!!.end_minute.toString()
+        textview_place.text = "場所 : " + result[list_positin]!!.place.toString()
+        textView_day.text   = result[list_positin]!!.startday.toString() + "   "+ result[list_positin]!!.start_hour.toString() + ":" + result[list_positin]!!.start_minute.toString() + "~" + result[list_positin]!!.end_hour.toString() + ":" + result[list_positin]!!.end_minute.toString()
         textView_memo.text  = result[list_positin]!!.memo.toString()
-        button_url.text     = result[list_positin]!!.url.toString()
+        textView_url.text = result[list_positin]!!.url.toString()
+
+        if(result[list_positin]!!.url.isNullOrEmpty()){
+
+        }else{
+            textView_url.setOnClickListener {
+                intent = Intent(this@page8, webview::class.java)
+                intent.putExtra("url", result[list_positin]!!.url)
+                startActivity(intent)
+            }
+        }
+
+
+    }
+
+    fun TextView.underline() {
+        paintFlags = paintFlags or Paint.UNDERLINE_TEXT_FLAG
     }
 
 

@@ -108,11 +108,16 @@ class  page6 : AppCompatActivity() {
 
         }
 
-        url_page6.setOnClickListener {
-            intent = Intent(this@page6,webview::class.java)
-            intent.putExtra("url",r!!.task_url)
-            startActivity(intent)
+        if(r!!.task_url.isNullOrEmpty()){
+
+        }else {
+            url_page6.setOnClickListener {
+                intent = Intent(this@page6, webview::class.java)
+                intent.putExtra("url", r!!.task_url)
+                startActivity(intent)
+            }
         }
+
 
     }
 

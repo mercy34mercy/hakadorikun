@@ -40,11 +40,23 @@
             app:titleTextColor="#FFFFFF" />
 
 
+        <TextView
+            android:id="@+id/add_e_button"
+            android:layout_width="120dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:text="追加"
+            android:textColor="@color/orange"
+            android:textSize="18sp"
+            app:backgroundTint="@color/clear"
+            app:layout_constraintBottom_toBottomOf="@+id/textView10"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:orientation="vertical"
-            app:layout_constraintBottom_toTopOf="@+id/add_e_button"
             app:layout_constraintTop_toBottomOf="@+id/toolbar2"
             tools:layout_editor_absoluteX="-37dp">
 
@@ -52,7 +64,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="10dp"
-                android:background="@android:color/darker_gray"/>
+                android:background="@android:color/darker_gray" />
 
             <EditText
                 android:id="@+id/title_edit_page10"
@@ -62,13 +74,12 @@
                 android:ems="10"
                 android:hint="予定タイトル"
                 android:inputType="textPersonName"
-                android:paddingLeft="10dp"
-                />
+                android:paddingLeft="10dp" />
 
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="1dp"
-                android:background="@android:color/darker_gray"/>
+                android:background="@android:color/darker_gray" />
 
             <EditText
                 android:id="@+id/place_edit_page10"
@@ -83,13 +94,13 @@
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="1dp"
-                android:background="@android:color/darker_gray"/>
+                android:background="@android:color/darker_gray" />
 
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="20dp"
-                android:background="@android:color/darker_gray"/>
+                android:background="@android:color/darker_gray" />
 
             <TextView
                 android:id="@+id/textView35"
@@ -105,7 +116,7 @@
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="1dp"
-                android:background="@android:color/darker_gray"/>
+                android:background="@android:color/darker_gray" />
 
             <Spinner
                 android:id="@+id/spinner_page10"
@@ -118,10 +129,11 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:orientation="vertical"
-            app:layout_constraintBottom_toTopOf="@+id/add_e_button"
+            app:layout_constraintBottom_toTopOf="@+id/delete_page10"
             app:layout_constraintTop_toBottomOf="@+id/toolbar2">
 
             <Switch
@@ -270,6 +282,8 @@
                 android:id="@+id/memo_edit_page10"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginEnd="1dp"
+                android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
                 android:background="#00000000"
                 android:ems="10"
@@ -277,31 +291,42 @@
                 android:hint="メモ"
                 android:inputType="textPersonName"
                 android:paddingLeft="10dp"
-                android:paddingTop="10dp"
-                android:layout_marginEnd="1dp"
-                android:layout_marginRight="1dp" />
-
-            <View
-                android:layout_width="fill_parent"
-                android:layout_height="1dp"
-                android:background="@android:color/darker_gray" />
-
+                android:paddingTop="10dp" />
 
 
         </LinearLayout>
 
+        <View
+            android:id="@+id/view15"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"
+            app:layout_constraintBottom_toTopOf="@+id/delete_page10"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
-        <Button
-            android:id="@+id/add_e_button"
-            android:layout_width="120dp"
-            android:layout_height="70dp"
-            android:layout_marginBottom="20dp"
-            android:text="追加"
-            android:textColor="#FFFFFF"
-            app:backgroundTint="@color/orange"
+        <TextView
+            android:id="@+id/delete_page10"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:text="予定を削除"
+            android:textColor="#FF1100"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/view14"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <View
+            android:id="@+id/view14"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="4dp"
+            android:background="@android:color/darker_gray"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
