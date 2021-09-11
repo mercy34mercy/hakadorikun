@@ -27,11 +27,19 @@ class Page3_2 : AppCompatActivity() {
         val s:String = onlyDate.toString()
         val day = s.split("-")
 
+
+
         val m:String  = day[1].toInt().toString()
         val d:String  = day[2].toInt().toString()
 
         //初期状態ではbuttonは消しておく
         delete_button()
+
+        setting_page3_2.setOnClickListener {
+            val intent = Intent(this@Page3_2,Setting_activity::class.java)
+            startActivity(intent)
+            overridePendingTransition(0, 0)
+        }
 
         home_page3_2.setOnClickListener {
             val intent = Intent(this@Page3_2,home3::class.java)

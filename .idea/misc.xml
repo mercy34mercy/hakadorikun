@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/etuko/StudioProjects/hakadorikun/app/src/main/res/drawable/fillline.xml" value="0.26145833333333335" />
+        <entry key="..\:/Users/etuko/StudioProjects/hakadorikun/app/src/main/res/drawable/fillline_2.xml" value="0.2526041666666667" />
         <entry key="..\:/Users/etuko/StudioProjects/hakadorikun/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.246875" />
         <entry key="..\:/Users/etuko/StudioProjects/hakadorikun/app/src/main/res/drawable/ic_baseline_menu_book_24.xml" value="0.246875" />
         <entry key="..\:/Users/etuko/StudioProjects/hakadorikun/app/src/main/res/drawable/ic_home_off.xml" value="0.4046875" />
@@ -32,6 +33,7 @@
         <entry key="..\:/Users/etuko/StudioProjects/hakadorikun/app/src/main/res/layout/activity_page7_re.xml" value="0.4" />
         <entry key="..\:/Users/etuko/StudioProjects/hakadorikun/app/src/main/res/layout/activity_page8.xml" value="0.4" />
         <entry key="..\:/Users/etuko/StudioProjects/hakadorikun/app/src/main/res/layout/activity_page9.xml" value="0.264" />
+        <entry key="..\:/Users/etuko/StudioProjects/hakadorikun/app/src/main/res/layout/activity_setting.xml" value="0.4" />
         <entry key="..\:/Users/etuko/StudioProjects/hakadorikun/app/src/main/res/layout/activity_webview.xml" value="0.22395833333333334" />
         <entry key="..\:/Users/etuko/StudioProjects/hakadorikun/app/src/main/res/layout/fragment_dashboard.xml" value="0.42916666666666664" />
         <entry key="..\:/Users/etuko/StudioProjects/hakadorikun/app/src/main/res/layout/list_event.xml" value="0.22395833333333334" />

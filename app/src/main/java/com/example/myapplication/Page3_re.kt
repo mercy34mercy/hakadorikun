@@ -46,6 +46,12 @@ class Page3_re : AppCompatActivity() {
         val m:String  = day[1].toInt().toString()
         val d:String  = day[2].toInt().toString()
 
+        setting_tab.setOnClickListener {
+            val intent = Intent(this@Page3_re,Setting_activity::class.java)
+            startActivity(intent)
+            overridePendingTransition(0, 0)
+        }
+
 
         home_tab.setOnClickListener {
             val intent = Intent(this@Page3_re,home3::class.java)

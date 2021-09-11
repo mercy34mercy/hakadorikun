@@ -164,9 +164,9 @@ class page11 : AppCompatActivity() {
                 delete_re.text = "本当に削除しますか"
                 yes_page11.text = "はい"
                 no_page11.text = "いいえ"
-                delete_re.setBackgroundResource(R.drawable.fillline)
-                yes_page11.setBackgroundResource(R.drawable.fillline)
-                no_page11.setBackgroundResource(R.drawable.fillline)
+                delete_re.setBackgroundResource(R.drawable.fillline_2)
+                yes_page11.setBackgroundResource(R.drawable.fillline_2)
+                no_page11.setBackgroundResource(R.drawable.fillline_2)
             }else{
             }
         }
@@ -309,6 +309,7 @@ class page11 : AppCompatActivity() {
         realm.executeTransaction {
             target.deleteFromRealm(0)
         }
+        onPause()
         finish()
     }
 }
