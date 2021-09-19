@@ -80,7 +80,7 @@ dependencies {
     implementation 'com.google.android.gms:play-services-auth:19.2.0'
     implementation 'com.google.firebase:firebase-auth-ktx'
 
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.1'//(非同期処理用)
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0'//(非同期処理用)
     implementation 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.1'
     implementation 'org.jetbrains.kotlinx:kotlinx-serialization-protobuf:1.2.1'
 }
