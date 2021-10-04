@@ -38,6 +38,12 @@ class page2 : AppCompatActivity() {
             overridePendingTransition(0, 0)
         }
 
+        setting_button_page2.setOnClickListener {
+            val intent = Intent(this@page2, Setting_activity::class.java)
+            startActivity(intent)
+            overridePendingTransition(0, 0)
+        }
+
         home_button_page2.setOnClickListener {
             val intent = Intent(this@page2, home3::class.java)
             startActivity(intent)

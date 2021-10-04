@@ -1,6 +1,7 @@
 package com.example.myapplication
 
 import android.app.DatePickerDialog
+import android.content.Context
 import android.content.Intent
 import android.icu.text.Transliterator
 import android.os.Build
@@ -17,6 +18,7 @@ import io.realm.RealmResults
 import kotlinx.android.synthetic.main.activity_page10.*
 import kotlinx.android.synthetic.main.activity_page10.add_e_button
 import java.time.LocalDate
+import java.time.LocalDateTime
 
 class page10 : AppCompatActivity() {
     lateinit var realm:Realm
@@ -31,6 +33,10 @@ class page10 : AppCompatActivity() {
     var stminute:Int = 0
     var endhour:Int = 0
     var endminute:Int = 0
+
+    lateinit var enddate:LocalDateTime
+    lateinit var startdate:LocalDateTime
+
 
     var task_Year_now:Int = 0
     var task_Month_now:Int = 0
@@ -70,7 +76,20 @@ class page10 : AppCompatActivity() {
 
 
         add_e_button.setOnClickListener {
-            chenge_event(result_page10)
+            val a = text_startday_page10.text.toString()
+            val stdate:LocalDateTime = generate(text_startday_page10.text.toString(),sthour,stminute)
+            val enddate:LocalDateTime = generate(text_endday_page10.text.toString(),endhour,endminute)
+            if(stdate.isAfter(enddate)){
+                val context = getApplicationContext();
+                Toast.makeText(context , "終了時刻が不正です", Toast.LENGTH_LONG).show();
+            }else if(title_edit_page10.text.isNullOrEmpty()){
+                val context = getApplicationContext();
+                Toast.makeText(context , "タイトルを入力してください", Toast.LENGTH_LONG).show();
+            }else {
+                chenge_event(result_page10)
+                val context = getApplicationContext();
+                Toast.makeText(context , "イベントが登録されました", Toast.LENGTH_LONG).show();
+            }
 
         }
 

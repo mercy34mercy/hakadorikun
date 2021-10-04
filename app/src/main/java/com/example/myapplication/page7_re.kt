@@ -345,6 +345,8 @@ class page7_re : AppCompatActivity() {
             .setInitialDelay(diff, TimeUnit.MINUTES)
             .setInputData(myData)
             .build()
+
+
         WorkManager.getInstance(this).enqueue(workRequest)
 
             realm_page7.commitTransaction() //終了処理
