@@ -22,6 +22,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 
 import java.time.LocalDate
+import java.time.LocalDateTime
 import java.util.*
 
 class page9 : AppCompatActivity() {
@@ -248,8 +249,24 @@ class page9 : AppCompatActivity() {
         realm_p = Realm.getDefaultInstance()
         //追加ボタンを押したときの処理
         add_button_page9.setOnClickListener {
-            addnewWord()
+            val startday:LocalDateTime = generate(startdate_edit_page9.text.toString(),sthour,stminute)
+            val endday:LocalDateTime =   generate(enddate_edit_page9.text.toString(),endhour,endminute)
+
+
+            if (title_edit_page9.text.isNullOrEmpty()) {
+                val context = getApplicationContext();
+                Toast.makeText(context, "タイトルを入力してください", Toast.LENGTH_LONG).show();
+            } else if (startday.isAfter(endday)) {
+                val context = getApplicationContext();
+                Toast.makeText(context, "終了時刻が不正です", Toast.LENGTH_LONG).show();
+
+            } else {
+                addnewWord()
+                val context = getApplicationContext();
+                Toast.makeText(context, "イベントが登録されました", Toast.LENGTH_LONG).show();
+            }
         }
+
 
     }
 

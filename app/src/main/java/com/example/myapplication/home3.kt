@@ -56,6 +56,8 @@ class home3 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home3)
 
+        //reload()
+
         val subject_id: Array<Button> = arrayOf(z_11,z_12,z_13,z_14,z_15,z_16,
             z_21,z_22,z_23,z_24,z_25,z_26,
             z_31,z_32,z_33,z_34,z_35,z_36,
@@ -258,6 +260,8 @@ class home3 : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+
+
         val subject_id: Array<Button> = arrayOf(z_11,z_12,z_13,z_14,z_15,z_16,
             z_21,z_22,z_23,z_24,z_25,z_26,
             z_31,z_32,z_33,z_34,z_35,z_36,
@@ -390,6 +394,15 @@ class home3 : AppCompatActivity() {
         } else {
             super.onKeyDown(keyCode, event)
         }
+    }
+
+    fun reload() {
+        val intent = intent
+        overridePendingTransition(0, 0)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+        finish()
+        overridePendingTransition(0, 0)
+        startActivity(intent)
     }
 
 

@@ -102,9 +102,7 @@ class Page3_2 : AppCompatActivity() {
             overridePendingTransition(0, 0)
         }
 
-        return_page3_2.setOnClickListener {
-            finish()
-        }
+
 
         val dm = DisplayMetrics()
         windowManager.defaultDisplay.getMetrics(dm)

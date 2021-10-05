@@ -34,9 +34,6 @@ class page10 : AppCompatActivity() {
     var endhour:Int = 0
     var endminute:Int = 0
 
-    lateinit var enddate:LocalDateTime
-    lateinit var startdate:LocalDateTime
-
 
     var task_Year_now:Int = 0
     var task_Month_now:Int = 0

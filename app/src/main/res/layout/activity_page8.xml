@@ -9,7 +9,7 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar2"
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="80dp"
 
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
@@ -127,6 +127,7 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:background="#0000"
+        android:text="編集"
         android:textColor="@color/orange"
         app:backgroundTint="#00FFFFFF"
         app:iconTint="#00FFFFFF"

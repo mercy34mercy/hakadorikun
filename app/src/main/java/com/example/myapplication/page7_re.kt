@@ -7,10 +7,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Spinner
-import android.widget.TextView
+import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -102,7 +99,6 @@ class page7_re : AppCompatActivity() {
         add_button.text = name_button
 
 
-        //add_button.isEnabled = false
 
 
         if(name_button.equals("編集完了")) {
@@ -149,11 +145,24 @@ class page7_re : AppCompatActivity() {
 
 
         add_button.setOnClickListener {
-            if(name_button.equals("編集完了")) {
-                add_task(hour,minute)
-            }else {
-                post_task(hour, minute)
+
+            val setday:LocalDateTime = generate(dead_day_page7.text.toString(),hour,minute)
+            val nowday:LocalDateTime = LocalDateTime.now()
+
+            if(title_edit_page7.text.isNullOrEmpty()){
+                val context = getApplicationContext();
+                Toast.makeText(context , "タイトルを入力してください", Toast.LENGTH_LONG).show();
+            }else if(nowday.isAfter(setday)){
+                val context = getApplicationContext();
+                Toast.makeText(context , "締め切り時間が不正です", Toast.LENGTH_LONG).show();
+            }else{
+                    if(name_button.equals("編集完了")) {
+                        add_task(hour,minute)
+                    }else {
+                    post_task(hour, minute)
+                    }
             }
+
         }
 
         dead_day_page7.setOnClickListener {

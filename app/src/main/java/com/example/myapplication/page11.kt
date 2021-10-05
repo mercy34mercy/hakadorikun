@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
@@ -157,7 +158,10 @@ class page11 : AppCompatActivity() {
 //        }
 
         button_delete_page11.setOnClickListener {
-            if(clickcnt2 == 0)
+            if(edit_subject.text.isNullOrEmpty()){
+                val context = getApplicationContext();
+                Toast.makeText(context , "授業が登録されていません", Toast.LENGTH_LONG).show();
+            }else if(clickcnt2 == 0)
             {
                 yes_page11.isClickable = true
                 no_page11.isClickable = true
@@ -167,7 +171,6 @@ class page11 : AppCompatActivity() {
                 delete_re.setBackgroundResource(R.drawable.fillline_2)
                 yes_page11.setBackgroundResource(R.drawable.fillline_2)
                 no_page11.setBackgroundResource(R.drawable.fillline_2)
-            }else{
             }
         }
 
@@ -277,14 +280,19 @@ class page11 : AppCompatActivity() {
         //追加ボタンが押された時の動作
         button_add_page11.setOnClickListener {
             //何も入力されていない場合は何も出さない
-            if (edit_subject.text == null){
-                //TODO　ここにトーストを入れる
+            if (edit_subject.text.isNullOrEmpty()){
+                val context = getApplicationContext();
+                Toast.makeText(context , "教科名を入力してください", Toast.LENGTH_LONG).show();
             }else {
                 if(result_page11.isEmpty()) {
                     add_new_subject(position)
+                    val context = getApplicationContext();
+                    Toast.makeText(context , "教科が登録されました", Toast.LENGTH_LONG).show();
                     finish()
                 }else{
                     renewal_new_subject(position)
+                    val context = getApplicationContext();
+                    Toast.makeText(context , "教科名が更新されました", Toast.LENGTH_LONG).show();
                     finish()
                 }
 
