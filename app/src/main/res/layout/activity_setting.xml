@@ -158,8 +158,8 @@
                 android:textColor="@color/gray"
                 android:textSize="16sp" />
 
-            <TextView
-                android:id="@+id/textView15"
+            <EditText
+                android:id="@+id/text_email_setting"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -190,8 +190,8 @@
                 android:textColor="@color/gray"
                 android:textSize="16sp" />
 
-            <TextView
-                android:id="@+id/textView21"
+            <EditText
+                android:id="@+id/text_gakubu_setting"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -222,8 +222,8 @@
                 android:textColor="@color/gray"
                 android:textSize="16sp" />
 
-            <TextView
-                android:id="@+id/textView23"
+            <EditText
+                android:id="@+id/text_gakka_setting"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -254,8 +254,8 @@
                 android:textColor="@color/gray"
                 android:textSize="16sp" />
 
-            <TextView
-                android:id="@+id/textView25"
+            <EditText
+                android:id="@+id/text_gakunen_setting"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -272,7 +272,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
         <TextView
-            android:id="@+id/textView27"
+            android:id="@+id/set_account_setting"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:gravity="center"

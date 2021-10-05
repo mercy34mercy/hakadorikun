@@ -7,6 +7,8 @@ plugins {
     id 'com.google.gms.google-services'
     id 'kotlinx-serialization'//JSONパース用
 
+    //id 'kotlin-parcelize'
+
 
 }
 

@@ -56,11 +56,6 @@ class page2 : AppCompatActivity() {
             overridePendingTransition(0, 0)
         }
 
-        setting_button_page2.setOnClickListener {
-//            val intent = Intent(this@page2,Page12::class.java)
-//            startActivity(intent)
-        }
-
         floatingActionButton_page2.setOnClickListener {
             if(clickcnt%2 == 0) {
                 create_button()

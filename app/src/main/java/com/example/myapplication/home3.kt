@@ -127,7 +127,8 @@ class home3 : AppCompatActivity() {
             intent = Intent(this@home3,Login_activity::class.java)
             startActivity(intent)
             overridePendingTransition(0, 0)
-            Download().get("https://jsondata.okiba.me/v1/json/yrLhY210825060212",kyonoyotei)
+            //通信するときに使うもの
+            //Download().get("https://jsondata.okiba.me/v1/json/yrLhY210825060212",kyonoyotei)
         }
         for (i in 0..29) {
             subject_id[i].setOnClickListener {
