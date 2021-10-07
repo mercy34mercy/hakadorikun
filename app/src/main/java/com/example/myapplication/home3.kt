@@ -38,6 +38,7 @@ class home3 : AppCompatActivity() {
     lateinit var event_result : RealmResults<EveDB>
     lateinit var task_result: RealmResults<TaskDB>
     lateinit var subject_result: RealmResults<ZikanwariDB>
+    lateinit var user_result:RealmResults<UserDB>
     lateinit var event_l:CustomAdapter
     lateinit var task_l:TaskAdapter
     lateinit var today:String
@@ -286,6 +287,13 @@ class home3 : AppCompatActivity() {
 
         event_result = realm.where(EveDB::class.java).equalTo("startday",today).findAll()
         subject_result = realm.where(ZikanwariDB::class.java).findAll()
+
+        user_result = realm.where(UserDB::class.java).findAll()
+        if(user_result.size == 0){
+            text_name.text = "はかどりくん"
+        }else{
+            text_name.text = user_result[0]!!.nickname
+        }
 
         val task_size:Int = task_result.size
         val event_size:Int = event_result.size

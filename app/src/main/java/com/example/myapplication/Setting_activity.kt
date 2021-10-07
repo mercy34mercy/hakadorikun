@@ -8,11 +8,14 @@ import android.widget.Toast
 import io.realm.Realm
 import io.realm.RealmResults
 import kotlinx.android.synthetic.main.activity_home3.*
+import kotlinx.android.synthetic.main.activity_page11.*
+import kotlinx.android.synthetic.main.activity_page9.*
 import kotlinx.android.synthetic.main.activity_setting.*
 
 class Setting_activity : AppCompatActivity() {
     lateinit var realm: Realm
     lateinit var user_result : RealmResults<UserDB>
+    var tuti_on_off:Boolean = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_setting)
@@ -41,6 +44,14 @@ class Setting_activity : AppCompatActivity() {
             startActivity(intent)
             overridePendingTransition(0, 0)
         }
+        switch_seetting.setOnCheckedChangeListener { buttonView, isChecked ->
+            if(isChecked == true){
+                tuti_on_off = true
+            }else{
+                tuti_on_off = false
+            }
+        }
+
     }
 
 
@@ -54,8 +65,10 @@ class Setting_activity : AppCompatActivity() {
             text_gakubu_setting.setText(user_result[0]!!.gakubu)
             text_gakka_setting.setText(user_result[0]!!.gakka)
             text_gakunen_setting.setText(user_result[0]!!.grade)
+            text_name_setting.setText(user_result[0]!!.nickname)
             edit_hour_setting.setText(user_result[0]!!.tuuti_hour.toString())
             edit_time_setting.setText(user_result[0]!!.tuuti_minute.toString())
+            switch_seetting.isChecked = user_result[0]!!.tuuti
         }
 
         set_account_setting.setOnClickListener {
@@ -71,6 +84,8 @@ class Setting_activity : AppCompatActivity() {
 
     fun set_user(user_p:RealmResults<UserDB>)
     {
+        realm.beginTransaction()  //開始処理
+
         if(edit_hour_setting.text.isNullOrEmpty() || edit_time_setting.text.isNullOrEmpty() || text_email_setting.text.isNullOrEmpty() || text_gakubu_setting.text.isNullOrEmpty() || text_gakka_setting.text.isNullOrEmpty() || text_gakunen_setting.text.isNullOrEmpty() || text_name_setting.text.isNullOrEmpty()){
             val context = getApplicationContext();
             Toast.makeText(context, "項目が不十分です", Toast.LENGTH_LONG).show();
@@ -80,20 +95,26 @@ class Setting_activity : AppCompatActivity() {
             user_p[0]!!.gakka = text_gakka_setting.text.toString()
             user_p[0]!!.grade = text_gakunen_setting.text.toString()
             user_p[0]!!.nickname  = text_name_setting.text.toString()
+            user_p[0]!!.tuuti_hour = edit_hour_setting.text.toString().toInt()
+            user_p[0]!!.tuuti_minute =edit_time_setting.text.toString().toInt()
+            user_p[0]!!.tuuti = tuti_on_off
             val context = getApplicationContext();
-            Toast.makeText(context, "情報が作成されました", Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "情報が更新されました", Toast.LENGTH_LONG).show();
         }else{
-            realm.beginTransaction()  //開始処理
             val userDB = realm.createObject(UserDB::class.java)
             userDB.gakubu      = text_gakubu_setting.text.toString()
             userDB.gakka       = text_gakka_setting.text.toString()
             userDB.mailaddress = text_email_setting.text.toString()
             userDB.grade = text_gakunen_setting.text.toString()
             userDB.nickname = text_name_setting.text.toString()
+            userDB.tuuti_hour = edit_hour_setting.text.toString().toInt()
+            userDB.tuuti_minute =edit_time_setting.text.toString().toInt()
+            userDB.tuuti = tuti_on_off
             val context = getApplicationContext();
             Toast.makeText(context, "情報が更新されました", Toast.LENGTH_LONG).show();
 
         }
+        realm.commitTransaction() //終了処理
 
     }
 

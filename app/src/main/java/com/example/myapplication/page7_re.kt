@@ -24,6 +24,7 @@ import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.LocalDateTime
+import java.time.LocalTime
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit
@@ -34,7 +35,7 @@ class page7_re : AppCompatActivity() {
     lateinit var realm_page7: Realm
     lateinit var result: RealmResults<TaskDB>
     lateinit var subjct_result: RealmResults<ZikanwariDB>
-    lateinit var subjct_result2: RealmResults<ZikanwariDB>
+    lateinit var userDB:RealmResults<UserDB>
     lateinit var end_time:String
     lateinit var title_get:String
     var name_button:String = "追加"
@@ -330,19 +331,40 @@ class page7_re : AppCompatActivity() {
             minute_s = "0" + minute_s
         }
 
+
+        userDB = realm_page7.where(UserDB::class.java).findAll()
+
+
+
+
+ if(userDB.size != 0)
+{
+
+    var tuti_hour: Int = userDB[0]!!.tuuti_hour
+    var tuti_minute: Int = userDB[0]!!.tuuti_minute
         val date_gattai:String = date_split[0]+ "/" + date_split[1] + "/" +  date_split[2] + " " + hour_s + ":" + minute_s + ":" + "00"
 
         //val dtFt: DateTimeFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss")
 
         val csvFormat = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss")
-
+            val csvFormat2 = DateTimeFormatter.ofPattern("HH:mm:ss")
         val now = LocalDateTime.now() //2019-07-28T15:31:59.754
         val day1 = LocalDateTime.parse(date_gattai,csvFormat)
-
-        val diff = ChronoUnit.MINUTES.between(now, day1) // diff: 30
-
+      val minute:Long = tuti_hour*60+tuti_minute.toLong()
 
 
+        val diff = ChronoUnit.MINUTES.between(now,day1) // diff: 30
+            val diff2=  diff -minute
+
+
+
+
+
+
+
+
+
+            //通知の設定
 
 
 
@@ -351,12 +373,19 @@ class page7_re : AppCompatActivity() {
             "id" to uuid_int)
 
         val workRequest = OneTimeWorkRequestBuilder<LocalNotificationWorker>()
-            .setInitialDelay(diff, TimeUnit.MINUTES)
+            .setInitialDelay(diff2, TimeUnit.MINUTES)
             .setInputData(myData)
             .build()
 
 
-        WorkManager.getInstance(this).enqueue(workRequest)
+
+
+            WorkManager.getInstance(this).enqueue(workRequest)
+            val context = getApplicationContext();
+            Toast.makeText(context, "通知が設定されました", Toast.LENGTH_LONG).show();
+        }
+
+
 
             realm_page7.commitTransaction() //終了処理
 
