@@ -11,6 +11,7 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import io.realm.Realm
 import io.realm.RealmResults
+import java.time.LocalDateTime
 
 class TaskAdapter(context: Context, var mAnimalList: List<TaskDB>) : ArrayAdapter<TaskDB>(context, 0, mAnimalList) {
 
@@ -46,6 +47,15 @@ class TaskAdapter(context: Context, var mAnimalList: List<TaskDB>) : ArrayAdapte
             view = layoutInflater.inflate(R.layout.list_task, parent, false)
         }
 
+        val dead_day = generate(animal.dead_day,animal.dead_hour,animal.dead_minute)
+        //期限切れの設定
+        if(dead_day.isBefore(LocalDateTime.now())) {
+            val background = view?.findViewById<LinearLayout>(R.id.background_list)
+            background?.setBackgroundResource(R.color.red)
+
+
+        }
+
         //課題完了時の効果
         if (animal.task_condition == 1) {
             //view!!.layoutParams.height = 0
@@ -70,10 +80,17 @@ class TaskAdapter(context: Context, var mAnimalList: List<TaskDB>) : ArrayAdapte
 
         val name = view?.findViewById<TextView>(R.id.subject_listtask)
         name?.text = animal.subject
+        //期限切れの設定
 
-        val deadtime = view?.findViewById<TextView>(R.id.deadtime_listtask)
-        deadtime?.text = animal.dead_hour.toString() + ":" + minute
+        if(dead_day.isBefore(LocalDateTime.now())) {
+            val deadtime = view?.findViewById<TextView>(R.id.deadtime_listtask)
+            deadtime?.text = "期限切れ"
 
+
+        }else {
+            val deadtime = view?.findViewById<TextView>(R.id.deadtime_listtask)
+            deadtime?.text = animal.dead_hour.toString() + ":" + minute
+        }
 
         val age = view?.findViewById<TextView>(R.id.title_listtask)
         //age?.text = "${animal.age} 才"

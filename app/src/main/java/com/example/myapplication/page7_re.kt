@@ -53,6 +53,7 @@ class page7_re : AppCompatActivity() {
     var task_Year_now:Int = 0
     var task_Month_now:Int = 0
     var task_Day_now:Int = 0
+    lateinit var day1:LocalDateTime
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -349,7 +350,7 @@ class page7_re : AppCompatActivity() {
         val csvFormat = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss")
             val csvFormat2 = DateTimeFormatter.ofPattern("HH:mm:ss")
         val now = LocalDateTime.now() //2019-07-28T15:31:59.754
-        val day1 = LocalDateTime.parse(date_gattai,csvFormat)
+        day1 = LocalDateTime.parse(date_gattai,csvFormat)
       val minute:Long = tuti_hour*60+tuti_minute.toLong()
 
 

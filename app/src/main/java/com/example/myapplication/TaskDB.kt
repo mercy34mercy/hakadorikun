@@ -1,7 +1,9 @@
 package com.example.myapplication
 
 import io.realm.RealmObject
+import java.sql.Date
 import java.sql.Types.NULL
+import java.time.LocalDateTime
 
 open class TaskDB: RealmObject() {
     var task_uid = ""
