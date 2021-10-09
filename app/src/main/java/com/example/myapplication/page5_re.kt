@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.activity_page11.*
 import kotlinx.android.synthetic.main.activity_page2.*
 import kotlinx.android.synthetic.main.activity_page3_re.*
 import kotlinx.android.synthetic.main.activity_page5_re.*
-import java.util.ArrayList
+import java.util.*
 
 class page5_re : AppCompatActivity() {
     lateinit var realm: Realm
@@ -193,11 +193,13 @@ class page5_re : AppCompatActivity() {
         realm = Realm.getDefaultInstance()
         realm2 = Realm.getDefaultInstance()
 
+        val today_java: Date = Date(year.toInt(),month.toInt(),dayOfmonth.toInt())
+
         //抽出
         //result = realm.where(EveDB::class.java).findAll().sort("startday","")
 
         val year_month_day:String =  year + "/" + month + "/"+ dayOfmonth
-        result = realm.where(EveDB::class.java).equalTo("startday",year_month_day).findAll()
+        result = realm.where(EveDB::class.java).lessThanOrEqualTo("javastdate",today_java).greaterThan("javaeddate",today_java).findAll()
         task_result = realm2.where(TaskDB::class.java).equalTo("dead_day",year_month_day).lessThan("task_condition",1).findAll().sort("task_number")
         length = result.size
 

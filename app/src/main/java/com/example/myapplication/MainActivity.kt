@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         Realm.init(this)
         val realmConfiguration = RealmConfiguration.Builder().build()
-        Realm.deleteRealm(realmConfiguration) // Delete Realm between app restarts.
+        //Realm.deleteRealm(realmConfiguration) // Delete Realm between app restarts.
         Realm.setDefaultConfiguration(realmConfiguration)
     }
 

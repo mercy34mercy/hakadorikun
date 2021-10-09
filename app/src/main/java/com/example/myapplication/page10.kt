@@ -19,6 +19,7 @@ import kotlinx.android.synthetic.main.activity_page10.*
 import kotlinx.android.synthetic.main.activity_page10.add_e_button
 import java.time.LocalDate
 import java.time.LocalDateTime
+import java.util.*
 
 class page10 : AppCompatActivity() {
     lateinit var realm:Realm
@@ -293,6 +294,8 @@ class page10 : AppCompatActivity() {
             }
         }
 
+        val java_st = text_startday_page10.text.toString().split("/")
+        val java_ed = text_endday_page10.text.toString().split("/")
         val selectDB = realm_p[position]
         selectDB!!.title = title_edit_page10.text.toString()
         selectDB!!.place = place_edit_page10.text.toString()
@@ -308,6 +311,8 @@ class page10 : AppCompatActivity() {
         selectDB!!.iconInt    = icon_i
         selectDB!!.color_S = color_s
         selectDB!!.alltime = syuzitu
+        selectDB!!.javastdate = Date(java_st[0].toInt(),java_st[1].toInt(),java_st[2].toInt())
+        selectDB!!.javaeddate = Date(java_ed[0].toInt(),java_ed[1].toInt(),java_ed[2].toInt())
         realm.commitTransaction()
         finish()
 

@@ -41,6 +41,7 @@ class home3 : AppCompatActivity() {
     lateinit var user_result:RealmResults<UserDB>
     lateinit var event_l:CustomAdapter
     lateinit var task_l:TaskAdapter
+    lateinit var today_java:Date
     lateinit var today:String
     var clickcnt:Int = 0
     //課題達成率を求めるために課題の終わってるやつの要素数を取得する
@@ -77,14 +78,14 @@ class home3 : AppCompatActivity() {
         val onlyDate: LocalDate = LocalDate.now()
         val s:String = onlyDate.toString()
         val day = s.split("-")
+        val y  = day[0].toInt()
+        val m  = day[1].toInt()
+        val d = day[2].toInt()
 
-        val m:String  = day[1].toInt().toString()
-        val d:String  = day[2].toInt().toString()
 
 
-
-        today = day[0] + "/" + m + "/" + d
-
+        today_java = Date(y,m,d)
+        today = y.toString() + "/" + m.toString() + "/" + d.toString()
         //初期状態ではbuttonは消しておく
         delete_button()
 
@@ -144,8 +145,8 @@ class home3 : AppCompatActivity() {
         home_task.setOnItemClickListener { parent, view, position, id ->
             val intent = Intent(this@home3, page6::class.java)
             intent.putExtra("name","編集完了")
-            intent.putExtra("Dayofmonth",d)
-            intent.putExtra("month",m)
+            intent.putExtra("Dayofmonth",d.toString())
+            intent.putExtra("month",m.toString())
             intent.putExtra("year",day[0])
             intent.putExtra("position", position)
             startActivity(intent)
@@ -156,8 +157,8 @@ class home3 : AppCompatActivity() {
         home_event.setOnItemClickListener { parent, view, position, id ->
             val intent = Intent(this@home3, page8::class.java)
             intent.putExtra("name","編集完了")
-            intent.putExtra("Dayofmonth",d)
-            intent.putExtra("month",m)
+            intent.putExtra("Dayofmonth",d.toString())
+            intent.putExtra("month",m.toString())
             intent.putExtra("year",day[0])
             intent.putExtra("list_position", position)
             startActivity(intent)
@@ -177,8 +178,8 @@ class home3 : AppCompatActivity() {
 
         event_home3.setOnClickListener {
             val intent = Intent(this@home3, page7_re::class.java)
-            intent.putExtra("Dayofmonth",d)
-            intent.putExtra("month",m)
+            intent.putExtra("Dayofmonth",d.toString())
+            intent.putExtra("month",m.toString())
             intent.putExtra("year",day[0])
             intent.putExtra("name","追加")
             clickcnt++
@@ -189,8 +190,8 @@ class home3 : AppCompatActivity() {
 
         task_home3.setOnClickListener {
             val intent = Intent(this@home3, page9::class.java)
-            intent.putExtra("Dayofmonth",d)
-            intent.putExtra("month",m)
+            intent.putExtra("Dayofmonth",d.toString())
+            intent.putExtra("month",m.toString())
             intent.putExtra("year",day[0])
             intent.putExtra("name","追加")
             clickcnt++
@@ -285,7 +286,7 @@ class home3 : AppCompatActivity() {
         val tasseiritu:Int = ((done_task/all_tasl)*100).toInt()
         tasseiritu_home3.text = tasseiritu.toString()+"%"
 
-        event_result = realm.where(EveDB::class.java).equalTo("startday",today).findAll()
+        event_result = realm.where(EveDB::class.java).lessThanOrEqualTo("javastdate",today_java).greaterThan("javaeddate",today_java).findAll()
         subject_result = realm.where(ZikanwariDB::class.java).findAll()
 
         user_result = realm.where(UserDB::class.java).findAll()

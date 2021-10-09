@@ -230,6 +230,10 @@ class page9 : AppCompatActivity() {
                 R.drawable.skybulue_line
             )
 
+        val java_st = startdate_edit_page9.text.toString().split("/")
+        val java_ed = enddate_edit_page9.text.toString().split("/")
+
+
             for (i in 0..4) {
                 if (color_s.equals(color_2[i])) {
                     resouse = color[i]
@@ -252,6 +256,8 @@ class page9 : AppCompatActivity() {
             eventDB.color_S = color_s
             eventDB.event_condition = 0
             eventDB.alltime = syuzitu
+        eventDB.javastdate = Date(java_st[0].toInt(),java_st[1].toInt(),java_st[2].toInt())
+        eventDB.javaeddate =Date(java_ed[0].toInt(),java_ed[1].toInt(),java_ed[2].toInt())
 
 
             realm_p.commitTransaction() //終了処理
