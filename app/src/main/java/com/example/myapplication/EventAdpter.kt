@@ -8,8 +8,10 @@ import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.TextView
 import org.w3c.dom.Text
+import java.time.LocalDate
+import java.util.*
 
-class CustomAdapter(context: Context, var mAnimalList: List<EveDB>) : ArrayAdapter<EveDB>(context, 0, mAnimalList) {
+class CustomAdapter(context: Context, var mAnimalList: List<EveDB>,var date: Date) : ArrayAdapter<EveDB>(context, 0, mAnimalList) {
 
     private val layoutInflater: LayoutInflater
         get() = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -37,8 +39,10 @@ class CustomAdapter(context: Context, var mAnimalList: List<EveDB>) : ArrayAdapt
         }
 
 
-
-
+//
+//        val today:LocalDate = LocalDate.now()
+//        val t = today.toString().split("-")
+//        val java_today: Date = Date(t[0].toInt(),t[1].toInt(),t[2].toInt())
 
 
 
@@ -56,12 +60,29 @@ class CustomAdapter(context: Context, var mAnimalList: List<EveDB>) : ArrayAdapt
             sttime_?.text = "終"
             edtime_?.text = "日"
 
-        }else{
+        }else
+        {
             val starttime = view?.findViewById<TextView>(R.id.starttime_listevent)
             starttime?.text = animal.start_hour.toString() + ":" + stminute
 
             val endtime = view?.findViewById<TextView>(R.id.endtime_listevent)
             endtime?.text = animal.end_hour.toString() + ":" + edminute
+        }
+
+        if(date.after(animal.javastdate)) {
+            val starttime = view?.findViewById<TextView>(R.id.starttime_listevent)
+            starttime?.text = "0:00"
+        }
+        if(date.before(animal.javaeddate)){
+            val endtime = view?.findViewById<TextView>(R.id.endtime_listevent)
+            endtime?.text = "0:00"
+        }
+        if(date.after(animal.javastdate) && date.before(animal.javaeddate)){
+            val sttime_ = view?.findViewById<TextView>(R.id.starttime_listevent)
+            val edtime_ = view?.findViewById<TextView>(R.id.endtime_listevent)
+            sttime_?.text = "終"
+            edtime_?.text = "日"
+
         }
 
         // 各Viewの設定

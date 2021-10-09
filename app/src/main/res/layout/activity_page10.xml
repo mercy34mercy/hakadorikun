@@ -299,9 +299,9 @@
                 android:layout_marginBottom="1dp"
                 android:background="#00000000"
                 android:ems="10"
+                android:inputType="textMultiLine"
                 android:gravity="top"
                 android:hint="メモ"
-                android:inputType="textPersonName"
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp" />
 

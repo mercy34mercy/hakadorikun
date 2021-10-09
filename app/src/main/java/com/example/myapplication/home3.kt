@@ -126,7 +126,7 @@ class home3 : AppCompatActivity() {
         }
 
         setting_home3.setOnClickListener {
-            intent = Intent(this@home3,Login_activity::class.java)
+            intent = Intent(this@home3,Setting_activity::class.java)
             startActivity(intent)
             overridePendingTransition(0, 0)
             //通信するときに使うもの
@@ -286,7 +286,7 @@ class home3 : AppCompatActivity() {
         val tasseiritu:Int = ((done_task/all_tasl)*100).toInt()
         tasseiritu_home3.text = tasseiritu.toString()+"%"
 
-        event_result = realm.where(EveDB::class.java).lessThanOrEqualTo("javastdate",today_java).greaterThan("javaeddate",today_java).findAll()
+        event_result = realm.where(EveDB::class.java).lessThanOrEqualTo("javastdate",today_java).greaterThanOrEqualTo("javaeddate",today_java).findAll()
         subject_result = realm.where(ZikanwariDB::class.java).findAll()
 
         user_result = realm.where(UserDB::class.java).findAll()
@@ -300,7 +300,7 @@ class home3 : AppCompatActivity() {
         val event_size:Int = event_result.size
         val subject_size:Int = subject_result.size
 
-        event_l = CustomAdapter(this,event_result)
+        event_l = CustomAdapter(this,event_result,today_java)
         task_l = TaskAdapter(this,task_result)
         home_task.adapter = task_l
         home_event.adapter = event_l

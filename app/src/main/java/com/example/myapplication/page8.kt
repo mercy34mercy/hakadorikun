@@ -42,9 +42,21 @@ class page8 : AppCompatActivity() {
         realm = Realm.getDefaultInstance()
         //抽出
         result = realm.where(EveDB::class.java).findAll().sort("uid")
+
+        var a:String = result[list_positin]!!.start_minute.toString()
+        if(result[list_positin]!!.start_minute<10){
+            a = "0"+ result[list_positin]!!.start_minute.toString()
+        }
+
+        var b:String = result[list_positin]!!.end_minute.toString()
+        if(result[list_positin]!!.end_minute<10){
+            b = "0"+ result[list_positin]!!.end_minute.toString()
+        }
+
         textView_title.text = result[list_positin]!!.title.toString()
         textview_place.text = "場所 : " + result[list_positin]!!.place.toString()
-        textView_day.text   = result[list_positin]!!.startday.toString() + "   "+ result[list_positin]!!.start_hour.toString() + ":" + result[list_positin]!!.start_minute.toString() + "~" + result[list_positin]!!.end_hour.toString() + ":" + result[list_positin]!!.end_minute.toString()
+        textView_day.text   = result[list_positin]!!.startday.toString() + "   "+ result[list_positin]!!.start_hour.toString() + ":" + a + "~"
+        textview_end.text   = result[list_positin]!!.endday + "   " + result[list_positin]!!.end_hour.toString() + ":" + b
         textView_memo.text  = result[list_positin]!!.memo.toString()
         textView_url.text = result[list_positin]!!.url.toString()
 

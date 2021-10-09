@@ -27,6 +27,7 @@ class page5_re : AppCompatActivity() {
     lateinit var year:String
     lateinit var dayOfmonth:String
     lateinit var month:String
+    lateinit var java_today:Date
     var clickcnt:Int = 0
 
 
@@ -47,6 +48,8 @@ class page5_re : AppCompatActivity() {
         val d:Int = dayOfmonth.toInt()
         val m:Int = month.toInt()
         val y:Int = year.toInt()
+
+        java_today = Date(y,m,d)
 
         dayOfmonth = d.toString()
         month = m.toString()
@@ -199,12 +202,12 @@ class page5_re : AppCompatActivity() {
         //result = realm.where(EveDB::class.java).findAll().sort("startday","")
 
         val year_month_day:String =  year + "/" + month + "/"+ dayOfmonth
-        result = realm.where(EveDB::class.java).lessThanOrEqualTo("javastdate",today_java).greaterThan("javaeddate",today_java).findAll()
+        result = realm.where(EveDB::class.java).lessThanOrEqualTo("javastdate",today_java).greaterThanOrEqualTo("javaeddate",today_java).findAll()
         task_result = realm2.where(TaskDB::class.java).equalTo("dead_day",year_month_day).lessThan("task_condition",1).findAll().sort("task_number")
         length = result.size
 
 
-        event_l = CustomAdapter(this,result)
+        event_l = CustomAdapter(this,result,java_today)
         task_l = TaskAdapter(this,task_result)
         List_Event.adapter = event_l
         List_Task.adapter = task_l
