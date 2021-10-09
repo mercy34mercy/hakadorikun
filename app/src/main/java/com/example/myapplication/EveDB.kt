@@ -2,6 +2,7 @@ package com.example.myapplication
 
 import io.realm.RealmObject
 import java.sql.Types.NULL
+import java.util.*
 
 open class EveDB:RealmObject() {
     //フィールドの設定
@@ -21,5 +22,6 @@ open class EveDB:RealmObject() {
     var color_S:String = ""
     var alltime:Int = 0
     var event_condition:Int = 0
+    var javadate:Date = Date(0,0,0)
 }
 

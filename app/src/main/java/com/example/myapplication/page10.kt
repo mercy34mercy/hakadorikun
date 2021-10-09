@@ -76,13 +76,22 @@ class page10 : AppCompatActivity() {
             val a = text_startday_page10.text.toString()
             val stdate:LocalDateTime = generate(text_startday_page10.text.toString(),sthour,stminute)
             val enddate:LocalDateTime = generate(text_endday_page10.text.toString(),endhour,endminute)
+            val now_time = LocalDateTime.now()
+            if(syuzitu == 0){
             if(stdate.isAfter(enddate)){
                 val context = getApplicationContext();
                 Toast.makeText(context , "終了時刻が不正です", Toast.LENGTH_LONG).show();
             }else if(title_edit_page10.text.isNullOrEmpty()){
                 val context = getApplicationContext();
                 Toast.makeText(context , "タイトルを入力してください", Toast.LENGTH_LONG).show();
+            }else if (stdate.isBefore(now_time)){
+                val context = getApplicationContext();
+                Toast.makeText(context , " 開始時刻が不正です", Toast.LENGTH_LONG).show()
             }else {
+                chenge_event(result_page10)
+                val context = getApplicationContext();
+                Toast.makeText(context , "イベントが登録されました", Toast.LENGTH_LONG).show();
+            }}else{
                 chenge_event(result_page10)
                 val context = getApplicationContext();
                 Toast.makeText(context , "イベントが登録されました", Toast.LENGTH_LONG).show();
@@ -115,16 +124,16 @@ class page10 : AppCompatActivity() {
         chip_page10.setOnCheckedChangeListener { buttonView, isChecked ->
             if(chip_page10.isChecked){
                 syuzitu = 1
-                sthour_page10.setBackgroundResource(R.color.gray)
-                stminute_page10.setBackgroundResource(R.color.gray)
-                endhour_page10.setBackgroundResource(R.color.gray)
-                endminte_page10.setBackgroundResource(R.color.gray)
+                sthour_page10.visibility = View.INVISIBLE
+                stminute_page10.visibility = View.INVISIBLE
+                endhour_page10.visibility = View.INVISIBLE
+                endminte_page10.visibility = View.INVISIBLE
             }else{
                 syuzitu = 0
-                sthour_page10.setBackgroundResource(R.color.clear)
-                stminute_page10.setBackgroundResource(R.color.clear)
-                endhour_page10.setBackgroundResource(R.color.clear)
-                endminte_page10.setBackgroundResource(R.color.clear)
+                sthour_page10.visibility = View.VISIBLE
+                stminute_page10.visibility = View.VISIBLE
+                endhour_page10.visibility = View.VISIBLE
+                endminte_page10.visibility = View.VISIBLE
             }
         }
 

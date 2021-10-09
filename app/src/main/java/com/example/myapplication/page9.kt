@@ -1,6 +1,7 @@
 package com.example.myapplication
 
 import android.app.DatePickerDialog
+import android.content.Context
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -30,9 +31,6 @@ class page9 : AppCompatActivity() {
     lateinit var realm_p: Realm
     lateinit var color_s:String
     var color_i:Int = 0
-    lateinit var start_time:String
-    lateinit var end_time:String
-    lateinit var date_day:String
     var button_text:String = "設定完了"
     lateinit var result_page9 : RealmResults<EveDB>
     var position:Int = 0
@@ -175,23 +173,23 @@ class page9 : AppCompatActivity() {
             showDatePicker(enddate_edit_page9)
         }
 
+
+        val a = dpTopx(70,this)
+        val b = dpTopx(0,this)
+
         chip_page9.setOnCheckedChangeListener { buttonView, isChecked ->
             if(isChecked == true){
                 syuzitu = 1
-                starthour_event.setBackgroundResource(R.color.gray)
-                startminute_event.setBackgroundResource(R.color.gray)
-                endhour_event.setBackgroundResource(R.color.gray)
-                endminute_event.setBackgroundResource(R.color.gray)
-
-
-
+                starthour_event.visibility = View.INVISIBLE
+                startminute_event.visibility = View.INVISIBLE
+                endhour_event.visibility = View.INVISIBLE
+                endminute_event.visibility = View.INVISIBLE
             }else{
                 syuzitu = 0
-                starthour_event.setBackgroundResource(R.color.clear)
-                startminute_event.setBackgroundResource(R.color.clear)
-                endhour_event.setBackgroundResource(R.color.clear)
-                endminute_event.setBackgroundResource(R.color.clear)
-
+                starthour_event.visibility = View.VISIBLE
+                startminute_event.visibility= View.VISIBLE
+                endhour_event.visibility= View.VISIBLE
+                endminute_event.visibility= View.VISIBLE
 
             }
         }
@@ -204,6 +202,11 @@ class page9 : AppCompatActivity() {
 
     }
 
+    fun dpTopx(dp: Int, context: Context):Float {
+        val metrics = context.getResources().getDisplayMetrics()
+        return dp * metrics.density
+    }
+
 
 
     private fun addnewWord(){
@@ -212,35 +215,49 @@ class page9 : AppCompatActivity() {
         realm_p.beginTransaction()  //開始処理
         val eventDB = realm_p.createObject(EveDB::class.java)
 
-        val color_2: Array<String> = arrayOf("green", "red", "yellow", "bulue", "skybulue")
-        val color: Array<Int> = arrayOf(R.drawable.green_line, R.drawable.red_line, R.drawable.yellow_line, R.drawable.darkbulue_line, R.drawable.skybulue_line)
+        val st_time = generate(startdate_edit_page9.text.toString(),sthour,stminute)
+        val ed_time = generate(enddate_edit_page9.text.toString(),endhour,endminute)
 
-        for (i in 0..4) {
-            if (color_s.equals(color_2[i])) {
-                resouse = color[i]
+
+
+
+            val color_2: Array<String> = arrayOf("green", "red", "yellow", "bulue", "skybulue")
+            val color: Array<Int> = arrayOf(
+                R.drawable.green_line,
+                R.drawable.red_line,
+                R.drawable.yellow_line,
+                R.drawable.darkbulue_line,
+                R.drawable.skybulue_line
+            )
+
+            for (i in 0..4) {
+                if (color_s.equals(color_2[i])) {
+                    resouse = color[i]
+                }
             }
-        }
 
-        eventDB.uid = "00000000"
-        eventDB.title = title_edit_page9.text.toString()
-        eventDB.place = place_edit_page9.text.toString()
-        eventDB.startday = startdate_edit_page9.text.toString()
-        eventDB.endday   = enddate_edit_page9.text.toString()
-        eventDB.start_hour = sthour
-        eventDB.start_minute = stminute
-        eventDB.end_hour = endhour
-        eventDB.end_minute = endminute
-        eventDB.memo = memo_edit_page9.text.toString()
-        eventDB.url = url_edit_page9.text.toString()
-        eventDB.iconstyle = resouse
-        eventDB.iconInt = color_i
-        eventDB.color_S = color_s
-        eventDB.event_condition = 0
-        eventDB.alltime = syuzitu
+            eventDB.uid = "00000000"
+            eventDB.title = title_edit_page9.text.toString()
+            eventDB.place = place_edit_page9.text.toString()
+            eventDB.startday = startdate_edit_page9.text.toString()
+            eventDB.endday = enddate_edit_page9.text.toString()
+            eventDB.start_hour = sthour
+            eventDB.start_minute = stminute
+            eventDB.end_hour = endhour
+            eventDB.end_minute = endminute
+            eventDB.memo = memo_edit_page9.text.toString()
+            eventDB.url = url_edit_page9.text.toString()
+            eventDB.iconstyle = resouse
+            eventDB.iconInt = color_i
+            eventDB.color_S = color_s
+            eventDB.event_condition = 0
+            eventDB.alltime = syuzitu
 
 
-        realm_p.commitTransaction() //終了処理
-        finish()
+            realm_p.commitTransaction() //終了処理
+            finish()
+
+
     }
 
 
@@ -251,8 +268,8 @@ class page9 : AppCompatActivity() {
         add_button_page9.setOnClickListener {
             val startday:LocalDateTime = generate(startdate_edit_page9.text.toString(),sthour,stminute)
             val endday:LocalDateTime =   generate(enddate_edit_page9.text.toString(),endhour,endminute)
-
-
+            val now_time = LocalDateTime.now()
+            if(syuzitu == 0){
             if (title_edit_page9.text.isNullOrEmpty()) {
                 val context = getApplicationContext();
                 Toast.makeText(context, "タイトルを入力してください", Toast.LENGTH_LONG).show();
@@ -260,8 +277,15 @@ class page9 : AppCompatActivity() {
                 val context = getApplicationContext();
                 Toast.makeText(context, "終了時刻が不正です", Toast.LENGTH_LONG).show();
 
-            } else {
+            }else if (startday.isBefore(now_time)){
+            val context = getApplicationContext();
+            Toast.makeText(context , " 開始時刻が不正です", Toast.LENGTH_LONG).show()
+        } else {
                 addnewWord()
+                val context = getApplicationContext();
+                Toast.makeText(context, "イベントが登録されました", Toast.LENGTH_LONG).show();
+            }}
+            else{
                 val context = getApplicationContext();
                 Toast.makeText(context, "イベントが登録されました", Toast.LENGTH_LONG).show();
             }
