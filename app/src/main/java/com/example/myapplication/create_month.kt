@@ -1,4 +1,4 @@
-package com.example.myapplication
+package jp.masashi.hakadori
 
     fun create_month(today:String):String {
         var d = today.split("/")

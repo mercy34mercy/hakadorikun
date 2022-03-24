@@ -1,4 +1,4 @@
-package com.example.myapplication
+package jp.masashi.hakadori
 
 import android.content.Intent
 import android.graphics.Color
@@ -32,7 +32,7 @@ import java.time.LocalDate
 class Page3_re : AppCompatActivity() {
     lateinit var realm:Realm
     lateinit var result:RealmResults<TaskDB>
-    lateinit var task:TaskAdapter
+    lateinit var task: TaskAdapter
     var clickcnt:Int = 0
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,7 +47,7 @@ class Page3_re : AppCompatActivity() {
         val d:String  = day[2].toInt().toString()
 
         setting_tab.setOnClickListener {
-            val intent = Intent(this@Page3_re,Setting_activity::class.java)
+            val intent = Intent(this@Page3_re, Setting_activity::class.java)
             startActivity(intent)
             overridePendingTransition(0, 0)
         }

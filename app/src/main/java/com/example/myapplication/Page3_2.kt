@@ -1,4 +1,4 @@
-package com.example.myapplication
+package jp.masashi.hakadori
 
 import android.content.Intent
 import android.os.Build
@@ -16,7 +16,7 @@ import java.time.LocalDate
 class Page3_2 : AppCompatActivity() {
     lateinit var realm: Realm
     lateinit var result: RealmResults<TaskDB>
-    lateinit var task:TaskAdapter
+    lateinit var task: TaskAdapter
     var clickcnt:Int = 0
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,7 +36,7 @@ class Page3_2 : AppCompatActivity() {
         delete_button()
 
         setting_page3_2.setOnClickListener {
-            val intent = Intent(this@Page3_2,Setting_activity::class.java)
+            val intent = Intent(this@Page3_2, Setting_activity::class.java)
             startActivity(intent)
             overridePendingTransition(0, 0)
         }
@@ -64,7 +64,7 @@ class Page3_2 : AppCompatActivity() {
         }
 
         all_buttun.setOnClickListener {
-            val intent = Intent(this@Page3_2,Page3_re::class.java)
+            val intent = Intent(this@Page3_2, Page3_re::class.java)
             startActivity(intent)
             overridePendingTransition(0, 0)
         }

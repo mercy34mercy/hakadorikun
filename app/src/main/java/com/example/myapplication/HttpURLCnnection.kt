@@ -1,4 +1,4 @@
-package com.example.myapplication
+package jp.masashi.hakadori
 
 import android.os.AsyncTask
 import android.util.Log

@@ -1,4 +1,4 @@
-package com.example.myapplication
+package jp.masashi.hakadori
 
 import android.app.DatePickerDialog
 import android.content.Intent
@@ -11,13 +11,9 @@ import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.work.Data
-import androidx.work.OneTimeWorkRequestBuilder
-import androidx.work.WorkManager
-import androidx.work.workDataOf
-import com.example.myapplication.databinding.ActivityPage7ReBinding
 import io.realm.Realm
 import io.realm.RealmResults
+import jp.masashi.hakadori.databinding.ActivityPage7ReBinding
 import kotlinx.android.synthetic.main.activity_home3.*
 import kotlinx.android.synthetic.main.activity_page7_re.*
 import java.text.ParseException
@@ -48,7 +44,7 @@ class page7_re : AppCompatActivity() {
     var subject_i:Int = 0
     var spinnerItem = arrayOf("その他")
     var subject_s:String = ""
-    lateinit var binding:ActivityPage7ReBinding
+    lateinit var binding: ActivityPage7ReBinding
 
     var task_Year_now:Int = 0
     var task_Month_now:Int = 0
@@ -369,21 +365,21 @@ class page7_re : AppCompatActivity() {
 
 
 
-        val myData: Data = workDataOf("title" to subject_s,
-            "text" to title_edit_page7.text.toString(),
-            "id" to uuid_int)
-
-        val workRequest = OneTimeWorkRequestBuilder<LocalNotificationWorker>()
-            .setInitialDelay(diff2, TimeUnit.MINUTES)
-            .setInputData(myData)
-            .build()
-
-
-
-
-            WorkManager.getInstance(this).enqueue(workRequest)
-            val context = getApplicationContext();
-            Toast.makeText(context, "通知が設定されました", Toast.LENGTH_LONG).show();
+//        val myData: Data = workDataOf("title" to subject_s,
+//            "text" to title_edit_page7.text.toString(),
+//            "id" to uuid_int)
+//
+//        val workRequest = OneTimeWorkRequestBuilder<LocalNotificationWorker>()
+//            .setInitialDelay(diff2, TimeUnit.MINUTES)
+//            .setInputData(myData)
+//            .build()
+//
+//
+//
+//
+//            WorkManager.getInstance(this).enqueue(workRequest)
+//            val context = getApplicationContext();
+//            Toast.makeText(context, "通知が設定されました", Toast.LENGTH_LONG).show();
         }
 
 
@@ -462,7 +458,7 @@ class page7_re : AppCompatActivity() {
         t!!.task_url   = url_edit_page7.text.toString()
         t!!.task_memo  = memo_edit_page7.text.toString()
 
-        t!!.task_number = com.example.myapplication.create_number(task_Year,task_Month,task_Day,hour,minute)
+        t!!.task_number = jp.masashi.hakadori.create_number(task_Year,task_Month,task_Day,hour,minute)
         realm_page7.commitTransaction()
         finish()
     }

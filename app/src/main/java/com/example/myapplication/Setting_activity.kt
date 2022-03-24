@@ -1,9 +1,10 @@
-package com.example.myapplication
+package jp.masashi.hakadori
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.DisplayMetrics
+import android.view.View
 import android.widget.Toast
 import io.realm.Realm
 import io.realm.RealmResults
@@ -46,10 +47,24 @@ class Setting_activity : AppCompatActivity() {
         }
         switch_seetting.setOnCheckedChangeListener { buttonView, isChecked ->
             if(isChecked == true){
+
                 tuti_on_off = true
+                liner_setting.visibility = View.VISIBLE
+                view17.visibility =  View.VISIBLE
             }else{
                 tuti_on_off = false
+                liner_setting.visibility = View.GONE
+                view17.visibility =  View.GONE
             }
+        }
+
+        if(tuti_on_off == true){
+
+            liner_setting.visibility = View.VISIBLE
+            view17.visibility =  View.VISIBLE
+        }else{
+            liner_setting.visibility = View.GONE
+            view17.visibility =  View.GONE
         }
 
     }
@@ -86,33 +101,70 @@ class Setting_activity : AppCompatActivity() {
     {
         realm.beginTransaction()  //開始処理
 
-        if(edit_hour_setting.text.isNullOrEmpty() || edit_time_setting.text.isNullOrEmpty() || text_email_setting.text.isNullOrEmpty() || text_gakubu_setting.text.isNullOrEmpty() || text_gakka_setting.text.isNullOrEmpty() || text_gakunen_setting.text.isNullOrEmpty() || text_name_setting.text.isNullOrEmpty()){
-            val context = getApplicationContext();
-            Toast.makeText(context, "項目が不十分です", Toast.LENGTH_LONG).show();
-        }else if(user_p.size != 0){
-            user_p[0]!!.mailaddress = text_email_setting.text.toString()
-            user_p[0]!!.gakubu = text_gakubu_setting.text.toString()
-            user_p[0]!!.gakka = text_gakka_setting.text.toString()
-            user_p[0]!!.grade = text_gakunen_setting.text.toString()
-            user_p[0]!!.nickname  = text_name_setting.text.toString()
-            user_p[0]!!.tuuti_hour = edit_hour_setting.text.toString().toInt()
-            user_p[0]!!.tuuti_minute =edit_time_setting.text.toString().toInt()
-            user_p[0]!!.tuuti = tuti_on_off
-            val context = getApplicationContext();
-            Toast.makeText(context, "情報が更新されました", Toast.LENGTH_LONG).show();
-        }else{
-            val userDB = realm.createObject(UserDB::class.java)
-            userDB.gakubu      = text_gakubu_setting.text.toString()
-            userDB.gakka       = text_gakka_setting.text.toString()
-            userDB.mailaddress = text_email_setting.text.toString()
-            userDB.grade = text_gakunen_setting.text.toString()
-            userDB.nickname = text_name_setting.text.toString()
-            userDB.tuuti_hour = edit_hour_setting.text.toString().toInt()
-            userDB.tuuti_minute =edit_time_setting.text.toString().toInt()
-            userDB.tuuti = tuti_on_off
-            val context = getApplicationContext();
-            Toast.makeText(context, "情報が更新されました", Toast.LENGTH_LONG).show();
 
+
+        if(tuti_on_off == false) {
+
+            if (text_email_setting.text.isNullOrEmpty() || text_gakubu_setting.text.isNullOrEmpty() || text_gakka_setting.text.isNullOrEmpty() || text_gakunen_setting.text.isNullOrEmpty() || text_name_setting.text.isNullOrEmpty()) {
+                val context = getApplicationContext();
+                Toast.makeText(context, "項目が不十分です", Toast.LENGTH_LONG).show();
+            } else if (user_p.size != 0) {
+                user_p[0]!!.mailaddress = text_email_setting.text.toString()
+                user_p[0]!!.gakubu = text_gakubu_setting.text.toString()
+                user_p[0]!!.gakka = text_gakka_setting.text.toString()
+                user_p[0]!!.grade = text_gakunen_setting.text.toString()
+                user_p[0]!!.nickname = text_name_setting.text.toString()
+                user_p[0]!!.tuuti_hour = 0
+                user_p[0]!!.tuuti_minute = 0
+                user_p[0]!!.tuuti = tuti_on_off
+                val context = getApplicationContext();
+                Toast.makeText(context, "情報が更新されました", Toast.LENGTH_LONG).show();
+            } else {
+                val userDB = realm.createObject(UserDB::class.java)
+                userDB.gakubu = text_gakubu_setting.text.toString()
+                userDB.gakka = text_gakka_setting.text.toString()
+                userDB.mailaddress = text_email_setting.text.toString()
+                userDB.grade = text_gakunen_setting.text.toString()
+                userDB.nickname = text_name_setting.text.toString()
+                userDB.tuuti_hour = 0
+                userDB.tuuti_minute = 0
+                userDB.tuuti = tuti_on_off
+                val context = getApplicationContext();
+                Toast.makeText(context, "情報が更新されました", Toast.LENGTH_LONG).show();
+
+            }
+        }else{
+            if (edit_hour_setting.text.isNullOrEmpty() || edit_time_setting.text.isNullOrEmpty()  || text_email_setting.text.isNullOrEmpty() || text_gakubu_setting.text.isNullOrEmpty() || text_gakka_setting.text.isNullOrEmpty() || text_gakunen_setting.text.isNullOrEmpty() || text_name_setting.text.isNullOrEmpty()) {
+                val context = getApplicationContext();
+                Toast.makeText(context, "項目が不十分です", Toast.LENGTH_LONG).show();
+            } else if(edit_hour_setting.text.toString().toInt() > 60) {
+                val context = getApplicationContext();
+                Toast.makeText(context, "通知時刻が不正です", Toast.LENGTH_LONG).show();
+            }else if (user_p.size != 0) {
+                user_p[0]!!.mailaddress = text_email_setting.text.toString()
+                user_p[0]!!.gakubu = text_gakubu_setting.text.toString()
+                user_p[0]!!.gakka = text_gakka_setting.text.toString()
+                user_p[0]!!.grade = text_gakunen_setting.text.toString()
+                user_p[0]!!.nickname = text_name_setting.text.toString()
+                user_p[0]!!.tuuti_hour = edit_hour_setting.text.toString().toInt()
+                user_p[0]!!.tuuti_minute = edit_time_setting.text.toString().toInt()
+                user_p[0]!!.tuuti = tuti_on_off
+                val context = getApplicationContext();
+                Toast.makeText(context, "情報が更新されました", Toast.LENGTH_LONG).show();
+            } else {
+                val userDB = realm.createObject(UserDB::class.java)
+                userDB.gakubu = text_gakubu_setting.text.toString()
+                userDB.gakka = text_gakka_setting.text.toString()
+                userDB.mailaddress = text_email_setting.text.toString()
+                userDB.grade = text_gakunen_setting.text.toString()
+                userDB.nickname = text_name_setting.text.toString()
+                userDB.tuuti_hour = edit_hour_setting.text.toString().toInt()
+                userDB.tuuti_minute = edit_time_setting.text.toString().toInt()
+                userDB.tuuti = tuti_on_off
+                val context = getApplicationContext();
+                Toast.makeText(context, "情報が更新されました", Toast.LENGTH_LONG).show();
+
+            }
         }
         realm.commitTransaction() //終了処理
 

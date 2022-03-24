@@ -1,4 +1,4 @@
-package com.example.myapplication
+package jp.masashi.hakadori
 
 import android.content.Intent
 import android.graphics.Paint
@@ -37,7 +37,7 @@ class  page6 : AppCompatActivity() {
 
 
         button100.setOnClickListener {
-            intent = Intent(this@page6,page7_re::class.java)
+            intent = Intent(this@page6, page7_re::class.java)
             intent.putExtra("name","編集完了")
             intent.putExtra("position",list_position)
             startActivity(intent)

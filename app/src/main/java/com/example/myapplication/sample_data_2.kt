@@ -1,4 +1,4 @@
-package com.example.myapplication
+package jp.masashi.hakadori
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

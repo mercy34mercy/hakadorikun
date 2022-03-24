@@ -1,4 +1,4 @@
-package com.example.myapplication
+package jp.masashi.hakadori
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

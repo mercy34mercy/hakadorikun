@@ -1,4 +1,4 @@
-package com.example.myapplication
+package jp.masashi.hakadori
 
 import android.app.DatePickerDialog
 import android.content.Context
@@ -12,9 +12,9 @@ import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
-import com.example.myapplication.databinding.ActivityPage10Binding
 import io.realm.Realm
 import io.realm.RealmResults
+import jp.masashi.hakadori.databinding.ActivityPage10Binding
 import kotlinx.android.synthetic.main.activity_page10.*
 import kotlinx.android.synthetic.main.activity_page10.add_e_button
 import java.time.LocalDate

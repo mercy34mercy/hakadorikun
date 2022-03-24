@@ -1,4 +1,4 @@
-package com.example.myapplication
+package jp.masashi.hakadori
 
 import android.content.Intent
 import android.os.Build
@@ -30,7 +30,7 @@ class page2 : AppCompatActivity() {
 
 
 
-            val intent = Intent(this@page2,page5_re::class.java)
+            val intent = Intent(this@page2, page5_re::class.java)
             intent.putExtra("Dayofmonth",dayOfMonth.toString())
             intent.putExtra("month",(month+1).toString())
             intent.putExtra("year",year.toString())
@@ -51,7 +51,7 @@ class page2 : AppCompatActivity() {
         }
 
         task_button_page2.setOnClickListener {
-            val intent = Intent(this@page2,Page3_re::class.java)
+            val intent = Intent(this@page2, Page3_re::class.java)
             startActivity(intent)
             overridePendingTransition(0, 0)
         }

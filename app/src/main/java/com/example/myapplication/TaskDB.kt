@@ -1,4 +1,4 @@
-package com.example.myapplication
+package jp.masashi.hakadori
 
 import io.realm.RealmObject
 import java.sql.Date

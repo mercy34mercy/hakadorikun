@@ -1,4 +1,4 @@
-package com.example.myapplication
+package jp.masashi.hakadori
 
 import android.content.Intent
 import android.graphics.Paint
@@ -55,7 +55,7 @@ class page8 : AppCompatActivity() {
 
         textView_title.text = result[list_positin]!!.title.toString()
         textview_place.text = "場所 : " + result[list_positin]!!.place.toString()
-        textView_day.text   = result[list_positin]!!.startday.toString() + "   "+ result[list_positin]!!.start_hour.toString() + ":" + a + "~"
+        textView_day.text   = result[list_positin]!!.startday.toString() + "   "+ result[list_positin]!!.start_hour.toString() + ":" + a
         textview_end.text   = result[list_positin]!!.endday + "   " + result[list_positin]!!.end_hour.toString() + ":" + b
         textView_memo.text  = result[list_positin]!!.memo.toString()
         textView_url.text = result[list_positin]!!.url.toString()

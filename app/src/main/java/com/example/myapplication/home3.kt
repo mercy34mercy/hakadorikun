@@ -1,4 +1,4 @@
-package com.example.myapplication
+package jp.masashi.hakadori
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -126,7 +126,7 @@ class home3 : AppCompatActivity() {
         }
 
         setting_home3.setOnClickListener {
-            intent = Intent(this@home3,Setting_activity::class.java)
+            intent = Intent(this@home3, Setting_activity::class.java)
             startActivity(intent)
             overridePendingTransition(0, 0)
             //通信するときに使うもの
@@ -295,6 +295,13 @@ class home3 : AppCompatActivity() {
         }else{
             text_name.text = user_result[0]!!.nickname
         }
+
+        val days = LocalDate.now().toString()
+
+        val days2 = days.split("-")
+
+
+        todays_.text = days2[1].toString() + "月" + days2[2].toString() + "日"
 
         val task_size:Int = task_result.size
         val event_size:Int = event_result.size

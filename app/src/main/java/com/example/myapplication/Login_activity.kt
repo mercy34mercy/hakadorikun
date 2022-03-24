@@ -1,5 +1,4 @@
-package com.example.myapplication
-
+package jp.masashi.hakadori
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -92,7 +91,7 @@ class Login_activity : AppCompatActivity() {
         }
 
         login_account.setOnClickListener {
-            val intent = Intent(this@Login_activity,Login_mail::class.java)
+            val intent = Intent(this@Login_activity, Login_mail::class.java)
             startActivity(intent)
             overridePendingTransition(0, 0)
         }

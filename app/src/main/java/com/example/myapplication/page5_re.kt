@@ -1,4 +1,4 @@
-package com.example.myapplication
+package jp.masashi.hakadori
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -23,7 +23,7 @@ class page5_re : AppCompatActivity() {
     lateinit var result :RealmResults<EveDB>
     lateinit var task_result:RealmResults<TaskDB>
     lateinit var event_l:CustomAdapter
-    lateinit var task_l:TaskAdapter
+    lateinit var task_l: TaskAdapter
     lateinit var year:String
     lateinit var dayOfmonth:String
     lateinit var month:String
@@ -62,13 +62,13 @@ class page5_re : AppCompatActivity() {
         delete_button()
 
         List_Task.setOnItemClickListener { parent, view, position, id ->
-            val intent = Intent(this@page5_re,page6::class.java)
+            val intent = Intent(this@page5_re, page6::class.java)
             intent.putExtra("position",position)
             startActivity(intent)
         }
 
         List_Event.setOnItemClickListener { parent, view, position, id ->
-            val intent = Intent(this@page5_re,page8::class.java)
+            val intent = Intent(this@page5_re, page8::class.java)
             intent.putExtra("list_position",position)
             startActivity(intent)
         }

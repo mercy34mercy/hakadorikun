@@ -1,4 +1,4 @@
-package com.example.myapplication
+package jp.masashi.hakadori
 
 import android.content.Intent
 import android.os.Build
@@ -13,9 +13,9 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
-import com.example.myapplication.databinding.ActivityPage11Binding
 import io.realm.Realm
 import io.realm.RealmResults
+import jp.masashi.hakadori.databinding.ActivityPage11Binding
 import kotlinx.android.synthetic.main.activity_home3.*
 import kotlinx.android.synthetic.main.activity_page11.*
 import kotlinx.android.synthetic.main.activity_page11.listview_page11
@@ -43,7 +43,7 @@ class page11 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding =
             DataBindingUtil.setContentView<ActivityPage11Binding>(this, R.layout.activity_page11)
-        binding.model = myViewModel
+        //binding.model = myViewModel
         binding.lifecycleOwner = this
 
         val zikanwari:Array<String> = arrayOf("月曜1限","月曜2限","月曜3限","月曜4限","月曜5限","月曜6限",

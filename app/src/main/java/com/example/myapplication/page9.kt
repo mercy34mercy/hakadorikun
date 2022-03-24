@@ -1,4 +1,4 @@
-package com.example.myapplication
+package jp.masashi.hakadori
 
 import android.app.DatePickerDialog
 import android.content.Context
@@ -12,9 +12,9 @@ import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
-import com.example.myapplication.databinding.ActivityPage9Binding
 import io.realm.Realm
 import io.realm.RealmResults
+import jp.masashi.hakadori.databinding.ActivityPage9Binding
 import kotlinx.android.synthetic.main.activity_page10.*
 import kotlinx.android.synthetic.main.activity_page6.*
 import kotlinx.android.synthetic.main.activity_page8.*
@@ -292,6 +292,7 @@ class page9 : AppCompatActivity() {
                 Toast.makeText(context, "イベントが登録されました", Toast.LENGTH_LONG).show();
             }}
             else{
+                addnewWord()
                 val context = getApplicationContext();
                 Toast.makeText(context, "イベントが登録されました", Toast.LENGTH_LONG).show();
             }

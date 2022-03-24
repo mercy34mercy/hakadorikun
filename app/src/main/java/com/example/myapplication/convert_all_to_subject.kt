@@ -1,4 +1,5 @@
-package com.example.myapplication
+package jp.masashi.hakadori
+
 
 import io.realm.Realm
 import io.realm.RealmResults
@@ -6,7 +7,7 @@ import java.text.FieldPosition
 
 //Realm1...全体のデータ
 //Realm2...選択した教科だけのデータ
-class convert_all_to_subject(val Realm1:RealmResults<TaskDB>,val Realm2:RealmResults<TaskDB>,val positon:Int) {
+class convert_all_to_subject(val Realm1:RealmResults<TaskDB>, val Realm2:RealmResults<TaskDB>, val positon:Int) {
     //TODO 個別の教科ごとの課題のpositionを全体のポジションにへんこうする
     val select_resutl = Realm2[positon]
     val Realm1_size = Realm1.size
