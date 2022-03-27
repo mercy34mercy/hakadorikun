@@ -43,23 +43,7 @@ class Login_activity : AppCompatActivity() {
         // Initialize Firebase Auth
         auth = Firebase.auth
 
-        val dm = DisplayMetrics()
-        windowManager.defaultDisplay.getMetrics(dm)
-        val height = dm.heightPixels
-        val width = dm.widthPixels
-        topbar_login.layoutParams.height = height/15
-        create_account.layoutParams.height = height/15
-        text_google.layoutParams.height = height/15
-        sign_in_button.layoutParams.height = height/15
-        login_account.layoutParams.height = height/15
-        text_account.layoutParams.height = height/15
-        set_margin(height,width,view_over_textgoogle, 20)
-        set_margin_button(height,width,sign_in_button,20)
-        set_margin_button(height,width,create_account,20)
-        set_margin(height,width,text_mail,20)
-        set_margin(height,width,text_password,20)
-        set_margin(height,width,over_text_account,20)
-        set_margin_button(height,width,login_account,20)
+    /*
 
 
 
@@ -99,6 +83,8 @@ class Login_activity : AppCompatActivity() {
         logout.setOnClickListener {
             signOut()
         }
+
+     */
     }
 
 

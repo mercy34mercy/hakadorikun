@@ -126,7 +126,7 @@ class home3 : AppCompatActivity() {
         }
 
         setting_home3.setOnClickListener {
-            intent = Intent(this@home3, Setting_activity::class.java)
+            intent = Intent(this@home3, NewLogin::class.java)
             startActivity(intent)
             overridePendingTransition(0, 0)
             //通信するときに使うもの

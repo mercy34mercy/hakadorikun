@@ -4,23 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.myapplication.NewLogin">
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    tools:context=".NewLogin">
 
     <LinearLayout
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="1dp"
         android:layout_marginEnd="1dp"
         android:layout_marginBottom="1dp"
+        android:background="@drawable/border"
         android:orientation="vertical"
+        android:paddingTop="40dp"
+        android:paddingBottom="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/google_login"
             style="@style/Widget.AppCompat.Button.Borderless.Colored"
             android:layout_width="match_parent"
             android:layout_height="60dp"
@@ -38,9 +43,11 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="0.5dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
-            android:background="@android:color/darker_gray" />
+            android:layout_marginRight="20dp"
+            android:background="@color/gray" />
 
 
         <Button
@@ -51,7 +58,7 @@
             android:layout_marginLeft="25dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="25dp"
-            android:background="@color/gray"
+            android:background="@drawable/borderradius"
             android:backgroundTint="@color/black"
             android:text="メールアドレスで登録"
             android:textColor="@color/white"
@@ -66,16 +73,43 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.499" />
 
-        <Button
-            android:id="@+id/button4"
-            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#D36E6E"
-            android:backgroundTint="#B85C5C"
-            android:backgroundTintMode="src_over"
-            android:text="Button"
-            app:strokeColor="@color/teal_200"
-            app:strokeWidth="20dp" />
+            android:layout_height="0.5dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/gray" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="25dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="6"
+                android:gravity="center"
+                android:text="アカウントをお持ちですか？" />
+
+            <TextView
+                android:id="@+id/gotoLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/borderradiusorange"
+                android:gravity="center"
+                android:text="ログイン"
+                android:textColor="@color/orange" />
+
+        </LinearLayout>
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

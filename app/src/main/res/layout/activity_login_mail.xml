@@ -6,47 +6,126 @@
     android:layout_height="match_parent"
     tools:context=".Login_mail">
 
+
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/border"
+        android:orientation="vertical"
+        android:padding="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/textView6"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="ログイン" />
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:text="登録を完了する"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
 
-        <TextView
-            android:id="@+id/textView11"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="メールアドレス" />
+            android:background="@drawable/borderradiusgray"
+            android:orientation="vertical"
+            android:paddingLeft="5dp"
+            android:paddingTop="2dp"
+            android:paddingRight="5dp">
 
-        <EditText
-            android:id="@+id/email_input"
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="名前"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/editTextTextPersonName"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="@null"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:paddingRight="5dp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/gray" />
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textEmailAddress" />
+            android:layout_marginTop="10dp"
+            android:background="@drawable/borderradiusgray"
+            android:orientation="vertical"
+            android:paddingLeft="5dp"
+            android:paddingTop="2dp"
+            android:paddingRight="5dp">
 
-        <TextView
-            android:id="@+id/textView13"
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="メールアドレス"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/email_input"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="@null"
+                android:ems="10"
+                android:inputType="textEmailAddress"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/gray" />
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="パスワード" />
+            android:layout_marginTop="10dp"
+            android:background="@drawable/borderradiusgray"
+            android:orientation="vertical"
+            android:paddingLeft="5dp"
+            android:paddingTop="2dp"
+            android:paddingRight="5dp">
 
-        <EditText
-            android:id="@+id/password_input"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPassword" />
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="パスワード"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/password_input"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="@null"
+                android:ems="10"
+                android:inputType="textPassword" />
+        </LinearLayout>
 
         <Button
             android:id="@+id/log_in_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ログイン" />
+            android:layout_marginTop="30dp"
+            android:text="登録" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

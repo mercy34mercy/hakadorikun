@@ -22,6 +22,7 @@ class Login_mail : AppCompatActivity() {
         setContentView(R.layout.activity_login_mail)
         auth = Firebase.auth
 
+        /*
         log_in_button.setOnClickListener {
             val mail = email_input.text.toString()
             val password = password_input.text.toString()
@@ -31,6 +32,8 @@ class Login_mail : AppCompatActivity() {
                 signIn(mail,password)
             }
         }
+
+         */
     }
 
 
