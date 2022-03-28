@@ -22,55 +22,56 @@ class Login_mail : AppCompatActivity() {
         setContentView(R.layout.activity_login_mail)
         auth = Firebase.auth
 
-        /*
-        log_in_button.setOnClickListener {
+
+        create_account_button.setOnClickListener {
             val mail = email_input.text.toString()
             val password = password_input.text.toString()
-            if(mail.isNullOrEmpty() || password.isNullOrEmpty()){
+            val name = name_input.text.toString()
+
+            if(name.isNotEmpty()){
+                Toast.makeText(applicationContext, "名前を入力して下さい", Toast.LENGTH_LONG).show()
+            }else if(mail.isNullOrEmpty() || password.isNullOrEmpty()){
                 Toast.makeText(applicationContext, "mailaddressとpasswordを入力して下さい", Toast.LENGTH_LONG).show()
             }else {
-                signIn(mail,password)
+                createAccount(mail,password)
             }
         }
 
-         */
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        realm = Realm.getDefaultInstance()
+        result = realm.where(UserDB::class.java).findAll()
+        val length = result.size
     }
 
 
-
-    private fun signIn(email: String, password: String) {
-        // [START sign_in_with_email]
-        auth.signInWithEmailAndPassword(email, password)
+    private fun createAccount(email: String, password: String) {
+        // [START create_user_with_email]
+        auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
+                    Toast.makeText(applicationContext,"登録完了",Toast.LENGTH_LONG).show()
                     // Sign in success, update UI with the signed-in user's information
-                    Log.d(Login_mail.TAG, "signInWithEmail:success")
+                    Log.d(Login_mail.TAG, "createUserWithEmail:success")
                     val user = auth.currentUser
-                    Toast.makeText(baseContext, "ログイン成功",
-                        Toast.LENGTH_SHORT).show()
-
-                    //user_data_store(true,false)
-                    updateUI(user)
+                    updateUI(user,result)
                     goto_home()
                 } else {
+                    Toast.makeText(applicationContext,"登録失敗",Toast.LENGTH_LONG).show()
                     // If sign in fails, display a message to the user.
-                    Log.w(Login_mail.TAG, "signInWithEmail:failure", task.exception)
-                    Toast.makeText(baseContext, "パスワードまたは、メールアドレスが違います",
+                    Log.w(Login_mail.TAG, "createUserWithEmail:failure", task.exception)
+                    Toast.makeText(baseContext, "Authentication failed.",
                         Toast.LENGTH_SHORT).show()
-                    updateUI(null)
+//                    updateUI(null)
                 }
             }
-        // [END sign_in_with_email]
+        // [END create_user_with_email]
     }
 
-    private fun user_data_store(mail:Boolean,google:Boolean) {
-        realm.beginTransaction()  //開始処理
-        val UserDB = realm.createObject(UserDB::class.java)
-        UserDB.user_email_login = mail
-        UserDB.user_google_login = google
 
-        realm.commitTransaction() //終了処理
-    }
 
     private fun goto_home(){
         val intent = Intent(this@Login_mail,home3::class.java)
@@ -78,9 +79,16 @@ class Login_mail : AppCompatActivity() {
         overridePendingTransition(0, 0)
     }
 
-    private fun updateUI(user: FirebaseUser?) {
+    private fun updateUI(user: FirebaseUser?,user_p:RealmResults<UserDB>) {
         //TODO Realmにいろいろ保存する
-
+        realm.beginTransaction()
+        if(user_p.size != 0){
+            user_p[0]?.nickname ?:name_input.text.toString()
+        }else{
+            val userDB = realm.createObject(UserDB::class.java)
+            userDB.nickname = name_input.text.toString()
+        }
+        realm.commitTransaction() //終了処理
     }
 
     companion object {

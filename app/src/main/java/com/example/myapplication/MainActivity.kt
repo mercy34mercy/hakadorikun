@@ -28,25 +28,25 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
-        val intent = Intent(this@MainActivity, home3::class.java)
-        startActivity(intent)
-        overridePendingTransition(0, 0)
+//        val intent = Intent(this@MainActivity, home3::class.java)
+//        startActivity(intent)
+//        overridePendingTransition(0, 0)
 
 
 
-//        val user = Firebase.auth.currentUser
-//        if (user != null) {
-//            // User is signed in
-//            val intent = Intent(this@MainActivity, home3::class.java)
-//            startActivity(intent)
-//            overridePendingTransition(0, 0)
-//
-//        } else {
-//            // No user is signed in
-//            val intent = Intent(this@MainActivity, Login_activity::class.java)
-//            startActivity(intent)
-//            overridePendingTransition(0, 0)
-//        }
+        val user = Firebase.auth.currentUser
+        if (user != null) {
+            // User is signed in
+            val intent = Intent(this@MainActivity, home3::class.java)
+            startActivity(intent)
+            overridePendingTransition(0, 0)
+
+        } else {
+            // No user is signed in
+            val intent = Intent(this@MainActivity, NewLogin::class.java)
+            startActivity(intent)
+            overridePendingTransition(0, 0)
+        }
     }
 
     override fun onPause() {

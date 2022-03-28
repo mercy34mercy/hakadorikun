@@ -43,23 +43,25 @@ class Login_activity : AppCompatActivity() {
         // Initialize Firebase Auth
         auth = Firebase.auth
 
-    /*
 
 
 
-        create_account.setOnClickListener {
+
+        Login_button.setOnClickListener {
             val mail_address =
-                mail_input.text.toString()
+                input_mail.text.toString()
 
             val input_passwprd =
-                passwprd_input.text.toString()
+                input_password.text.toString()
             if(mail_address.isNullOrEmpty() || input_passwprd.isNullOrEmpty()) {
                 Toast.makeText(applicationContext, "mailaddressとpasswordを入力して下さい", Toast.LENGTH_LONG).show()
             }else{
-                createAccount(mail_address,input_passwprd)
+                signIn(mail_address,input_passwprd)
             }
 
         }
+
+        /*
 
         button2.setOnClickListener {
             val intent = Intent(this@Login_activity,home3::class.java)
@@ -110,26 +112,29 @@ class Login_activity : AppCompatActivity() {
         }
     }
 
-    private fun createAccount(email: String, password: String) {
-        // [START create_user_with_email]
-        auth.createUserWithEmailAndPassword(email, password)
+    private fun signIn(email: String, password: String) {
+        // [START sign_in_with_email]
+        auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
-                    Log.d(TAG, "createUserWithEmail:success")
+                    Log.d(Login_activity.TAG, "signInWithEmail:success")
                     val user = auth.currentUser
+                    Toast.makeText(baseContext, "ログイン成功",
+                        Toast.LENGTH_SHORT).show()
+                    //user_data_store(true,false)
                     updateUI(user)
+                    goto_home()
                 } else {
                     // If sign in fails, display a message to the user.
-                    Log.w(TAG, "createUserWithEmail:failure", task.exception)
-                    Toast.makeText(baseContext, "Authentication failed.",
+                    Log.w(Login_activity.TAG, "signInWithEmail:failure", task.exception)
+                    Toast.makeText(baseContext, "パスワードまたは、メールアドレスが違います",
                         Toast.LENGTH_SHORT).show()
-                    updateUI(null)
+//                    updateUI(null,result)
                 }
             }
-        // [END create_user_with_email]
+        // [END sign_in_with_email]
     }
-
 
 
     private fun sendEmailVerification() {
@@ -189,6 +194,11 @@ class Login_activity : AppCompatActivity() {
             }
     }
     // [END auth_with_google]
+    private fun goto_home(){
+        intent = Intent(this@Login_activity, home3::class.java)
+        startActivity(intent)
+        overridePendingTransition(0, 0)
+    }
 
     private fun updateUI(user: FirebaseUser?) {
 

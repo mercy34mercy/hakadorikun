@@ -47,7 +47,7 @@
                 android:textSize="12sp" />
 
             <EditText
-                android:id="@+id/editTextTextPersonName"
+                android:id="@+id/name_input"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:background="@null"
@@ -122,10 +122,10 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/log_in_button"
+            android:id="@+id/create_account_button"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="20dp"
             android:text="登録" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

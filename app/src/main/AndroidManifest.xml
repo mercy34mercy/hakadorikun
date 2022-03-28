@@ -19,7 +19,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
-            android:name="com.example.myapplication.Login_password"
+            android:name=".Login_password"
             android:exported="false" />
         <activity
             android:name=".NewLogin"

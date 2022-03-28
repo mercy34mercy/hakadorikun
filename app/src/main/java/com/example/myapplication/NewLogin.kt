@@ -54,9 +54,9 @@ class NewLogin : AppCompatActivity() {
 
     // [START signin]
     private fun google_signIn() {
-        TODO("返り値からログイン情報もらわんといかん")
         val signInIntent = googleSignInClient.signInIntent
         startActivityForResult(signInIntent, NewLogin.RC_SIGN_IN)
+
     }
     // [END signin]
 
