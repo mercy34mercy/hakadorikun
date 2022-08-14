@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/etuko/AndroidStudioProjects/hakadorikun/app/src/main/res/layout/activity_google_login.xml" value="0.1" />
+        <entry key="..\:/Users/etuko/AndroidStudioProjects/hakadorikun/app/src/main/res/layout/activity_login_mail.xml" value="0.35733695652173914" />
+        <entry key="..\:/Users/etuko/AndroidStudioProjects/hakadorikun/app/src/main/res/layout/activity_newlogin.xml" value="0.33" />
         <entry key="..\:/Users/etuko/StudioProjects/hakadorikun/app/src/main/res/drawable/border.xml" value="0.336" />
         <entry key="..\:/Users/etuko/StudioProjects/hakadorikun/app/src/main/res/drawable/borderradius.xml" value="0.336" />
         <entry key="..\:/Users/etuko/StudioProjects/hakadorikun/app/src/main/res/drawable/borderradiusgray.xml" value="0.336" />

@@ -35,9 +35,12 @@ class NewLogin : AppCompatActivity() {
         auth = Firebase.auth
 
 
-        google_login.setOnClickListener {
-            google_signIn()
-        }
+//        google_login.setOnClickListener {
+//            google_signIn()
+//            val intent = Intent(this@NewLogin,home3::class.java)
+//            startActivity(intent)
+//            overridePendingTransition(0, 0)
+//        }
 
         emailbutton.setOnClickListener {
             intent = Intent(this@NewLogin, Login_mail::class.java)
@@ -56,7 +59,6 @@ class NewLogin : AppCompatActivity() {
     private fun google_signIn() {
         val signInIntent = googleSignInClient.signInIntent
         startActivityForResult(signInIntent, NewLogin.RC_SIGN_IN)
-
     }
     // [END signin]
 

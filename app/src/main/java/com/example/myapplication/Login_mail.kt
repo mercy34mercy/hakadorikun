@@ -28,7 +28,7 @@ class Login_mail : AppCompatActivity() {
             val password = password_input.text.toString()
             val name = name_input.text.toString()
 
-            if(name.isNotEmpty()){
+            if(name.isEmpty()){
                 Toast.makeText(applicationContext, "名前を入力して下さい", Toast.LENGTH_LONG).show()
             }else if(mail.isNullOrEmpty() || password.isNullOrEmpty()){
                 Toast.makeText(applicationContext, "mailaddressとpasswordを入力して下さい", Toast.LENGTH_LONG).show()
